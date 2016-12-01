@@ -6,11 +6,11 @@ function add_footer(){
           <img alt=\"\" src=\"Images/ValidXHTML10.png\" />\
         </td>\
     <td class=\"center_column footer_first_line\" >\
-      <a href=\"ContactMe.html\">\
+      <a href=\"HTML pages/ContactMe.html\" >\
         Contact Me\
       </a>\
       &nbsp;|&nbsp;\
-      <a href=\"PrivacyPolicy.html\">\
+      <a href=\"HTML pages/PrivacyPolicy.html\">\
         Privacy Policy\
       </a>\
     </td>\
