@@ -8,16 +8,16 @@
 html,
 body
   {
-  background:#FFFFF0;
+  background:#FFFFFF;
   }
 
-input, 
+input,
 textarea
   {
   background:#F0FFFF;
   border:solid 1px #B0C4DE;
   }
-  
+
 p
   {
   font-family:Arial, Verdana, Sans-Serif;
@@ -35,13 +35,13 @@ table
   empty-cells:show;
   }
 
-tr 
+tr
   {
-  border:0; 
-  margin:0; 
+  border:0;
+  margin:0;
   padding:0;
   }
-  
+
 ul
   {
   list-style-type:none;
@@ -52,7 +52,7 @@ li
   padding-top:5px;
   padding-bottom:5px;
   }
-  
+
 img
   {
   cursor:pointer;
@@ -62,7 +62,7 @@ sup
   {
   font-weight:bold;
   }
-  
+
 .indented
    {
    padding-left:20px;
@@ -75,11 +75,11 @@ sup
 
 .left_column_text
   {
-  font-size:large; 
-  font-weight:bold; 
+  font-size:large;
+  font-weight:bold;
   text-align:center;
   }
-  
+
 .center_column
   {
   width:70%;
@@ -120,12 +120,12 @@ sup
 
 .header_title_subtitle
   {
-  height:50%; 
-  text-align:left; 
-  vertical-align:middle; 
+  height:50%;
+  text-align:left;
+  vertical-align:middle;
   padding-left:20px;
   }
-  
+
 #header_title
   {
   font-size:20pt;
@@ -227,10 +227,10 @@ sup
 .footer_second_line
   {
   }
-  
+
 .text_link
   {
-  color:#0000FF; 
+  color:#0000FF;
   text-decoration:underline;
   cursor:pointer;
   }
@@ -262,7 +262,7 @@ sup
 
 .contact_me_entry
   {
-  border:solid 1 LightSteelBlue; 
+  border:solid 1 LightSteelBlue;
   background:Ivory;
   }
 
@@ -272,9 +272,8 @@ sup
   background-color:#B0C4DE;
   text-align:center;
   }
-  
+
 .submit_reset
   {
 
   }
-
