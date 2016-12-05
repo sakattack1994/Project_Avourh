@@ -9,126 +9,41 @@ function add_header(){
 			<a id=\"menu-toggle\" class=\"button dark\" href=\"#\"><i class=\"icon-reorder\"></i></a>\
 			<nav id=\"navigation\">\
 				<ul id=\"main-menu\">\
-					<li class=\"current-menu-item\"><a href=\"http://www.freshdesignweb.com\">Home</a></li>\
+					<li class=\"current-menu-item\" >Home</li>\
 					<li class=\"parent\">\
-						<a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">The Department</a>\
+						Features\
 						<ul class=\"sub-menu\">\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\"><i class=\"icon-wrench\"></i>Welcome</a></li>\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\"><i class=\"icon-credit-card\"></i> History</a></li>\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\"><i class=\"icon-gift\"></i> Structure</a></li>\
-							<li><a  href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\"><i class=\"icon-file-alt\"></i> Secretariat</a>\ </li>\
-							<li><a  href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\"><i class=\"icon-file-alt\"></i> Departmental committees</a>\ </li>\
-							<li><a  href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\"><i class=\"icon-file-alt\"></i> Health and Safety</a>\ </li>\
-							<li><a class=\"parent\" href=\"#\"><i class=\"icon-file-alt\"></i>Department Scientific Events </a>\
+							<li>Elements</li>\
+							<li>Pricing Tables</li>\
+							<li>Icons</li>\
+							<li>\
+								Pages\
 								<ul class=\"sub-menu\">\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">'Green Electric Power and Smart Grids' Workshop</a></li>\
-								</ul>\
-							</li>\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\"><i class=\"icon-file-alt\"></i> Alumni </a>\ </li>\
-						</ul>\
-					</li>\
-					<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Education</a>\
-						<ul class=\"sub-menu\">\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\"><i class=\"icon-wrench\"></i>Study Guide</a></li>\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\"><i class=\"icon-credit-card\"></i>Current Academic Year</a></li>\
-							<li><a class=\"parent\" href=\"#\"><i class=\"icon-file-alt\"></i>Undergraduate Subjects </a>\
-								<ul class=\"sub-menu\">\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Statute</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Courses</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Study Guide 2015-2016</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Study Guide 2016-2017</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Lesson Declaration Rules</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Graduation Rules</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Usefull Documents</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Practise</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Diploma Theses</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Timetable</a></li>\
-								</ul>\
-							</li>\
-							<li><a  href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\"><i class=\"icon-file-alt\"></i> Graduate Program</a>\ </li>\
-							<li><a class=\"parent\" href=\"#\"><i class=\"icon-file-alt\"></i>Postgraduate Subjects </a>\
-								<ul class=\"sub-menu\">\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Statute</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Phd Thesis</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Courses</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Postgraduate Students</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Courses and Exams</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Schedule</a></li>\
+									<li>Full Width</li>\
+									<li>Left Sidebar</li>\
+									<li>Right Sidebar</li>\
+									<li>Double Sidebar</li>\
 								</ul>\
 							</li>\
 						</ul>\
 					</li>\
+					<li>Portfolio</li>\
 					<li class=\"parent\">\
-						<a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Research</a>\
+						Blog\
 						<ul class=\"sub-menu\">\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Divisions</a></li>\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Laboratories</a></li>\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Publications</a></li>\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Awards</a></li>\
+							<li>Large Image</li>\
+							<li>Medium Image</li>\
+							<li>Masonry</li>\
+							<li>Double Sidebar</li>\
+							<li>Single Post</li>\
 						</ul>\
 					</li>\
-					<li class=\"parent\"><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Personell</a>\
-						<ul class=\"sub-menu\">\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Faculty</a></li>\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Εmeriti Professors</a></li>\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Honoris Causa Professors</a></li>\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Research Collaborators</a></li>\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Laboratory Staff</a></li>\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Technical Staff</a></li>\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Administrative Staff</a></li>\
-						</ul>\
-					</li>\
-					<li class=\"parent\"><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Evaluation Reports</a>\
-						<ul class=\"sub-menu\">\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Internal</a></li>\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">External</a></li>\
-						</ul>\
-					</li>\
-					<li class=\"parent\"><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Announcements</a>\
-						<ul class=\"sub-menu\">\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Graduate Studies</a></li>\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Postgraduate</a></li>\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Phd Studies</a></li>\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Scholarships</a></li>\
-						</ul>\
-					</li>\
-					<li class=\"parent\"><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Information</a>\
-						<ul class=\"sub-menu\">\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Location</a></li>\
-							<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Maps</a></li>\
-							<li><a class=\"parent\" href=\"#\"><i class=\"icon-file-alt\"></i>Links </a>\
-								<ul class=\"sub-menu\">\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Universities</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Research Istitutions</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Research Societies</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Government Institutions</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Websites</a></li>\
-								</ul>\
-							</li>\
-							<li><a class=\"parent\" href=\"#\"><i class=\"icon-file-alt\"></i>Student Care </a>\
-								<ul class=\"sub-menu\">\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Residence</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Meals</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Libraries</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Athletics University Gymnasium</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Health Care</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Foreign Student Admission</a></li>\
-								</ul>\
-							</li>\
-							<li><a class=\"parent\" href=\"#\"><i class=\"icon-file-alt\"></i>General </a>\
-								<ul class=\"sub-menu\">\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Transportation</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Cultural Events</a></li>\
-									<li><a href=\"http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html\">Secretariat of the Department</a></li>\
-								</ul>\
-							</li>\
-						</ul>\
-					</li>\
+					<li>Contact</li>\
 				</ul>\
 			</nav>\
 			<div class=\"clear\"></div>\
 		</div>\
-	</header> \
+	</header> 	\
 </div>    \
   ";
   $('#header').append(header) ;
