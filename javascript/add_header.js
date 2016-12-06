@@ -12,33 +12,136 @@ function add_header(){
 				<ul id=\"main-menu\">\
 					<li class=\"current-menu-item\" >Home</li>\
 					<li class=\"parent\">\
-						Features\
+						The Department\
 						<ul class=\"sub-menu\">\
-							<li>Elements</li>\
-							<li>Pricing Tables</li>\
-							<li>Icons</li>\
+							<li>Welcome</li>\
+							<li>History</li>\
+							<li>Structure</li>\
+              <li>Secretariat</li>\
+              <li>Department Committees</li>\
+              <li>Health and Safety</li>\
 							<li>\
-								Pages\
+								Department Scientific Events\
 								<ul class=\"sub-menu\">\
-									<li>Full Width</li>\
-									<li>Left Sidebar</li>\
-									<li>Right Sidebar</li>\
-									<li>Double Sidebar</li>\
+									<li>'Green Electric Power and Smart Grids' Workshop</li>\
 								</ul>\
 							</li>\
+              <li>\
+								Department Events\
+								<ul class=\"sub-menu\">\
+									<li></li>\
+								</ul>\
+							</li>\
+              <li>Alumni</li>\
 						</ul>\
 					</li>\
-					<li>Portfolio</li>\
 					<li class=\"parent\">\
-						Blog\
+						Education\
 						<ul class=\"sub-menu\">\
-							<li>Large Image</li>\
-							<li>Medium Image</li>\
-							<li>Masonry</li>\
-							<li>Double Sidebar</li>\
-							<li>Single Post</li>\
-						</ul>\
-					</li>\
+							<li>Study Guide</li>\
+							<li>Current Academic Year</li>\
+              <li>\
+								Undergraduate Subjects\
+								<ul class=\"sub-menu\">\
+									<li>Statute</li>\
+                  <li>Courses</li>\
+                  <li>Study Guide 2015-2016</li>\
+                  <li>Study Guide 2016-2017</li>\
+                  <li>Lesson Declaration Rules</li>\
+                  <li>Graduation Rules</li>\
+                  <li>Usefull Documents</li>\
+                  <li>Practise</li>\
+                  <li>Diploma Theses</li>\
+                  <li>Timetable</li>\
+								</ul>\
+							</li>\
+              <li>Graduate Program</li>\
+              <li>\
+								Postgraduate Subjects\
+								<ul class=\"sub-menu\">\
+									<li>Statute</li>\
+                  <li>Phd Thesis</li>\
+                  <li>Courses</li>\
+                  <li>Postgraduate Students</li>\
+                  <li>Courses and Exams</li>\
+                  <li>Schedule</li>\
+								</ul>\
+							</li>\
+            </ul>\
+          </li>\
+          <li class=\"parent\">\
+    						Research\
+    					<ul class=\"sub-menu\">\
+    							<li>Divisions</li>\
+    							<li>Laboratories</li>\
+    							<li>Publications</li>\
+                  <li>Awards</li>\
+              </ul>\
+          </li>\
+          <li class=\"parent\">\
+    						Personnel\
+    					<ul class=\"sub-menu\">\
+    							<li>Faculty</li>\
+    							<li>Εmeriti Professors</li>\
+    							<li>Honoris Causa Professors</li>\
+                  <li>Research Collaborators</li>\
+                  <li>Laboratory Staff</li>\
+                  <li>Technical Staff</li>\
+                  <li>Administrative Staff</li>\
+              </ul>\
+          </li>\
+          <li class=\"parent\">\
+    						Evaluation Reports\
+    					<ul class=\"sub-menu\">\
+    							<li>Internal</li>\
+    							<li>External</li>\
+              </ul>\
+          </li>\
+          <li class=\"parent\">\
+    						Announcements\
+    					<ul class=\"sub-menu\">\
+    							<li>Graduate Studies</li>\
+    							<li>Postgraduate</li>\
+    							<li>Phd Studies</li>\
+                  <li>Scholarships</li>\
+              </ul>\
+          </li>\
+          <li class=\"parent\">\
+                Information\
+              <ul class=\"sub-menu\">\
+                  <li>Location</li>\
+                  <li>Maps</li>\
+                  <li>\
+    								Links\
+    								<ul class=\"sub-menu\">\
+    									<li>Universities</li>\
+                      <li>Research Institutions</li>\
+                      <li>Research Societies</li>\
+                      <li>Government Institutions</li>\
+                      <li>Websites</li>\
+    								</ul>\
+    							</li>\
+                  <li>\
+    								Student Care\
+    								<ul class=\"sub-menu\">\
+    									<li>Residence</li>\
+                      <li>Meals</li>\
+                      <li>Library</li>\
+                      <li>Athletics University Gymnasium</li>\
+                      <li>Health Care</li>\
+                      <li>Foreign Student Admission</li>\
+    								</ul>\
+    							</li>\
+                  <li>\
+    								General\
+    								<ul class=\"sub-menu\">\
+    									<li>Transportation</li>\
+                      <li>Cultural Events</li>\
+                      <li>Secretariat of the Department</li>\
+    								</ul>\
+    							</li>\
+              </ul>\
+          </li>\
 					<li>Contact</li>\
 				</ul>\
 			</nav>\
