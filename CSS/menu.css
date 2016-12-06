@@ -2,7 +2,10 @@
 
 body {
 	background-color: #eee;
-	background-image: url(../images/patterns/light_toast.png);
+	background-image: url(../Images/background.jpg);
+	background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 	color: #666;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 12px;
@@ -49,11 +52,15 @@ ol, ul {
 #wrap > header {
 	background-color: #333;
 	padding-bottom: 20px;
+	border-radius: 0px 0px 20px 20px;
 }
 .logo {
 	display: inline-block;
 	font-size: 0;
 	padding-top:15px;
+	text-align: center;
+	width:180px;
+	border-radius:15px;
 }
 #navigation {
 	position: absolute;
@@ -104,7 +111,7 @@ ol, ul {
  -	font-size: 0;
  -	margin: 10px 0;
  -}
- 
+
 #main-menu li {
 	position: relative;
 }
@@ -138,7 +145,7 @@ ul.sub-menu > li {
 }
 
 ul.sub-menu > li :hover {
-	background-color: #2a2a2a; 
+	background-color: #2a2a2a;
 	color: #fff;
 }
 
@@ -206,7 +213,7 @@ ul.sub-menu > li {
 	}
 
 	#main-menu li :hover {
-		background-color: #444; 
+		background-color: #444;
 	}
 
 	#main-menu > li.parent {

@@ -1,11 +1,12 @@
 function add_header(){
   var header;
   header="\
-  <div style=\"background:#0099cc; font-size:22px; text-align:center; color:#FFF; font-weight:bold; height:100px; padding-top:50px;\">Responsive Drop Down Menu jQuery CSS3 Using Icon Symbol</div>\
+  <div style=\"background:#0099cc; font-size:22px; text-align:center; color:#FFF; font-weight:bold; height:100px; padding-top:50px;\">\
+  </div>\
 <div id=\"wrap\">\
 	<header>\
 		<div class=\"inner relative\">\
-			<a class=\"logo\" href=\"http://www.freshdesignweb.com\"><img src=\"images/logo.png\" alt=\"fresh design web\"></a>\
+			<a href=\"https://www.upatras.gr/el\" target=\"_blank\"><img src=\"images/papa.jpg\" class=\"logo\">\
 			<a id=\"menu-toggle\" class=\"button dark\" href=\"#\"><i class=\"icon-reorder\"></i></a>\
 			<nav id=\"navigation\">\
 				<ul id=\"main-menu\">\

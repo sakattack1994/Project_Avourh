@@ -217,6 +217,8 @@ sup
   color:#000000;
   text-decoration:none;
   text-align:center;
+  margin-bottom: 20px;
+  border-radius: 5px;
   }
 
 .footer_first_line
@@ -276,4 +278,19 @@ sup
 .submit_reset
   {
 
+  }
+  /*CONTENT STYLE*/
+  #content{
+  	color: #000;
+  	text-decoration: none;
+  	font-style: italic;
+  	font-size: 13px;
+  	text-align: center;
+  	padding: 2px 5px;
+  	background: #fff;
+  	margin: 40px auto;
+  	top: -10px;
+    font-family: "Droid serif", serif;
+  	border-radius: 20px;
+  	box-shadow: 10px 10px 5px #888888;
   }
