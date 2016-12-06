@@ -51,7 +51,8 @@ ol, ul {
 /* HEADER */
 #wrap > header {
 	background-color: #333;
-	padding-bottom: 20px;
+	height:80px;
+	padding-top: 80px;
 	border-radius: 0px 0px 20px 20px;
 }
 .logo {
@@ -66,6 +67,7 @@ ol, ul {
 	position: absolute;
 	right: 40px;
 	bottom: 0px;
+	padding-top: 200px;
 }
 
 #menu-toggle {
@@ -76,8 +78,9 @@ ol, ul {
 /* HEADER > MENU */
 
 #main-menu > li {
+	margin-top: 100px;
 	display: inline-block;
-	margin-left: 30px;
+	margin-left: 0px;
 	padding: 2px 0;
 }
 
@@ -86,10 +89,7 @@ ol, ul {
 	background-size: 7px 7px;
 	background-repeat: no-repeat;
 	background-position: left center;
-}
-
-#main-menu > li.parent {
-	padding-left: 14px;
+	padding-left: 25px;
 }
 
 #main-menu > li{
@@ -176,7 +176,7 @@ ul.sub-menu > li {
 
 	#navigation {
 		position: static;
-		margin-top: 20px;
+		margin-top: 100px;
 	}
 
 	#menu-toggle {
