@@ -1,12 +1,12 @@
 function add_header(){
   var header;
   header="\
-  <div style=\"background:#0099cc; font-size:22px; text-align:center; color:#FFF; font-weight:bold; height:100px; padding-top:50px;\">\
+  <div style=\"background:#0099cc; font-size:12px; color:#FFF; font-weight:bold; height:100px;\">\
+  <h3><a href=\"https://www.upatras.gr/el\" target=\"_blank\"><img src=\"images/papa.jpg\" class=\"logo\"></a> &nbsp;ΤΜΗΜΑ ΗΛΕΚΤΡΟΛΟΓΩΝ ΜΗΧΑΝΙΚΩΝ ΚΑΙ ΤΕΧΝΟΛΟΓΙΑΣ ΥΠΟΛΟΓΙΣΤΩΝ</h3>\
   </div>\
 <div id=\"wrap\">\
 	<header>\
 		<div class=\"inner relative\">\
-			<a href=\"https://www.upatras.gr/el\" target=\"_blank\"><img src=\"images/papa.jpg\" class=\"logo\">\
 			<a id=\"menu-toggle\" class=\"button dark\" href=\"#\"><i class=\"icon-reorder\"></i></a>\
 			<nav id=\"navigation\">\
 				<ul id=\"main-menu\">\
@@ -107,7 +107,7 @@ function add_header(){
               </ul>\
           </li>\
           <li class=\"parent\">\
-                Information\
+                Information &nbsp;&nbsp;\
               <ul class=\"sub-menu\">\
                   <li>Location</li>\
                   <li>Maps</li>\
