@@ -25,11 +25,6 @@ p
   padding-bottom:10px;
   }
 
-table
-  {
-  empty-cells:show;
-  }
-
 tr
   {
   border:0;
@@ -319,3 +314,4 @@ sup
   #file{
     margin: 0 auto 1em auto;
   }
+  

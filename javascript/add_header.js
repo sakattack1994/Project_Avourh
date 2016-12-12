@@ -100,7 +100,7 @@ function add_header(){
           <li class=\"parent\">\
     						Announcements\
     					<ul class=\"sub-menu\">\
-    							<li>Graduate Studies</li>\
+    							<li><a href=\"announcements.php\">Graduate Studies</a></li>\
     							<li>Postgraduate</li>\
     							<li>Phd Studies</li>\
                   <li>Scholarships</li>\
