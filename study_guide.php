@@ -1,5 +1,3 @@
-
-
 <?php
 function process_file($f){
   $name=$_FILES['file']['name'];
@@ -46,7 +44,7 @@ function process_file($f){
       <form enctype=\"multipart/form-data\" action=\"study_guide.php\" method=\"post\">
         <label><h3>Add new study guide:</h3></label>
         <input name=\"file\" type=\"file\" id=\"file\"  >
-        <input type=\"submit\" class=\"add_new_button\" value=\"Upload\">
+        <input type=\"submit\" class=\"add_new_button\" value=\"&#9546;Upload\">
       </form>
 
 

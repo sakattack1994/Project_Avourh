@@ -7,5 +7,4 @@ if(isset($_POST['announcement_title'])){
   fclose($file);
   echo $result;
 }
-
 ?>
