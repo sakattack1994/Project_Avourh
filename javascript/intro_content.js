@@ -1,15 +1,3 @@
-function intro(){
-  var content;
-  content='\
-  <h2>Department of Electrical and Computer Engineering</h2>\
-  <p>Welcome to the Department of Electrical and Computer Engineering, which\
-   was founded in 1967 as the first part of the University of Patras. Our Department \
-   covers educational and research areas Electricity, Telecommunications and Information \
-   Technology, Electronics and Computer Systems and Automatic Control. We invite you to visit our premises or website.</p>\
-  ';
-  $('#content').append(content) ;
-}
-
 function login(){
     var login;
     login='\

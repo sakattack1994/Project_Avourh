@@ -1,7 +1,7 @@
 function add_header(){
   var header;
   header="\
-  <div style=\"background:#0099cc; font-size:12px; color:#FFF; font-weight:bold; height:100px;\">\
+  <div style=\"background:#CCCCCC; font-size:12px; color:#FFF; font-weight:bold; height:100px;\">\
   <h3><a href=\"https://www.upatras.gr/el\" target=\"_blank\"><img src=\"images/papa.jpg\" class=\"logo\"></a> &nbsp;ΤΜΗΜΑ ΗΛΕΚΤΡΟΛΟΓΩΝ ΜΗΧΑΝΙΚΩΝ ΚΑΙ ΤΕΧΝΟΛΟΓΙΑΣ ΥΠΟΛΟΓΙΣΤΩΝ</h3>\
   </div>\
 <div id=\"wrap\">\
@@ -10,11 +10,11 @@ function add_header(){
 			<a id=\"menu-toggle\" class=\"button dark\" href=\"#\"><i class=\"icon-reorder\"></i></a>\
 			<nav id=\"navigation\">\
 				<ul id=\"main-menu\">\
-					<li class=\"current-menu-item\" >Home</li>\
+					<li class=\"current-menu-item\" ><a href=\"index.php\">Home</a></li>\
 					<li class=\"parent\">\
 						The Department\
 						<ul class=\"sub-menu\">\
-							<li>Welcome</li>\
+							<li><a href=\"welcome.php\">Welcome</a></li>\
 							<li>History</li>\
 							<li>Structure</li>\
               <li>Secretariat</li>\
@@ -38,7 +38,7 @@ function add_header(){
 					<li class=\"parent\">\
 						Education\
 						<ul class=\"sub-menu\">\
-							<li>Study Guide</li>\
+							<li><a href=\"study_guide.php\">Study Guide</a></li>\
 							<li>Current Academic Year</li>\
               <li>\
 								Undergraduate Subjects\
@@ -100,7 +100,7 @@ function add_header(){
           <li class=\"parent\">\
     						Announcements\
     					<ul class=\"sub-menu\">\
-    							<li>Graduate Studies</li>\
+    							<li><a href=\"announcements.php\">Graduate Studies</a></li>\
     							<li>Postgraduate</li>\
     							<li>Phd Studies</li>\
                   <li>Scholarships</li>\
