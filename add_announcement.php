@@ -39,6 +39,23 @@
           <input type=\"file\" name=\"ann_attachments[]\" multiple>
         </div>
       </div>
+
+      <div class=\"row\">
+        <div class=\"col-md-8\">
+          <label><h2>Category of the announcement:</h2></label>
+        </div>
+      </div>
+
+      <div class=\"row\">
+        <div class=\"col-md-8\">
+          <select name=\"ann_category\" style=\"font-size=25px\">
+            <option value=\"Graduate studies\">Graduate studies</option>
+            <option value=\"Postgraduate\">Postgraduate</option>
+            <option value=\"Phd studies\">Phd studies</option>
+            <option value=\"Scholarships\">Scholarships</option>
+          </select>
+        </div>
+      </div>
       <br>
       <div class=\"row\">
         <div class=\"col-md-8\"><input type=\"submit\" class=add_new_button value=\"&#9546;Add announcement\"></div>

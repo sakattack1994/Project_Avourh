@@ -8,10 +8,31 @@ function process_file($f){
     $f=2;
   }
   else{
-    move_uploaded_file($_FILES["file"]["tmp_name"],$_SERVER['DOCUMENT_ROOT'] .'/dokimes/myresources/study_guide/'.$_FILES['file']['name']);
+    move_uploaded_file($_FILES["file"]["tmp_name"],$_SERVER['DOCUMENT_ROOT'] .'/myDepartment/myresources/study_guide/'.$_FILES['file']['name']);
     $f=1;
+    $conn = new mysqli('localhost', 'root', '', 'mydepartment');
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $sql = "INSERT INTO study_guide VALUES (\"/myDepartment/myresources/study_guide/".$name."\",\"".substr($name,0, -4)."\",\"".substr($name,0, -4)."\");";
+    $result = $conn->query($sql);
+    $conn->close();
   }
   return $f;
+}
+if(isset($_POST['delete_study_guide'])){
+  $conn = new mysqli('localhost', 'root', '', 'mydepartment');
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
+  $sql='SET NAMES utf8';
+  $result = $conn->query($sql);
+  unlink($_SERVER[DOCUMENT_ROOT]."/myDepartment/myresources/study_guide/".$_POST['delete_study_guide']);
+  $sql = "DELETE FROM study_guide WHERE id=\"".substr($_POST['delete_study_guide'],0,-4)."\"";
+  $result = $conn->query($sql);
+  $conn->close();
 }
 //---------------------------------------------------------------------------------------------------
   $f=0;
@@ -24,15 +45,24 @@ function process_file($f){
   }elseif ($f==2) {
     $alert="<div class=\"alert alert-danger\"><strong>Upload wasn't commited. Maybe it's not a .pdf file or it's bigger than 10Mb.</strong></div>";
   }
-  $dir = $_SERVER['DOCUMENT_ROOT'] .'/dokimes/myresources/study_guide/';
-  $study_guides=scandir($dir);
-  $name=$study_guides[count($study_guides)-1];
+  $conn = new mysqli('localhost', 'root', '', 'mydepartment');
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
+  $sql = "SELECT url, name FROM study_guide";
+  $result = $conn->query($sql);
+  $list="";
+  while($study_guide = $result->fetch_assoc()){
+    $dir = $_SERVER['DOCUMENT_ROOT'] .$study_guide['url'];
+    $list.="<option value=\"".basename($dir)."\">".$study_guide['name']."</option>";
+  }
+  $conn->close();
   if(isset($_POST['study_guides'])){
     $name = $_POST['study_guides'];
   }
-  $list="";
-  for($i=2;$i<count($study_guides);$i++){
-    $list.="<option value=\"".$study_guides[$i]."\">".$study_guides[$i]."</option>";
+  else{
+    $name=basename($dir);
   }
   $content="
   <div class=\"col-md-9\">
@@ -46,10 +76,13 @@ function process_file($f){
         <input name=\"file\" type=\"file\" id=\"file\"  >
         <input type=\"submit\" class=\"add_new_button\" value=\"&#9546;Upload\">
       </form>
-
-
-
-
+      <form action=\"study_guide.php\" method=\"post\">
+        <label><h3>Select a study guide you want to delete:</h3></label>
+        <select name=\"delete_study_guide\" style=\"font-size=25px\">".$list."
+        </select>
+        <input type=\"submit\" value=\"Delete\">
+      </form>
+      <br><br>
 
 
       <label>Choose the study guide you want to see:</label>
@@ -58,7 +91,7 @@ function process_file($f){
         </select>
         <input type=\"submit\" value=\"Show\">
       </form>
-      <iframe src = \"/dokimes/javascript/ViewerJS/#../../myresources/study_guide/".$name."\" width=700 height=600 allowfullscreen webkitallowfullscreen></iframe>
+      <iframe src = \"/myDepartment/javascript/ViewerJS/#../../myresources/study_guide/".$name."\" width=700 height=600 allowfullscreen webkitallowfullscreen></iframe>
     </div>
   </div>
     <div class=\"col-md-3\">

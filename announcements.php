@@ -1,72 +1,57 @@
 <?php
-function get_announcement_title($path){
-  $file=fopen($path, "r") or die("Unable to open file!");
-  $msg=fread($file,filesize($path));
-  $res = preg_match("/<h1>(.*)<\/h1>/siU", $msg, $title_matches);
-        if (!$res)
-            return null;
-        $title = preg_replace('/\s+/', ' ', $title_matches[1]);
-        $title = trim($title);
-  fclose($file);
-  return $title;
-}
-function sort_announcements($a, $b)
-{
-  return filemtime($a) > filemtime($b) ? -1 : 1;
-}
-//-----------------------------------------------------------------------------
 $alert="";
 if(isset($_POST['ann_title'])){
-  $dir = $_SERVER['DOCUMENT_ROOT'] .'/dokimes/myresources/announcements/';
-  $announcements=scandir($dir);
-  $number=count($announcements)-1;
-  $file=fopen($dir."ann".$number.".txt", "w") or die("Unable to open file!");
-  $h="<h1>".$_POST['ann_title']."</h1>";
-  fwrite($file, $h);
+  $conn = new mysqli('localhost', 'root', '', 'mydepartment');
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
+  $sql='SET NAMES utf8';
+  $result = $conn->query($sql);
+  $id="ann_".strftime("%m/%d/%y",time()).time();
+  $sql = "INSERT INTO announcements VALUES(\"".$id."\",\"".$_POST['ann_title']."\",\"".$_POST['ann_content']."\",\"".$_POST['ann_category']."\",CURRENT_TIMESTAMP)";
+  $result = $conn->query($sql);
+
   if(count($_FILES['ann_attachments']['name'])==1){
     $tmpFilePath = $_FILES['ann_attachments']['tmp_name'][0];
     if (empty($tmpFilePath)==false){
-      $att_title="<h3>Attachments:</h3>";
-      fwrite($file, $att_title);
-      $dir_of_attachments = $_SERVER['DOCUMENT_ROOT'] .'/dokimes/myresources/attachments/announcements/';
-      $at="<a href=\""."myresources/attachments/announcements/".$_FILES["ann_attachments"]["name"][0]."\" download>".$_FILES["ann_attachments"]["name"][0]."</a>";
-      fwrite($file, $at);
-      move_uploaded_file($_FILES['ann_attachments']['tmp_name'][0],$dir_of_attachments.$_FILES['ann_attachments']['name'][0]);
+      $dir_of_attachments = $_SERVER['DOCUMENT_ROOT'] .'/myDepartment/myresources/attachments/announcements/';
+      $sql = "INSERT INTO attachments VALUES(\"".$id."\",\"/myDepartment/myresources/attachments/announcements/".$_FILES["ann_attachments"]["name"][0]."\")";
+      $result = $conn->query($sql);
+      move_uploaded_file($_FILES['ann_attachments']['tmp_name'][0],$dir_of_attachments.urlencode($_FILES['ann_attachments']['name'][0]));
     }
   }
   elseif (count($_FILES['ann_attachments']['name'])>1) {
-    $att_title="<h3>Attachments:</h3>";
-    fwrite($file, $att_title);
-    $dir_of_attachments = $_SERVER['DOCUMENT_ROOT'] .'/dokimes/myresources/attachments/announcements/';
+    $dir_of_attachments = $_SERVER['DOCUMENT_ROOT'] .'/myDepartment/myresources/attachments/announcements/';
     for($i=0;$i<count($_FILES['ann_attachments']['name']);$i++){
-      $at="<a href=\""."myresources/attachments/announcements/".$_FILES["ann_attachments"]["name"][$i]."\" download>".$_FILES["ann_attachments"]["name"][$i]."</a>";
-      fwrite($file, $at."<br><br>");
-      move_uploaded_file($_FILES['ann_attachments']['tmp_name'][$i],$dir_of_attachments.$_FILES['ann_attachments']['name'][$i]);
+      $sql = "INSERT INTO attachments VALUES(\"".$id."\",\"/myDepartment/myresources/attachments/announcements/".$_FILES["ann_attachments"]["name"][$i]."\")";
+      $result = $conn->query($sql);
+      move_uploaded_file($_FILES['ann_attachments']['tmp_name'][$i],$dir_of_attachments.urlencode($_FILES['ann_attachments']['name'][$i]));
     }
   }
-  $con="<p>".$_POST['ann_content']."</p>";
-  fwrite($file, $con);
-  fclose($file);
+  $conn->close();
   $alert="<div class=\"alert alert-success\"><strong>Announcement was successfully added.</strong></div>";
 }
 //-----------------------------------------------------------------------------
-$dir = $_SERVER['DOCUMENT_ROOT'] .'/dokimes/myresources/announcements/';
-$announcements=scandir($dir);
-for($i=2;$i<count($announcements);$i++){
-  $files[$i-2]=$dir.$announcements[$i];
+$conn = new mysqli('localhost', 'root', '', 'mydepartment');
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
-usort($files, "sort_announcements");
+$sql='SET NAMES utf8';
+$result = $conn->query($sql);
+$sql = "SELECT ID,Header, date FROM announcements ORDER BY date DESC";
+$result = $conn->query($sql);
 $list="";
-for($i=2;$i<count($announcements);$i++){
-  $title=get_announcement_title($files[$i-2]);
-  $date=date("F d Y H:i:s.",filemtime($files[$i-2]));
+while($announcement = $result->fetch_assoc()){
   $list.="
   <tr>
-    <td class=announcement id=".basename($files[$i-2])."><strong>".$title."</strong></td>
-    <td>".$date."</td>
+    <td class=announcement id=".$announcement['ID']."><strong>".$announcement['Header']."</strong></td>
+    <td>".$announcement['date']."</td>
   </tr>";
 }
-  $content="<div class=\"col-md-9\"><div id=\"content\">
+$conn->close();
+$content="<div class=\"col-md-9\"><div id=\"content\">
   <h1>Announcements</h1>".$alert."
 
 

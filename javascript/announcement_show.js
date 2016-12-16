@@ -1,7 +1,7 @@
 $(document).ready(function(){
   $('.announcement').click(function(){
       $('#content').empty();
-      $.post('request_handler.php',{'announcement_title':this.id},function(data){
+      $.post('request_handler.php',{'announcement_id':this.id},function(data){
         $('#content').append(data);
         $('#content').append('<a href=\"announcements.php\"><button id=back_announcements>&#8592;Back to announcements</button></a>');
         $('#back_announcements').click(function(){
