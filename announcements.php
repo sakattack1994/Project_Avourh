@@ -60,7 +60,8 @@ $content="<div class=\"col-md-9\"><div id=\"content\">
   <h3>If you want to add new announcement press here:</h3>
   <a href=\"add_announcement.php\"><button type=button class=\"add_new_button\">&#9546;Add New</button></a>
 
-
+  <h3>If you want to delete announcements press here:</h3>
+  <a href=\"delete_announcement.php\"><button type=button class=\"add_new_button\">Choose</button></a>
 
 
 

@@ -15,11 +15,11 @@ function add_header(){
 						The Department\
 						<ul class=\"sub-menu\">\
 							<li><a href=\"welcome.php\">Welcome</a></li>\
-							<li>History</li>\
+							<li><a href=\"history.php\">History</a></li>\
 							<li>Structure</li>\
-              <li>Secretariat</li>\
-              <li>Department Committees</li>\
-              <li>Health and Safety</li>\
+              <li><a href=\"secretariat.php\">Secretariat</a></li>\
+              <li><a href=\"departmentCommittees.php\">Department Committees</a></li>\
+              <li><a href=\"healthAndSafety.php\">Health and Safety</a></li>\
 							<li>\
 								Department Scientific Events\
 								<ul class=\"sub-menu\">\

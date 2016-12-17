@@ -223,7 +223,6 @@ ALTER TABLE `Lesson_Comments` ADD CONSTRAINT `Lesson_Comments_fk2` FOREIGN KEY (
 
 ALTER TABLE `Week_Schedule` ADD CONSTRAINT `Week_Schedule_fk0` FOREIGN KEY (`LessonID`) REFERENCES `Lessons`(`LessonID`);
 
-ALTER TABLE `announcements` ADD CONSTRAINT `announcements_fk0` FOREIGN KEY (`Lesson_Refer`) REFERENCES `Lessons`(`LessonID`);
 
 ALTER TABLE `Attachments` ADD CONSTRAINT `Attachments_fk0` FOREIGN KEY (`ID`) REFERENCES `announcements`(`ID`);
 
@@ -260,7 +259,3 @@ VALUES ('id3','/myDepartment/myresources/attachments/announcements/c005_project_
 
 INSERT INTO attachments
 VALUES ('id3','/myDepartment/myresources/attachments/announcements/Εγγραφές_2016_2017_μετεγγραφές.doc');
-
-
-
-

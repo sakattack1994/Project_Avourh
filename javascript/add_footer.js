@@ -10,7 +10,7 @@ function add_footer(){
               <div class=\"col-md-5\">\
                 <ul class=\"footer-nav\">\
                   <li><a href=\"HTML pages/ContactMe.html\" target=\"_blank\">Contact Us</a></li>\
-                  <li><a href=\"WebPageTemplate.html\">Home</a></li>\
+                  <li><a href=\"index.php\">Home</a></li>\
                   </ul>\
               </div>\
             </div>\

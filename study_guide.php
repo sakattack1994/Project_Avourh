@@ -11,6 +11,7 @@ function process_file($f){
     move_uploaded_file($_FILES["file"]["tmp_name"],$_SERVER['DOCUMENT_ROOT'] .'/myDepartment/myresources/study_guide/'.$_FILES['file']['name']);
     $f=1;
     $conn = new mysqli('localhost', 'root', '', 'mydepartment');
+    mysqli_set_charset($conn,"utf8");
     // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
@@ -23,6 +24,7 @@ function process_file($f){
 }
 if(isset($_POST['delete_study_guide'])){
   $conn = new mysqli('localhost', 'root', '', 'mydepartment');
+  mysqli_set_charset($conn,"utf8");
   // Check connection
   if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
@@ -46,6 +48,7 @@ if(isset($_POST['delete_study_guide'])){
     $alert="<div class=\"alert alert-danger\"><strong>Upload wasn't commited. Maybe it's not a .pdf file or it's bigger than 10Mb.</strong></div>";
   }
   $conn = new mysqli('localhost', 'root', '', 'mydepartment');
+  mysqli_set_charset($conn,"utf8");
   // Check connection
   if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
