@@ -32,6 +32,28 @@ if(isset($_POST['ann_title'])){
   $conn->close();
   $alert="<div class=\"alert alert-success\"><strong>Announcement was successfully added.</strong></div>";
 }
+
+if(isset($_POST['delete_announcement'])){
+    $conn = new mysqli('localhost', 'root', '', 'mydepartment');
+      // Check connection
+    if ($conn->connect_error) {
+          die("Connection failed: " . $conn->connect_error);
+      }
+    $sql='SET NAMES utf8';
+    $result = $conn->query($sql);
+    $sql = "DELETE FROM announcements WHERE ID=\"".$_POST['delete_announcement']."\"";
+    $result = $conn->query($sql);
+    $sql = "SELECT dir FROM attachments WHERE ID=\"".$_POST['delete_announcement']."\"";
+    $result = $conn->query($sql);
+    while($dir = $result->fetch_assoc()){
+      unlink($_SERVER[DOCUMENT_ROOT].$dir['dir']);
+    }
+    $sql = "DELETE FROM attachments WHERE ID=\"".$_POST['delete_announcement']."\"";
+    $result = $conn->query($sql);
+    $conn->close();
+    $alert="<div class=\"alert alert-success\"><strong>Announcement was successfully deleted.</strong></div>";
+}
+
 //-----------------------------------------------------------------------------
 $conn = new mysqli('localhost', 'root', '', 'mydepartment');
 // Check connection
@@ -43,12 +65,14 @@ $result = $conn->query($sql);
 $sql = "SELECT ID,Header, date FROM announcements ORDER BY date DESC";
 $result = $conn->query($sql);
 $list="";
+$ann_list="";
 while($announcement = $result->fetch_assoc()){
   $list.="
   <tr>
     <td class=announcement id=".$announcement['ID']."><strong>".$announcement['Header']."</strong></td>
     <td>".$announcement['date']."</td>
   </tr>";
+  $ann_list.="<option value=\"".$announcement['ID']."\">".$announcement['Header']."</option>";
 }
 $conn->close();
 $content="<div class=\"col-md-9\"><div id=\"content\">
@@ -56,17 +80,17 @@ $content="<div class=\"col-md-9\"><div id=\"content\">
 
 
 
-
   <h3>If you want to add new announcement press here:</h3>
   <a href=\"add_announcement.php\"><button type=button class=\"add_new_button\">&#9546;Add New</button></a>
 
-  <h3>If you want to delete announcements press here:</h3>
-  <a href=\"delete_announcement.php\"><button type=button class=\"add_new_button\">Choose</button></a>
-
-
-
-
-
+  <form action=\"announcements.php\" method=\"post\">
+    <label><h3>Select an announcement you want to delete, included the attachments:</h3></label>
+    <br>
+    <select name=\"delete_announcement\" style=\"font-size=200px\">".$ann_list."
+    </select>
+    <input type=\"submit\" value=\"Delete\">
+  </form>
+  <br> <br>
 
   <table class=\"table table-bordered table-hover\">
   <thead>
