@@ -21,7 +21,7 @@
     </head>
 
   <body background="background.jpg">
-    <div class="container" style="background-color:#CCCCCC">
+    <div class="container" >
       <div class="row">
           <div class="col-md-12"><div id="header"></div></div>
       </div>

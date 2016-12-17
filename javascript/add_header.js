@@ -1,20 +1,20 @@
 function add_header(){
   var header;
   header="\
-  <div style=\"background:#CCCCCC; font-size:12px; color:#FFF; font-weight:bold; height:100px;\">\
+  <div style=\"background:#333; font-size:12px; color:#FFF; font-weight:bold; height:100px;\">\
   <h3><a href=\"https://www.upatras.gr/el\" target=\"_blank\"><img src=\"images/papa.jpg\" class=\"logo\"></a> &nbsp;ΤΜΗΜΑ ΗΛΕΚΤΡΟΛΟΓΩΝ ΜΗΧΑΝΙΚΩΝ ΚΑΙ ΤΕΧΝΟΛΟΓΙΑΣ ΥΠΟΛΟΓΙΣΤΩΝ</h3>\
   </div>\
-<div id=\"wrap\">\
+<div id=\"wrap\" style=\"padding-top:10px;\">\
 	<header>\
 		<div class=\"inner relative\">\
 			<a id=\"menu-toggle\" class=\"button dark\" href=\"#\"><i class=\"icon-reorder\"></i></a>\
 			<nav id=\"navigation\">\
 				<ul id=\"main-menu\">\
-					<li class=\"current-menu-item\" ><a href=\"index.php\">Home</a></li>\
-					<li class=\"parent\">\
-						The Department\
+					<li><a href=\"index.php\">Home</a> &nbsp;&nbsp;</li>\
+					<li >\
+						The Department + &nbsp;&nbsp;\
 						<ul class=\"sub-menu\">\
-							<li><a href=\"welcome.php\">Welcome</a></li>\
+							<li class=\"bgnone\"><a href=\"welcome.php\">Welcome</a></li>\
 							<li><a href=\"history.php\">History</a></li>\
 							<li>Structure</li>\
               <li><a href=\"secretariat.php\">Secretariat</a></li>\
@@ -35,8 +35,8 @@ function add_header(){
               <li>Alumni</li>\
 						</ul>\
 					</li>\
-					<li class=\"parent\">\
-						Education\
+					<li>\
+						Education + &nbsp;&nbsp;\
 						<ul class=\"sub-menu\">\
 							<li><a href=\"study_guide.php\">Study Guide</a></li>\
 							<li>Current Academic Year</li>\
@@ -69,8 +69,8 @@ function add_header(){
 							</li>\
             </ul>\
           </li>\
-          <li class=\"parent\">\
-    						Research\
+          <li>\
+    						Research + &nbsp;&nbsp;\
     					<ul class=\"sub-menu\">\
     							<li>Divisions</li>\
     							<li>Laboratories</li>\
@@ -78,8 +78,8 @@ function add_header(){
                   <li>Awards</li>\
               </ul>\
           </li>\
-          <li class=\"parent\">\
-    						Personnel\
+          <li>\
+    						Personnel + &nbsp;&nbsp;\
     					<ul class=\"sub-menu\">\
     							<li>Faculty</li>\
     							<li>Εmeriti Professors</li>\
@@ -90,24 +90,16 @@ function add_header(){
                   <li>Administrative Staff</li>\
               </ul>\
           </li>\
-          <li class=\"parent\">\
-    						Evaluation Reports\
+          <li>\
+    						Evaluation Reports + &nbsp;&nbsp;\
     					<ul class=\"sub-menu\">\
     							<li>Internal</li>\
     							<li>External</li>\
               </ul>\
           </li>\
-          <li class=\"parent\">\
-    						Announcements\
-    					<ul class=\"sub-menu\">\
-    							<li><a href=\"announcements.php\">Graduate Studies</a></li>\
-    							<li>Postgraduate</li>\
-    							<li>Phd Studies</li>\
-                  <li>Scholarships</li>\
-              </ul>\
-          </li>\
-          <li class=\"parent\">\
-                Information &nbsp;&nbsp;\
+          <li><a href=\"announcements.php\">Announcements</a> &nbsp;&nbsp;</li>\
+          <li>\
+                Information + &nbsp;&nbsp;\
               <ul class=\"sub-menu\">\
                   <li>Location</li>\
                   <li>Maps</li>\
@@ -142,7 +134,6 @@ function add_header(){
     							</li>\
               </ul>\
           </li>\
-					<li>Contact</li>\
 				</ul>\
 			</nav>\
 			<div class=\"clear\"></div>\
