@@ -1,7 +1,7 @@
 function add_header(){
   var header;
   header="\
-  <div style=\"background:#333; font-size:12px; color:#FFF; font-weight:bold; height:100px;\">\
+  <div style=\"background:red; font-size:12px; color:#FFF; font-weight:bold; height:100px;\">\
   <h3><a href=\"https://www.upatras.gr/el\" target=\"_blank\"><img src=\"images/papa.jpg\" class=\"logo\"></a> &nbsp;ΤΜΗΜΑ ΗΛΕΚΤΡΟΛΟΓΩΝ ΜΗΧΑΝΙΚΩΝ ΚΑΙ ΤΕΧΝΟΛΟΓΙΑΣ ΥΠΟΛΟΓΙΣΤΩΝ</h3>\
   </div>\
 <div id=\"wrap\" style=\"padding-top:10px;\">\
