@@ -53,7 +53,6 @@ if(isset($_POST['delete_announcement'])){
     $conn->close();
     $alert="<div class=\"alert alert-success\"><strong>Announcement was successfully deleted.</strong></div>";
 }
-
 //-----------------------------------------------------------------------------
 $conn = new mysqli('localhost', 'root', '', 'mydepartment');
 // Check connection

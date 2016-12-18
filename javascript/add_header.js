@@ -45,8 +45,7 @@ function add_header(){
 								<ul class=\"sub-menu\">\
 									<li>Statute</li>\
                   <li>Courses</li>\
-                  <li>Study Guide 2015-2016</li>\
-                  <li>Study Guide 2016-2017</li>\
+                  <li><a href=\"study_schedule.php\">Study Schedule</a></li>\
                   <li>Lesson Declaration Rules</li>\
                   <li>Graduation Rules</li>\
                   <li>Usefull Documents</li>\

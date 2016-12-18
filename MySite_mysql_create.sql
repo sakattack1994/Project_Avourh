@@ -21,7 +21,9 @@ CREATE TABLE `Lessons` (
 	`OfficialWebsite` varchar(100),
 	`EclassLink` varchar(100),
 	`EudoxusLink` varchar(100),
-	`Ects` int NOT NULL,
+	`EctsΔ` int NOT NULL,
+	`EctsΑ` int NOT NULL,
+	`EctsΕ` int NOT NULL,
 	`Sector` varchar(20) NOT NULL,
 	`SystemOfExamination` varchar(200) NOT NULL,
 	`TeachingHoursAndPlace` varchar(100),
@@ -183,10 +185,17 @@ CREATE TABLE `Study_Guide` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `Study_Guide_Lessons` (
+CREATE TABLE `Study_Schedule` (
+	`id` varchar(100) NOT NULL  ,
+	`name` varchar(100) NOT NULL,
+	PRIMARY KEY (`id`)
+);
+
+
+CREATE TABLE `Study_Schedule_Lessons` (
 	`LessonID` varchar(10) NOT NULL  ,
-	`StudyGuideID` varchar(100) NOT NULL  ,
-	PRIMARY KEY (`LessonID`,`StudyGuideID`)
+	`StudyScheduleID` varchar(100) NOT NULL  ,
+	PRIMARY KEY (`LessonID`,`StudyScheduleID`)
 );
 
 ALTER TABLE `Students` ADD CONSTRAINT `Students_fk0` FOREIGN KEY (`StudentID`) REFERENCES `Members`(`ID`);
@@ -238,24 +247,52 @@ ALTER TABLE `Passed_Lessons` ADD CONSTRAINT `Passed_Lessons_fk0` FOREIGN KEY (`S
 
 ALTER TABLE `Passed_Lessons` ADD CONSTRAINT `Passed_Lessons_fk1` FOREIGN KEY (`LessonID`) REFERENCES `Lessons`(`LessonID`);
 
-ALTER TABLE `Study_Guide_Lessons` ADD CONSTRAINT `Study_Guide_Lessons_fk0` FOREIGN KEY (`LessonID`) REFERENCES `Lessons`(`LessonID`);
+ALTER TABLE `Study_Schedule_Lessons` ADD CONSTRAINT `Study_Schedule_Lessons_fk0` FOREIGN KEY (`LessonID`) REFERENCES `Lessons`(`LessonID`);
 
-ALTER TABLE `Study_Guide_Lessons` ADD CONSTRAINT `Study_Guide_Lessons_fk1` FOREIGN KEY (`StudyGuideID`) REFERENCES `Study_Guide`(`id`);
+ALTER TABLE `Study_Schedule_Lessons` ADD CONSTRAINT `Study_Schedule_Lessons_fk1` FOREIGN KEY (`StudyScheduleID`) REFERENCES `Study_Schedule`(`id`);
 
-INSERT INTO study_guide
-VALUES ('/myDepartment/myresources/study_guide/study_guide_2016-2017.pdf','study_guide_2016-2017','study_guide_2016-2017');
 
-INSERT INTO study_guide
-VALUES ('/myDepartment/myresources/study_guide/study_guide_2015-2016.pdf','study_guide_2015-2016','study_guide_2015-2016');
+INSERT INTO study_schedule VALUES ('1','Study guide 2016-2017');
 
-INSERT INTO study_guide
-VALUES ('/myDepartment/myresources/study_guide/study_guide_2014-2015.pdf','study_guide_2014-2015','study_guide_2014-2015');
+INSERT INTO lessons VALUES ('ECE_Y101','ΔΙΑΦΟΡΙΚΟΣ ΛΟΓΙΣΜΟΣ ΚΑΙ ΜΑΘΗΜΑΤΙΚΗ ΑΝΑΛΥΣΗ','ΜΑΘΗΜΑΤΙΚΑ','ΔΙΔΑΣΚΑΛΙΑ',1,-1,'LESSON_LINK','ECLASS_LINK','EVDO3OS_LINK',4,2,0,'ΒΑΣΙΚΟΣ ΚΟΡΜΟΣ','ΓΡΑΠΤΗ','ΩΡΕΣ','ΣΤΑΤΙΣΤΙΚΑ','ΥΛΗ');
 
-INSERT INTO announcements
-VALUES ('id3','titlos','periexomeno','skata',CURRENT_TIMESTAMP);
+INSERT INTO lessons VALUES ('ECE_Y102','ΦΥΣΙΚΗ 1','ΦΥΣΙΚΗ','ΔΙΔΑΣΚΑΛΙΑ',1,-1,'LESSON_LINK','ECLASS_LINK','EVDO3OS_LINK',3,1,2,'ΒΑΣΙΚΟΣ ΚΟΡΜΟΣ','ΓΡΑΠΤΗ','ΩΡΕΣ','ΣΤΑΤΙΣΤΙΚΑ','ΥΛΗ');
 
-INSERT INTO attachments
-VALUES ('id3','/myDepartment/myresources/attachments/announcements/c005_project_2015_2016.pdf');
+INSERT INTO lessons VALUES ('ECE_Y103N','ΕΙΣΑΓΩΓΗ ΣΤΟΥΣ ΥΠΟΛΟΓΙΣΤΕΣ','ΠΡΟΓΡΑΜΜΑΤΙΣΜΟΣ','ΔΙΔΑΣΚΑΛΙΑ',1,-1,'LESSON_LINK','ECLASS_LINK','EVDO3OS_LINK',4,1,2,'ΒΑΣΙΚΟΣ ΚΟΡΜΟΣ','ΓΡΑΠΤΗ','ΩΡΕΣ','ΣΤΑΤΙΣΤΙΚΑ','ΥΛΗ');
 
-INSERT INTO attachments
-VALUES ('id3','/myDepartment/myresources/attachments/announcements/Εγγραφές_2016_2017_μετεγγραφές.doc');
+INSERT INTO members VALUES ('perdios','pw','Ευσταθιος','Περδιος');
+
+INSERT INTO members VALUES ('kalantonis','pw','Βασιλειος','Καλαντωνης');
+
+INSERT INTO members VALUES ('kounavis','pw','Παναγιωτης','Κουναβης');
+
+INSERT INTO members VALUES ('avourhs','pw','Αβουρης','Νικολαος');
+
+INSERT INTO professors VALUES ('perdios','Ευσταθιος','Περδιος','Καθηγητης','CH','RESUME','ΓΕΝΙΚΟ ΤΜΗΜΑ','+302610997897','+30610997897','eperdios@upatras.gr','Τετάρτη 14-17 Πεμπτη 15-18 ','website','scholar');
+
+INSERT INTO professors VALUES ('kalantonis','Βασιλειος','Καλαντωνης','Καθηγητης','CH','RESUME','ΓΕΝΙΚΟ ΤΜΗΜΑ','+302610996868','+302610996868','kalantonis@upatras.gr','Τετάρτη 14-17 Πεμπτη 15-18 ','website','scholar');
+
+INSERT INTO professors VALUES ('kounavis','Παναγιωτης','Κουναβης','Καθηγητης','CH','RESUME','ΓΕΝΙΚΟ ΤΜΗΜΑ','+302610996868','+302610996868','pkounavis@upatras.gr','Τετάρτη 14-17 Πεμπτη 15-18 ','website','scholar');
+
+INSERT INTO professors VALUES ('avourhs','Αβουρης','Νικολαος','Καθηγητης','CH','RESUME','ΓΕΝΙΚΟ ΤΜΗΜΑ','+302610996868','+302610996868','avouris@upatras.gr','Τετάρτη 14-17 Πεμπτη 15-18 ','website','scholar');
+
+INSERT INTO professor_lessons_thisyear VALUES ('perdios','ECE_Y101');
+
+INSERT INTO professor_lessons_thisyear VALUES ('kalantonis','ECE_Y101');
+
+INSERT INTO professor_lessons_thisyear VALUES ('kounavis','ECE_Y102');
+
+INSERT INTO professor_lessons_thisyear VALUES ('avourhs','ECE_Y103N');
+
+INSERT INTO study_schedule_lessons VALUES ('ECE_Y101','1');
+
+INSERT INTO study_schedule_lessons VALUES ('ECE_Y102','1');
+
+INSERT INTO study_schedule_lessons VALUES ('ECE_Y103N','1');
+
+
+
+
+
+
+
