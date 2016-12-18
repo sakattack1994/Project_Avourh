@@ -41,14 +41,14 @@ if(isset($_POST['delete_announcement'])){
       }
     $sql='SET NAMES utf8';
     $result = $conn->query($sql);
-    $sql = "DELETE FROM announcements WHERE ID=\"".$_POST['delete_announcement']."\"";
-    $result = $conn->query($sql);
     $sql = "SELECT dir FROM attachments WHERE ID=\"".$_POST['delete_announcement']."\"";
     $result = $conn->query($sql);
     while($dir = $result->fetch_assoc()){
-      unlink($_SERVER[DOCUMENT_ROOT].$dir['dir']);
+      unlink($_SERVER['DOCUMENT_ROOT'].$dir['dir']);
     }
     $sql = "DELETE FROM attachments WHERE ID=\"".$_POST['delete_announcement']."\"";
+    $result = $conn->query($sql);
+    $sql = "DELETE FROM announcements WHERE ID=\"".$_POST['delete_announcement']."\"";
     $result = $conn->query($sql);
     $conn->close();
     $alert="<div class=\"alert alert-success\"><strong>Announcement was successfully deleted.</strong></div>";
@@ -62,19 +62,29 @@ if ($conn->connect_error) {
 }
 $sql='SET NAMES utf8';
 $result = $conn->query($sql);
-$sql = "SELECT ID,Header, date FROM announcements ORDER BY date DESC";
+if(isset($_POST['announcement_category'])){
+  if($_POST['announcement_category']=="all"){
+    $sql = "SELECT ID,Header, date FROM announcements ORDER BY date DESC";
+  }
+  else{
+    $sql = "SELECT ID,Header, date FROM announcements WHERE Category=\"".$_POST['announcement_category']."\" ORDER BY date DESC";
+  }
+}
+else{
+  $sql = "SELECT ID,Header, date FROM announcements ORDER BY date DESC";
+}
 $result = $conn->query($sql);
 $list="";
-$ann_list="";
 while($announcement = $result->fetch_assoc()){
   $list.="
   <tr>
     <td class=announcement id=".$announcement['ID']."><strong>".$announcement['Header']."</strong></td>
     <td>".$announcement['date']."</td>
+    <td><form action=\"announcements.php\" method=\"POST\"><button type=\"submit\" name=\"delete_announcement\" value=".$announcement['ID']."><img src=\"images/x.png\" width=25px></button></form></td>
   </tr>";
-  $ann_list.="<option value=\"".$announcement['ID']."\">".$announcement['Header']."</option>";
 }
 $conn->close();
+$delete="<th>Delete</th>";
 $content="<div class=\"col-md-9\"><div id=\"content\">
   <h1>Announcements</h1>".$alert."
 
@@ -82,21 +92,26 @@ $content="<div class=\"col-md-9\"><div id=\"content\">
 
   <h3>If you want to add new announcement press here:</h3>
   <a href=\"add_announcement.php\"><button type=button class=\"add_new_button\">&#9546;Add New</button></a>
-
-  <form action=\"announcements.php\" method=\"post\">
-    <label><h3>Select an announcement you want to delete, included the attachments:</h3></label>
-    <br>
-    <select name=\"delete_announcement\" style=\"font-size=200px\">".$ann_list."
-    </select>
-    <input type=\"submit\" value=\"Delete\">
-  </form>
   <br> <br>
 
+
+  <form action=\"announcements.php\" method=\"POST\">
+    <label style=\"font-size:25px\">Sort by:</label>
+    <select name=\"announcement_category\" style=\"font-size=50px;\">
+      <option value=\"all\">All</option>
+      <option value=\"Graduate studies\">Graduate studies</option>
+      <option value=\"Postgraduate\">Postgraduate</option>
+      <option value=\"Phd studies\">Phd studies</option>
+      <option value=\"Scholarships\">Scholarships</option>
+      <input type=submit value=\"Sort announcements\">
+    </select>
+  </form>
   <table class=\"table table-bordered table-hover\">
   <thead>
     <tr>
       <th>Title</th>
       <th>Date</th>
+      ".$delete."
     </tr>
   </thead>
   <tbody>".$list."</tbody>

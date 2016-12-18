@@ -14,10 +14,15 @@ if(isset($_POST['announcement_id'])){
   $html="<h1>".$announcement['Header']."</h1><p>".$announcement['Content']."</p>";
   $sql = "SELECT dir FROM attachments WHERE ID=\"".$announcement_id."\"";
   $result = $conn->query($sql);
-  $html.="<h2>Attachments:</h2>";
+  $f=0;
   while($att = $result->fetch_assoc()){
+    if($f==0){
+      $html.="<h2>Attachments:</h2>";
+      $f=1;
+    }
     $html.="<a href=\"".$att['dir']."\" download>".basename($att['dir'])."</a><br>";
   }
+  $html.="<br>";
   $conn->close();
   echo $html;
 }
