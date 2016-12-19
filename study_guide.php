@@ -31,7 +31,7 @@ if(isset($_POST['delete_study_guide'])){
   }
   $sql='SET NAMES utf8';
   $result = $conn->query($sql);
-  unlink($_SERVER[DOCUMENT_ROOT]."/myDepartment/myresources/study_guide/".$_POST['delete_study_guide']);
+  unlink($_SERVER['DOCUMENT_ROOT']."/myDepartment/myresources/study_guide/".$_POST['delete_study_guide']);
   $sql = "DELETE FROM study_guide WHERE id=\"".substr($_POST['delete_study_guide'],0,-4)."\"";
   $result = $conn->query($sql);
   $conn->close();

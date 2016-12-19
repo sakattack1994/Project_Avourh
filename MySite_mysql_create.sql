@@ -289,10 +289,3 @@ INSERT INTO study_schedule_lessons VALUES ('ECE_Y101','1');
 INSERT INTO study_schedule_lessons VALUES ('ECE_Y102','1');
 
 INSERT INTO study_schedule_lessons VALUES ('ECE_Y103N','1');
-
-
-
-
-
-
-

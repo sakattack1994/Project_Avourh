@@ -43,12 +43,12 @@ function add_header(){
               <li>\
 								Undergraduate Subjects\
 								<ul class=\"sub-menu\">\
-									<li>Statute</li>\
+									<li><a href=\"regulation.php\">Regulation</a></li>\
                   <li>Courses</li>\
                   <li><a href=\"study_schedule.php\">Study Schedule</a></li>\
-                  <li>Lesson Declaration Rules</li>\
-                  <li>Graduation Rules</li>\
-                  <li>Usefull Documents</li>\
+                  <li><a href=\"lesson_declaration_rules.php\">Lesson Declaration Rules</a></li>\
+                  <li><a href=\"graduation_rules.php\">Graduation Rules</a></li>\
+                  <li><a href=\"usefull_documents.php\">Usefull Documents</a></li>\
                   <li>Practise</li>\
                   <li>Diploma Theses</li>\
                   <li>Timetable</li>\
