@@ -15,3 +15,12 @@ $(document).ready(function(){
         $(this).css('cursor','pointer');
     });
 });
+function check(id) {
+  if($('#lchoose'+id).is(":checked")) {
+      $(".profs"+id).css('visibility','visible');
+      $(".profs"+id).css('display','block');
+  } else {
+      $(".profs"+id).css('visibility','hidden');
+      $(".profs"+id).css('display','none');
+  }
+};

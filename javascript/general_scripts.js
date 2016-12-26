@@ -17,4 +17,6 @@ $('#welcome').click(function(){
   xmlhttp.send();
   alert('ok');
 });
+
+
 });

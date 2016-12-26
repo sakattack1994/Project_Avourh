@@ -108,13 +108,15 @@ CREATE TABLE `Professors_Publications` (
 CREATE TABLE `Professor_Lessons_ThisYear` (
 	`ProfessorID` varchar(10) NOT NULL  ,
 	`LessonID` varchar(10) NOT NULL  ,
-	PRIMARY KEY (`ProfessorID`,`LessonID`)
+	`StudyScheduleID` varchar(50) NOT NULL  ,
+	PRIMARY KEY (`ProfessorID`,`LessonID`,`StudyScheduleID`)
 );
 
 CREATE TABLE `Professor_Lessons_LastYears` (
 	`ProfessorID` varchar(10) NOT NULL  ,
 	`LessonID` varchar(10) NOT NULL  ,
-	PRIMARY KEY (`ProfessorID`,`LessonID`)
+	`StudyScheduleID` varchar(50) NOT NULL  ,
+	PRIMARY KEY (`ProfessorID`,`LessonID`,`StudyScheduleID`)
 );
 
 CREATE TABLE `Comments` (
@@ -191,13 +193,6 @@ CREATE TABLE `Study_Schedule` (
 	PRIMARY KEY (`id`)
 );
 
-
-CREATE TABLE `Study_Schedule_Lessons` (
-	`LessonID` varchar(10) NOT NULL  ,
-	`StudyScheduleID` varchar(100) NOT NULL  ,
-	PRIMARY KEY (`LessonID`,`StudyScheduleID`)
-);
-
 ALTER TABLE `Students` ADD CONSTRAINT `Students_fk0` FOREIGN KEY (`StudentID`) REFERENCES `Members`(`ID`);
 
 ALTER TABLE `Secretariat` ADD CONSTRAINT `Secretariat_fk0` FOREIGN KEY (`SecretariatID`) REFERENCES `Members`(`ID`);
@@ -220,9 +215,13 @@ ALTER TABLE `Professor_Lessons_ThisYear` ADD CONSTRAINT `Professor_Lessons_ThisY
 
 ALTER TABLE `Professor_Lessons_ThisYear` ADD CONSTRAINT `Professor_Lessons_ThisYear_fk1` FOREIGN KEY (`LessonID`) REFERENCES `Lessons`(`LessonID`);
 
+ALTER TABLE `Professor_Lessons_ThisYear` ADD CONSTRAINT `Professor_Lessons_ThisYear_fk2` FOREIGN KEY (`StudyScheduleID`) REFERENCES `study_schedule`(`id`);
+
 ALTER TABLE `Professor_Lessons_LastYears` ADD CONSTRAINT `Professor_Lessons_LastYears_fk0` FOREIGN KEY (`ProfessorID`) REFERENCES `Professors`(`ProfessorID`);
 
 ALTER TABLE `Professor_Lessons_LastYears` ADD CONSTRAINT `Professor_Lessons_LastYears_fk1` FOREIGN KEY (`LessonID`) REFERENCES `Lessons`(`LessonID`);
+
+ALTER TABLE `Professor_Lessons_LastYears` ADD CONSTRAINT `Professor_Lessons_LastYears_fk2` FOREIGN KEY (`StudyScheduleID`) REFERENCES `study_schedule`(`id`);
 
 ALTER TABLE `Lesson_Comments` ADD CONSTRAINT `Lesson_Comments_fk0` FOREIGN KEY (`LessonID`) REFERENCES `Lessons`(`LessonID`);
 
@@ -246,11 +245,6 @@ ALTER TABLE `Lessons_Labs` ADD CONSTRAINT `Lessons_Labs_fk1` FOREIGN KEY (`LabID
 ALTER TABLE `Passed_Lessons` ADD CONSTRAINT `Passed_Lessons_fk0` FOREIGN KEY (`StudentID`) REFERENCES `Students`(`StudentID`);
 
 ALTER TABLE `Passed_Lessons` ADD CONSTRAINT `Passed_Lessons_fk1` FOREIGN KEY (`LessonID`) REFERENCES `Lessons`(`LessonID`);
-
-ALTER TABLE `Study_Schedule_Lessons` ADD CONSTRAINT `Study_Schedule_Lessons_fk0` FOREIGN KEY (`LessonID`) REFERENCES `Lessons`(`LessonID`);
-
-ALTER TABLE `Study_Schedule_Lessons` ADD CONSTRAINT `Study_Schedule_Lessons_fk1` FOREIGN KEY (`StudyScheduleID`) REFERENCES `Study_Schedule`(`id`);
-
 
 INSERT INTO study_schedule VALUES ('1','Study guide 2016-2017');
 
@@ -276,16 +270,10 @@ INSERT INTO professors VALUES ('kounavis','Παναγιωτης','Κουναβη
 
 INSERT INTO professors VALUES ('avourhs','Αβουρης','Νικολαος','Καθηγητης','CH','RESUME','ΓΕΝΙΚΟ ΤΜΗΜΑ','+302610996868','+302610996868','avouris@upatras.gr','Τετάρτη 14-17 Πεμπτη 15-18 ','website','scholar');
 
-INSERT INTO professor_lessons_thisyear VALUES ('perdios','ECE_Y101');
+INSERT INTO professor_lessons_thisyear VALUES ('perdios','ECE_Y101','1');
 
-INSERT INTO professor_lessons_thisyear VALUES ('kalantonis','ECE_Y101');
+INSERT INTO professor_lessons_thisyear VALUES ('kalantonis','ECE_Y101','1');
 
-INSERT INTO professor_lessons_thisyear VALUES ('kounavis','ECE_Y102');
+INSERT INTO professor_lessons_thisyear VALUES ('kounavis','ECE_Y102','1');
 
-INSERT INTO professor_lessons_thisyear VALUES ('avourhs','ECE_Y103N');
-
-INSERT INTO study_schedule_lessons VALUES ('ECE_Y101','1');
-
-INSERT INTO study_schedule_lessons VALUES ('ECE_Y102','1');
-
-INSERT INTO study_schedule_lessons VALUES ('ECE_Y103N','1');
+INSERT INTO professor_lessons_thisyear VALUES ('avourhs','ECE_Y103N','1');
