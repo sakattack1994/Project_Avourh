@@ -14,8 +14,7 @@ if(isset($_POST['lesson_choose'])){
       $lesson.="<h1>".$choice['Title']."</h1>";
     }
     $conn->close();
-    $content="<div class=\"col-md-9\"><div id=\"content\">
-
+    $content="<div class=\"col-md-9\"><div id=\"content\">".$lesson."
     </div></div>
     <div class=\"col-md-3\"><div id=\"side_bar\">".$choice."</div></div>";
     include 'WebPageTemplate.php';

@@ -24,7 +24,7 @@ CREATE TABLE `Lessons` (
 	`EctsΔ` int NOT NULL,
 	`EctsΑ` int NOT NULL,
 	`EctsΕ` int NOT NULL,
-	`Sector` varchar(20) NOT NULL,
+	`Sector` varchar(100) NOT NULL,
 	`SystemOfExamination` varchar(200) NOT NULL,
 	`TeachingHoursAndPlace` varchar(100),
 	`StatisticsOfEvaluations` varchar(200) NOT NULL,

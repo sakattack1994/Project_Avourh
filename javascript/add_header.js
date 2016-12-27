@@ -44,7 +44,7 @@ function add_header(){
 								Undergraduate Subjects\
 								<ul class=\"sub-menu\">\
 									<li><a href=\"regulation.php\">Regulation</a></li>\
-                  <li>Courses</li>\
+                  <li><a href=\"courses.php\">Courses</a></li>\
                   <li><a href=\"study_schedule.php\">Study Schedule</a></li>\
                   <li><a href=\"lesson_declaration_rules.php\">Lesson Declaration Rules</a></li>\
                   <li><a href=\"graduation_rules.php\">Graduation Rules</a></li>\
