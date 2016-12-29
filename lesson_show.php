@@ -21,6 +21,16 @@ if(isset($_POST['lesson_choose'])){
           $professors.=$choice3['LastName']." ".$choice3['FirstName']."<br>";
         }
       }
+      $sql = "SELECT * FROM relative_courses WHERE LessonID=\"".$_POST['lesson_choose']."\"";
+      $result2 = $conn->query($sql);
+      $relativelessons="";
+      while($choice2 = $result2->fetch_assoc()){
+        $sql = "SELECT LessonID,Title FROM lessons WHERE LessonID=\"".$choice2['RelativeLessonID']."\"";
+        $result3 = $conn->query($sql);
+        while($choice3 = $result3->fetch_assoc()){
+          $relativelessons.=$choice3['LessonID']." ".$choice3['Title']."<br>";
+        }
+      }
       $lesson.="
     <div class=\"container\">
       <div class=\"row\">
@@ -40,6 +50,19 @@ if(isset($_POST['lesson_choose'])){
         <div class=\"col-md-8\">
           <form action=\"edit_lesson.php\" method=\"POST\">
             <button type=\"submit\" name=\"lesson_id\" value=".$_POST['lesson_choose']." class=\"add_new_button\">EDIT LESSON</button>
+          </form>
+        </div>
+      </div>";
+      $lesson.="<br><br>
+      <div class=\"row\">
+        <div class=\"col-md-8\">
+          <h3>If you want to delete this lesson press here:</h3>
+        </div>
+      </div>
+      <div class=\"row\">
+        <div class=\"col-md-8\">
+          <form action=\"courses.php\" method=\"POST\">
+            <button type=\"submit\" name=\"lesson_delete\" value=".$_POST['lesson_choose']." class=\"add_new_button\">DELETE LESSON</button>
           </form>
         </div>
       </div>
@@ -110,6 +133,9 @@ if(isset($_POST['lesson_choose'])){
       </tr>
       <tr>
         <td>Professors:</td><td>".$professors."</td>
+      </tr>
+      <tr>
+        <td>Relative Lessons:</td><td>".$relativelessons."</td>
       </tr>
       </tbody>
       </table></div></div></div>";

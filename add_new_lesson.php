@@ -1,26 +1,5 @@
 <?php
-if(isset($_POST['lesson_id'])){
     $lesson="";
-    $conn = new mysqli('localhost', 'root', '', 'mydepartment');
-      // Check connection
-    if ($conn->connect_error) {
-          die("Connection failed: " . $conn->connect_error);
-      }
-    $sql='SET NAMES utf8';
-    $result = $conn->query($sql);
-    $sql = "SELECT * FROM lessons WHERE LessonID=\"".$_POST['lesson_id']."\"";
-    $result = $conn->query($sql);
-    while($choice = $result->fetch_assoc()){
-      $sql = "SELECT ProfessorID FROM professor_lessons_thisyear WHERE LessonID=\"".$_POST['lesson_id']."\"";
-      $result2 = $conn->query($sql);
-      $professors="";
-      while($choice2 = $result2->fetch_assoc()){
-        $sql = "SELECT LastName,FirstName FROM professors WHERE ProfessorID=\"".$choice2['ProfessorID']."\"";
-        $result3 = $conn->query($sql);
-        while($choice3 = $result3->fetch_assoc()){
-          $professors.=$choice3['LastName']." ".$choice3['FirstName']."<br>";
-        }
-      }
       $lesson.="<div class=\"container\"><form action=\"courses.php\" method=\"POST\"><div class=\"form-group\">";
       $lesson.="
       <div class=\"row\">
@@ -136,5 +115,4 @@ if(isset($_POST['lesson_id'])){
     </div></div>
     <div class=\"col-md-3\"><div id=\"side_bar\">".$choice."</div></div>";
     include 'WebPageTemplate.php';
-}
 ?>

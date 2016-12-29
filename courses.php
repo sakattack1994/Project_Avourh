@@ -1,5 +1,36 @@
 <?php
 $alert="";
+if(isset($_POST['lesson_delete'])){
+  $conn = new mysqli('localhost', 'root', '', 'mydepartment');
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
+  $sql='SET NAMES utf8';
+  $result = $conn->query($sql);
+  $sql='SET FOREIGN_KEY_CHECKS=0';
+  $result = $conn->query($sql);
+  $sql="DELETE FROM lessons_labs WHERE LessonID=\"".$_POST['lesson_delete']."\"";
+  $result = $conn->query($sql);
+  $sql="DELETE FROM lessons_book WHERE LessonID=\"".$_POST['lesson_delete']."\"";
+  $result = $conn->query($sql);
+  $sql="DELETE FROM lessons_comments WHERE LessonID=\"".$_POST['lesson_delete']."\"";
+  $result = $conn->query($sql);
+  $sql="DELETE FROM professor_lessons_thisyear WHERE LessonID=\"".$_POST['lesson_delete']."\"";
+  $result = $conn->query($sql);
+  $sql="DELETE FROM relative_courses WHERE LessonID=\"".$_POST['lesson_delete']."\"";
+  $result = $conn->query($sql);
+  $sql="DELETE FROM relative_courses WHERE RelativeLessonID=\"".$_POST['lesson_delete']."\"";
+  $result = $conn->query($sql);
+  $sql="DELETE FROM students_lessons_enroll WHERE LessonID=\"".$_POST['lesson_delete']."\"";
+  $result = $conn->query($sql);
+  $sql="DELETE FROM lessons WHERE LessonID=\"".$_POST['lesson_delete']."\"";
+  $result = $conn->query($sql);
+  $sql='SET FOREIGN_KEY_CHECKS=1';
+  $result = $conn->query($sql);
+  $conn->close();
+  $alert="<div class=\"alert alert-success\"><strong>The lesson with id:".$_POST['lesson_delete']." was successfully deleted.</strong></div>";
+}
 if(isset($_POST['l_id'])){
   $conn = new mysqli('localhost', 'root', '', 'mydepartment');
   // Check connection
@@ -10,8 +41,20 @@ if(isset($_POST['l_id'])){
   $result = $conn->query($sql);
   $sql="DELETE FROM professor_lessons_thisyear WHERE LessonID=\"".$_POST['old_code']."\"";
   $result = $conn->query($sql);
-  /*$sql="DELETE FROM students_lessons_enroll WHERE LessonID=\"".$_POST['old_code']."\"";
-  $result = $conn->query($sql);*/
+  $sql='SET FOREIGN_KEY_CHECKS=0';
+  $result = $conn->query($sql);
+  $sql="DELETE FROM students_lessons_enroll WHERE LessonID=\"".$_POST['old_code']."\"";
+  $result = $conn->query($sql);
+  $sql="DELETE FROM relative_courses WHERE LessonID=\"".$_POST['old_code']."\" ";
+  $result = $conn->query($sql);
+  $sql="UPDATE passed_lessons SET LessonID=\"".$_POST['l_id']."\" WHERE LessonID=\"".$_POST['old_code']."\"";
+  $result = $conn->query($sql);
+  $sql="UPDATE lesson_comments SET LessonID=\"".$_POST['l_id']."\" WHERE LessonID=\"".$_POST['old_code']."\"";
+  $result = $conn->query($sql);
+  $sql="UPDATE lesson_book SET LessonID=\"".$_POST['l_id']."\" WHERE LessonID=\"".$_POST['old_code']."\"";
+  $result = $conn->query($sql);
+  $sql="UPDATE lessons_labs SET LessonID=\"".$_POST['l_id']."\" WHERE LessonID=\"".$_POST['old_code']."\"";
+  $result = $conn->query($sql);
   $sql="UPDATE lessons
   SET LessonID=\"".$_POST['l_id']."\",
   Title=\"".$_POST['l_title']."\",
@@ -55,6 +98,30 @@ if(isset($_POST['l_id'])){
     }
     $i=$i+1;
   }
+  $i=1;
+  while(true){
+    if(isset($_POST['l_relative'.$i])){
+      $sql="INSERT INTO relative_courses VALUES(\"".$_POST['l_id']."\",\"".$_POST['l_relative'.$i]."\") ";
+      $result = $conn->query($sql);
+    }
+    else{
+      break;
+    }
+    $i=$i+1;
+  }
+  $i=1;
+  while(true){
+    if(isset($_POST['l_relative_new'.$i])){
+      $sql="INSERT INTO relative_courses VALUES(\"".$_POST['l_id']."\",\"".$_POST['l_relative_new'.$i]."\") ";
+      $result = $conn->query($sql);
+    }
+    else{
+      break;
+    }
+    $i=$i+1;
+  }
+  $sql='SET FOREIGN_KEY_CHECKS=1';
+  $result = $conn->query($sql);
   $conn->close();
   $alert="<div class=\"alert alert-success\"><strong>The lesson with id:".$_POST['l_id']." was successfully updated.</strong></div>";
 }
@@ -140,6 +207,21 @@ $content="<div class=\"col-md-9\"><div id=\"content\">
   <h1>Courses</h1>
   <br>".$alert."<br>
   ".$list."</form>
+
+
+  <br>
+      <h3>If you want to add a new lesson press here:</h3>
+      <form action=\"add_new_lesson.php\" method=\"POST\">
+        <button type=\"submit\" name=\"lesson_add\" class=\"add_new_button\">ADD NEW LESSON</button>
+      </form>
+  <br>
+
+
+
+
+
+
+
   </div></div>
   <div class=\"col-md-3\"><div id=\"side_bar\"></div></div>";
   include 'WebPageTemplate.php';

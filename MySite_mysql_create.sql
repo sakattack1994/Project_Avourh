@@ -277,3 +277,9 @@ INSERT INTO professor_lessons_thisyear VALUES ('kalantonis','ECE_Y101','1');
 INSERT INTO professor_lessons_thisyear VALUES ('kounavis','ECE_Y102','1');
 
 INSERT INTO professor_lessons_thisyear VALUES ('avourhs','ECE_Y103N','1');
+
+INSERT INTO relative_courses VALUES ('ECE_Y101','ECE_Y103N');
+
+INSERT INTO relative_courses VALUES ('ECE_Y101','ECE_Y102');
+
+
