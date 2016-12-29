@@ -3,7 +3,7 @@ $(document).ready(function(){
       $('#content').empty();
       $.post('request_handler.php',{'announcement_id':this.id},function(data){
         $('#content').append(data);
-        $('#content').append('<a href=\"announcements.php\"><button id=back_announcements>&#8592;Back to announcements</button></a>');
+        $('#content').append('<a href=\"announcements.php\"><button id=back_announcements class=\"add_new_button\">&#8592;Back to announcements</button></a>');
         $('#back_announcements').click(function(){
             $.get( "request_handler.php",{'back_to_announcements':1}, function( data ) {
             });
@@ -15,6 +15,7 @@ $(document).ready(function(){
         $(this).css('cursor','pointer');
     });
 });
+var i=1;
 function check(id) {
   if($('#lchoose'+id).is(":checked")) {
       $(".profs"+id).css('visibility','visible');
@@ -23,4 +24,8 @@ function check(id) {
       $(".profs"+id).css('visibility','hidden');
       $(".profs"+id).css('display','none');
   }
+};
+function new_prof() {
+  $('#update_table').append("<tr><td>New Professor:</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_prof_new"+i+"\" style=\"height:100%; width:100%;\"></td></tr>");
+  i=i+1;
 };

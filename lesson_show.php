@@ -11,7 +11,108 @@ if(isset($_POST['lesson_choose'])){
     $sql = "SELECT * FROM lessons WHERE LessonID=\"".$_POST['lesson_choose']."\"";
     $result = $conn->query($sql);
     while($choice = $result->fetch_assoc()){
-      $lesson.="<h1>".$choice['Title']."</h1>";
+      $sql = "SELECT ProfessorID FROM professor_lessons_thisyear WHERE LessonID=\"".$_POST['lesson_choose']."\"";
+      $result2 = $conn->query($sql);
+      $professors="";
+      while($choice2 = $result2->fetch_assoc()){
+        $sql = "SELECT LastName,FirstName FROM professors WHERE ProfessorID=\"".$choice2['ProfessorID']."\"";
+        $result3 = $conn->query($sql);
+        while($choice3 = $result3->fetch_assoc()){
+          $professors.=$choice3['LastName']." ".$choice3['FirstName']."<br>";
+        }
+      }
+      $lesson.="
+    <div class=\"container\">
+      <div class=\"row\">
+        <div class=\"col-md-8\">
+          <h1>".$choice['Title']."</h1>
+        </div>
+      </div>";
+
+
+      $lesson.="<br><br>
+      <div class=\"row\">
+        <div class=\"col-md-8\">
+          <h3>If you want to edit this lesson press here:</h3>
+        </div>
+      </div>
+      <div class=\"row\">
+        <div class=\"col-md-8\">
+          <form action=\"edit_lesson.php\" method=\"POST\">
+            <button type=\"submit\" name=\"lesson_id\" value=".$_POST['lesson_choose']." class=\"add_new_button\">EDIT LESSON</button>
+          </form>
+        </div>
+      </div>
+      <br><br>";
+
+
+
+      $lesson.="
+      <div class=\"row\">
+        <div class=\"col-md-8\">
+          <h3>General information:</h3>
+        </div>
+      </div>";
+      $lesson.="
+      <div class=\"row\">
+        <div class=\"col-md-8\">
+      <table class=\"table table-bordered table-hover\">
+      <thead>
+        <tr style=\"background-color:rgb(41,127,184);\";>
+          <th colspan=8 style=\"text-align: center;\"><font color=\"#fff\">".$choice['Title']."</font></th>
+          </tr>
+          </thead>
+      <tbody>
+      <tr>
+        <td>Lesson Code:</td><td>".$choice['LessonID']."</td>
+      </tr>
+      <tr>
+        <td>Level of studies:</td><td>".$choice['LevelOfStudies']."</td>
+      </tr>
+      <tr>
+        <td>Semester:</td><td>".$choice['Semester']."</td>
+      </tr>
+      <tr>
+        <td>Description:</td><td>".$choice['Description']."</td>
+      </tr>
+      <tr>
+        <td>Type:</td><td>".$choice['Type']."</td>
+      </tr>
+      <tr>
+        <td>Official Website:</td><td>".$choice['OfficialWebsite']."</td>
+      </tr>
+      <tr>
+        <td>Eclass Website:</td><td>".$choice['EclassLink']."</td>
+      </tr>
+      <tr>
+        <td>Eudoxus Link:</td><td>".$choice['EudoxusLink']."</td>
+      </tr>
+      <tr>
+        <td>Ects of Lecture:</td><td>".($choice['EctsΔ']+$choice['EctsΑ'])."</td>
+      </tr>
+      <tr>
+        <td>Ects of Lab:</td><td>".$choice['EctsΕ']."</td>
+      </tr>
+      <tr>
+        <td>Sector:</td><td>".$choice['Sector']."</td>
+      </tr>
+      <tr>
+        <td>System of examination:</td><td>".$choice['SystemOfExamination']."</td>
+      </tr>
+      <tr>
+        <td>Teaching hours and place:</td><td>".$choice['TeachingHoursAndPlace']."</td>
+      </tr>
+      <tr>
+        <td>Recent statistics:</td><td>".$choice['StatisticsOfEvaluations']."</td>
+      </tr>
+      <tr>
+        <td>Curriculum:</td><td>".$choice['Curriculum']."</td>
+      </tr>
+      <tr>
+        <td>Professors:</td><td>".$professors."</td>
+      </tr>
+      </tbody>
+      </table></div></div></div>";
     }
     $conn->close();
     $content="<div class=\"col-md-9\"><div id=\"content\">".$lesson."

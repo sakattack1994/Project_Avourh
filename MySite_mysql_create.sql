@@ -17,7 +17,7 @@ CREATE TABLE `Lessons` (
 	`Description` varchar(1000) NOT NULL,
 	`Type` varchar(100) NOT NULL,
 	`Semester` int NOT NULL,
-	`LevelOfStudies` int NOT NULL,
+	`LevelOfStudies` varchar(100) NOT NULL,
 	`OfficialWebsite` varchar(100),
 	`EclassLink` varchar(100),
 	`EudoxusLink` varchar(100),
@@ -248,11 +248,11 @@ ALTER TABLE `Passed_Lessons` ADD CONSTRAINT `Passed_Lessons_fk1` FOREIGN KEY (`L
 
 INSERT INTO study_schedule VALUES ('1','Study guide 2016-2017');
 
-INSERT INTO lessons VALUES ('ECE_Y101','ΔΙΑΦΟΡΙΚΟΣ ΛΟΓΙΣΜΟΣ ΚΑΙ ΜΑΘΗΜΑΤΙΚΗ ΑΝΑΛΥΣΗ','ΜΑΘΗΜΑΤΙΚΑ','ΔΙΔΑΣΚΑΛΙΑ',1,-1,'LESSON_LINK','ECLASS_LINK','EVDO3OS_LINK',4,2,0,'ΒΑΣΙΚΟΣ ΚΟΡΜΟΣ','ΓΡΑΠΤΗ','ΩΡΕΣ','ΣΤΑΤΙΣΤΙΚΑ','ΥΛΗ');
+INSERT INTO lessons VALUES ('ECE_Y101','ΔΙΑΦΟΡΙΚΟΣ ΛΟΓΙΣΜΟΣ ΚΑΙ ΜΑΘΗΜΑΤΙΚΗ ΑΝΑΛΥΣΗ','ΜΑΘΗΜΑΤΙΚΑ','ΔΙΔΑΣΚΑΛΙΑ',1,'Postgraduate','LESSON_LINK','ECLASS_LINK','EVDO3OS_LINK',4,2,0,'ΒΑΣΙΚΟΣ ΚΟΡΜΟΣ','ΓΡΑΠΤΗ','ΩΡΕΣ','ΣΤΑΤΙΣΤΙΚΑ','ΥΛΗ');
 
-INSERT INTO lessons VALUES ('ECE_Y102','ΦΥΣΙΚΗ 1','ΦΥΣΙΚΗ','ΔΙΔΑΣΚΑΛΙΑ',1,-1,'LESSON_LINK','ECLASS_LINK','EVDO3OS_LINK',3,1,2,'ΒΑΣΙΚΟΣ ΚΟΡΜΟΣ','ΓΡΑΠΤΗ','ΩΡΕΣ','ΣΤΑΤΙΣΤΙΚΑ','ΥΛΗ');
+INSERT INTO lessons VALUES ('ECE_Y102','ΦΥΣΙΚΗ 1','ΦΥΣΙΚΗ','ΔΙΔΑΣΚΑΛΙΑ',1,'Postgraduate','LESSON_LINK','ECLASS_LINK','EVDO3OS_LINK',3,1,2,'ΒΑΣΙΚΟΣ ΚΟΡΜΟΣ','ΓΡΑΠΤΗ','ΩΡΕΣ','ΣΤΑΤΙΣΤΙΚΑ','ΥΛΗ');
 
-INSERT INTO lessons VALUES ('ECE_Y103N','ΕΙΣΑΓΩΓΗ ΣΤΟΥΣ ΥΠΟΛΟΓΙΣΤΕΣ','ΠΡΟΓΡΑΜΜΑΤΙΣΜΟΣ','ΔΙΔΑΣΚΑΛΙΑ',1,-1,'LESSON_LINK','ECLASS_LINK','EVDO3OS_LINK',4,1,2,'ΒΑΣΙΚΟΣ ΚΟΡΜΟΣ','ΓΡΑΠΤΗ','ΩΡΕΣ','ΣΤΑΤΙΣΤΙΚΑ','ΥΛΗ');
+INSERT INTO lessons VALUES ('ECE_Y103N','ΕΙΣΑΓΩΓΗ ΣΤΟΥΣ ΥΠΟΛΟΓΙΣΤΕΣ','ΠΡΟΓΡΑΜΜΑΤΙΣΜΟΣ','ΔΙΔΑΣΚΑΛΙΑ',1,'Postgraduate','LESSON_LINK','ECLASS_LINK','EVDO3OS_LINK',4,1,2,'ΒΑΣΙΚΟΣ ΚΟΡΜΟΣ','ΓΡΑΠΤΗ','ΩΡΕΣ','ΣΤΑΤΙΣΤΙΚΑ','ΥΛΗ');
 
 INSERT INTO members VALUES ('perdios','pw','Ευσταθιος','Περδιος');
 
