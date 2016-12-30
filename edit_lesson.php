@@ -8,6 +8,12 @@ if(isset($_POST['lesson_id'])){
       }
     $sql='SET NAMES utf8';
     $result = $conn->query($sql);
+    $sql = "SELECT * FROM lessons_labs WHERE LessonID=\"".$_POST['lesson_id']."\"";
+    $result2 = $conn->query($sql);
+    $lab="";
+    while($choice = $result2->fetch_assoc()){
+      $lab.=$choice['LabID'];
+    }
     $sql = "SELECT * FROM lessons WHERE LessonID=\"".$_POST['lesson_id']."\"";
     $result = $conn->query($sql);
     while($choice = $result->fetch_assoc()){
@@ -89,7 +95,13 @@ if(isset($_POST['lesson_id'])){
         <td>Recent statistics:</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_statistics\" value=\"".$choice['StatisticsOfEvaluations']."\" style=\"height:100%; width:100%;\"></td>
       </tr>
       <tr>
+        <td>LabID:</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_lab\" value=\"".$lab."\" style=\"height:100%; width:100%;\"></td>
+      </tr>
+      <tr>
         <td>Curriculum:</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_curriculum\" value=\"".$choice['Curriculum']."\" style=\"height:100%; width:100%;\"></td>
+      </tr>";
+      $lesson.="<tr>
+        <td style=\"visibility:hidden;display:none;\"><input type=\"text\" name=\"old_lab\" value=\"".$lab."\"></td>
       </tr>";
       $sql = "SELECT * FROM professor_lessons_thisyear WHERE LessonID=\"".$_POST['lesson_id']."\"";
       $result2 = $conn->query($sql);
@@ -120,12 +132,23 @@ if(isset($_POST['lesson_id'])){
         </tr>";
         $j=$j+1;
       }
+      $sql = "SELECT ISBN FROM lesson_book WHERE LessonID=\"".$_POST['lesson_id']."\"";
+      $result2 = $conn->query($sql);
+      $k=1;
+      while($choice2 = $result2->fetch_assoc()){
+        $lesson.="
+        <tr>
+          <td>Book ".$k.":</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_book".$k."\" value=\"".$choice2['ISBN']."\" style=\"height:100%; width:100%;\"></td>
+        </tr>";
+        $k=$k+1;
+      }
       $lesson.="</table></div></div>";
     }
     $lesson.="<br><br>
     <div class=\"row\"><div class=\"col-md-8\">
     <button type=\"button\" class=\"add_new_button\" onclick=\"new_prof();\">&#9546;ADD NEW PROFESSOR</button><br>
-    <button type=\"button\" class=\"add_new_button\" onclick=\"new_rel();\">&#9546;ADD NEW RELATIVE LESSON</button>
+    <button type=\"button\" class=\"add_new_button\" onclick=\"new_rel();\">&#9546;ADD NEW RELATIVE LESSON</button><br>
+    <button type=\"button\" class=\"add_new_button\" onclick=\"new_book();\">&#9546;ADD NEW BOOK(ISBN)</button>
     <h3>If you finished editing press here:</h3>
     <input type=\"submit\" value=\"FINISH\" class=\"add_new_button\">
     </div></div>
@@ -134,7 +157,7 @@ if(isset($_POST['lesson_id'])){
     $conn->close();
     $content="<div class=\"col-md-9\"><div id=\"content\">".$lesson."
     </div></div>
-    <div class=\"col-md-3\"><div id=\"side_bar\">".$choice."</div></div>";
+    <div class=\"col-md-3\"><div id=\"side_bar\"></div></div>";
     include 'WebPageTemplate.php';
 }
 ?>

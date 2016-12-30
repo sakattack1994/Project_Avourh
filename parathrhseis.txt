@@ -9,9 +9,7 @@
 4)allagh to level of studies se varchar 50
 
 STOXOI:
-1-EDIT LESSON(1-TA SXOLIA 2-TO VIVLIO 3-TO LAB)kai sto add kapoia
-4-NA DW TI PAIZEI ME ERGASTHRIA(sxetiko me to 1)
+1-EDIT LESSON(1-TA SXOLIA)
 5-ENROLL STO MA8IMA
 6-UNENROLL
-7-ama exw ore3h diaxeiristikothta sta sketa koumpia
-!!!!!!!th metavlhth $i sth jqery
+7-ama exw ore3h diaxeiristikothta sta sketa koumpia(MARIA)

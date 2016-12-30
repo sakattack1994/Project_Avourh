@@ -1,5 +1,75 @@
 <?php
 $alert="";
+if(isset($_POST['new_id'])){
+  $conn = new mysqli('localhost', 'root', '', 'mydepartment');
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
+  $sql='SET NAMES utf8';
+  $result = $conn->query($sql);
+  $sql='SET FOREIGN_KEY_CHECKS=0';
+  $result = $conn->query($sql);
+  $sql="INSERT INTO lessons VALUES
+  (\"".$_POST['new_id']."\",
+  \"".$_POST['new_title']."\",
+  \"".$_POST['new_description']."\",
+  \"".$_POST['new_type']."\",
+  \"".$_POST['new_semester']."\",
+  \"".$_POST['new_level']."\",
+  \"".$_POST['new_officialwebsite']."\",
+  \"".$_POST['new_eclasslink']."\",
+  \"".$_POST['new_eudoxus']."\",
+  \"".$_POST['new_Δ']."\",
+  \"".$_POST['new_Α']."\",
+  \"".$_POST['new_Ε']."\",
+  \"".$_POST['new_sector']."\",
+  \"".$_POST['new_exams']."\",
+  \"".$_POST['new_hours']."\",
+  \"".$_POST['new_statistics']."\",
+  \"".$_POST['new_curriculum']."\"
+  )";
+  $result = $conn->query($sql);
+  $sql="INSERT INTO lessons_labs VALUES (\"".$_POST['new_id']."\",\"".$_POST['new_lab']."\")";
+  $result = $conn->query($sql);
+  $i=1;
+  while(true){
+    if(isset($_POST['l_prof_new'.$i])){
+      $sql="INSERT INTO professor_lessons_thisyear VALUES(\"".$_POST['l_prof_new'.$i]."\",\"".$_POST['new_id']."\",\"".$_POST['schedule']."\") ";
+      $result = $conn->query($sql);
+    }
+    else{
+      break;
+    }
+    $i=$i+1;
+  }
+  $i=1;
+  while(true){
+    if(isset($_POST['l_relative_new'.$i])){
+      $sql="INSERT INTO relative_courses VALUES(\"".$_POST['new_id']."\",\"".$_POST['l_relative_new'.$i]."\") ";
+      $result = $conn->query($sql);
+    }
+    else{
+      break;
+    }
+    $i=$i+1;
+  }
+  $i=1;
+  while(true){
+    if(isset($_POST['l_book_new'.$i])){
+      $sql="INSERT INTO lesson_book VALUES(\"".$_POST['new_id']."\",\"".$_POST['l_book_new'.$i]."\") ";
+      $result = $conn->query($sql);
+    }
+    else{
+      break;
+    }
+    $i=$i+1;
+  }
+  $sql='SET FOREIGN_KEY_CHECKS=1';
+  $result = $conn->query($sql);
+  $conn->close();
+  $alert="<div class=\"alert alert-success\"><strong>The lesson with id:".$_POST['new_id']." was successfully added.</strong></div>";
+}
 if(isset($_POST['lesson_delete'])){
   $conn = new mysqli('localhost', 'root', '', 'mydepartment');
   // Check connection
@@ -18,11 +88,15 @@ if(isset($_POST['lesson_delete'])){
   $result = $conn->query($sql);
   $sql="DELETE FROM professor_lessons_thisyear WHERE LessonID=\"".$_POST['lesson_delete']."\"";
   $result = $conn->query($sql);
+  $sql="DELETE FROM professor_lessons_lastyears WHERE LessonID=\"".$_POST['lesson_delete']."\"";
+  $result = $conn->query($sql);
   $sql="DELETE FROM relative_courses WHERE LessonID=\"".$_POST['lesson_delete']."\"";
   $result = $conn->query($sql);
   $sql="DELETE FROM relative_courses WHERE RelativeLessonID=\"".$_POST['lesson_delete']."\"";
   $result = $conn->query($sql);
   $sql="DELETE FROM students_lessons_enroll WHERE LessonID=\"".$_POST['lesson_delete']."\"";
+  $result = $conn->query($sql);
+  $sql="DELETE FROM passed_lessons WHERE LessonID=\"".$_POST['lesson_delete']."\"";
   $result = $conn->query($sql);
   $sql="DELETE FROM lessons WHERE LessonID=\"".$_POST['lesson_delete']."\"";
   $result = $conn->query($sql);
@@ -41,20 +115,30 @@ if(isset($_POST['l_id'])){
   $result = $conn->query($sql);
   $sql="DELETE FROM professor_lessons_thisyear WHERE LessonID=\"".$_POST['old_code']."\"";
   $result = $conn->query($sql);
+  $sql="DELETE FROM relative_courses WHERE LessonID=\"".$_POST['old_code']."\" ";
+  $result = $conn->query($sql);
+  $sql="DELETE FROM lesson_book WHERE LessonID=\"".$_POST['old_code']."\"";
+  $result = $conn->query($sql);
   $sql='SET FOREIGN_KEY_CHECKS=0';
   $result = $conn->query($sql);
-  $sql="DELETE FROM students_lessons_enroll WHERE LessonID=\"".$_POST['old_code']."\"";
+  $sql="DELETE FROM lessons_labs WHERE LessonID=\"".$_POST['old_code']."\"";
   $result = $conn->query($sql);
-  $sql="DELETE FROM relative_courses WHERE LessonID=\"".$_POST['old_code']."\" ";
+  $sql="INSERT INTO lessons_labs VALUES (\"".$_POST['l_id']."\",\"".$_POST['l_lab']."\")";
+  $result = $conn->query($sql);
+  $sql="UPDATE lessons SET LessonID=\"".$_POST['l_lab']."\" WHERE LessonID=\"".$_POST['old_lab']."\" ";
+  $result = $conn->query($sql);
+  $sql="UPDATE relative_courses SET RelativeLessonID=\"".$_POST['l_id']."\" WHERE RelativeLessonID=\"".$_POST['old_code']."\" ";
+  $result = $conn->query($sql);
+  if($_POST['old_code']!=$_POST['l_id']){
+    $sql="DELETE FROM students_lessons_enroll WHERE LessonID=\"".$_POST['old_code']."\"";
+    $result = $conn->query($sql);
+  }
+  $sql="UPDATE professor_lessons_lastyears SET LessonID=\"".$_POST['l_id']."\" WHERE LessonID=\"".$_POST['old_code']."\"";
   $result = $conn->query($sql);
   $sql="UPDATE passed_lessons SET LessonID=\"".$_POST['l_id']."\" WHERE LessonID=\"".$_POST['old_code']."\"";
   $result = $conn->query($sql);
-  $sql="UPDATE lesson_comments SET LessonID=\"".$_POST['l_id']."\" WHERE LessonID=\"".$_POST['old_code']."\"";
-  $result = $conn->query($sql);
-  $sql="UPDATE lesson_book SET LessonID=\"".$_POST['l_id']."\" WHERE LessonID=\"".$_POST['old_code']."\"";
-  $result = $conn->query($sql);
-  $sql="UPDATE lessons_labs SET LessonID=\"".$_POST['l_id']."\" WHERE LessonID=\"".$_POST['old_code']."\"";
-  $result = $conn->query($sql);
+  ///////$sql="UPDATE lesson_comments SET LessonID=\"".$_POST['l_id']."\" WHERE LessonID=\"".$_POST['old_code']."\"";
+  ///////$result = $conn->query($sql);
   $sql="UPDATE lessons
   SET LessonID=\"".$_POST['l_id']."\",
   Title=\"".$_POST['l_title']."\",
@@ -113,6 +197,28 @@ if(isset($_POST['l_id'])){
   while(true){
     if(isset($_POST['l_relative_new'.$i])){
       $sql="INSERT INTO relative_courses VALUES(\"".$_POST['l_id']."\",\"".$_POST['l_relative_new'.$i]."\") ";
+      $result = $conn->query($sql);
+    }
+    else{
+      break;
+    }
+    $i=$i+1;
+  }
+  $i=1;
+  while(true){
+    if(isset($_POST['l_book'.$i])){
+      $sql="INSERT INTO lesson_book VALUES(\"".$_POST['l_id']."\",\"".$_POST['l_book'.$i]."\") ";
+      $result = $conn->query($sql);
+    }
+    else{
+      break;
+    }
+    $i=$i+1;
+  }
+  $i=1;
+  while(true){
+    if(isset($_POST['l_book_new'.$i])){
+      $sql="INSERT INTO lesson_book VALUES(\"".$_POST['l_id']."\",\"".$_POST['l_book_new'.$i]."\") ";
       $result = $conn->query($sql);
     }
     else{

@@ -17,6 +17,7 @@ $(document).ready(function(){
 });
 var i=1;
 var j=1;
+var k=1;
 function check(id) {
   if($('#lchoose'+id).is(":checked")) {
       $(".profs"+id).css('visibility','visible');
@@ -27,10 +28,14 @@ function check(id) {
   }
 };
 function new_prof() {
-  $('#update_table').append("<tr><td>New Professor:</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_prof_new"+i+"\" style=\"height:100%; width:100%;\"></td></tr>");
+  $('#update_table').append("<tr><td>New Professor "+i+":</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_prof_new"+i+"\" style=\"height:100%; width:100%;\"></td></tr>");
   i=i+1;
 };
 function new_rel() {
-  $('#update_table').append("<tr><td>New Relative lesson:</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_relative_new"+j+"\" style=\"height:100%; width:100%;\"></td></tr>");
+  $('#update_table').append("<tr><td>New Relative lesson "+j+":</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_relative_new"+j+"\" style=\"height:100%; width:100%;\"></td></tr>");
   j=j+1;
+};
+function new_book() {
+  $('#update_table').append("<tr><td>New Book(ISBN) "+k+":</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_book_new"+k+"\" style=\"height:100%; width:100%;\"></td></tr>");
+  k=k+1;
 };

@@ -31,6 +31,22 @@ if(isset($_POST['lesson_choose'])){
           $relativelessons.=$choice3['LessonID']." ".$choice3['Title']."<br>";
         }
       }
+      $lab="";
+      $sql = "SELECT * FROM lessons_labs WHERE LessonID=\"".$_POST['lesson_choose']."\"";
+      $result2 = $conn->query($sql);
+      while($choice2 = $result2->fetch_assoc()){
+        $lab.=$choice2['LabID'];
+      }
+      $sql = "SELECT * FROM lesson_book WHERE LessonID=\"".$_POST['lesson_choose']."\"";
+      $result2 = $conn->query($sql);
+      $books="";
+      while($choice2 = $result2->fetch_assoc()){
+        $sql = "SELECT ISBN,Title FROM books WHERE ISBN=\"".$choice2['ISBN']."\"";
+        $result3 = $conn->query($sql);
+        while($choice3 = $result3->fetch_assoc()){
+          $books.=$choice3['ISBN']." ".$choice3['Title']."<br>";
+        }
+      }
       $lesson.="
     <div class=\"container\">
       <div class=\"row\">
@@ -130,6 +146,12 @@ if(isset($_POST['lesson_choose'])){
       </tr>
       <tr>
         <td>Curriculum:</td><td>".$choice['Curriculum']."</td>
+      </tr>
+      <tr>
+        <td>Lab ID:</td><td>".$lab."</td>
+      </tr>
+      <tr>
+        <td>Books:</td><td>".$books."</td>
       </tr>
       <tr>
         <td>Professors:</td><td>".$professors."</td>

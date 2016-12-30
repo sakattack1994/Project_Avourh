@@ -254,6 +254,10 @@ INSERT INTO lessons VALUES ('ECE_Y102','ΦΥΣΙΚΗ 1','ΦΥΣΙΚΗ','ΔΙΔΑ
 
 INSERT INTO lessons VALUES ('ECE_Y103N','ΕΙΣΑΓΩΓΗ ΣΤΟΥΣ ΥΠΟΛΟΓΙΣΤΕΣ','ΠΡΟΓΡΑΜΜΑΤΙΣΜΟΣ','ΔΙΔΑΣΚΑΛΙΑ',1,'Postgraduate','LESSON_LINK','ECLASS_LINK','EVDO3OS_LINK',4,1,2,'ΒΑΣΙΚΟΣ ΚΟΡΜΟΣ','ΓΡΑΠΤΗ','ΩΡΕΣ','ΣΤΑΤΙΣΤΙΚΑ','ΥΛΗ');
 
+INSERT INTO lessons VALUES ('ECE_Y103L','ΕΙΣΑΓΩΓΗ ΣΤΟΥΣ ΥΠΟΛΟΓΙΣΤΕΣ','ΠΡΟΓΡΑΜΜΑΤΙΣΜΟΣ','ΕΡΓΑΣΤΗΡΙΟ',1,'Postgraduate','LESSON_LINK','ECLASS_LINK','EVDO3OS_LINK',4,1,2,'ΒΑΣΙΚΟΣ ΚΟΡΜΟΣ','ΓΡΑΠΤΗ','ΩΡΕΣ','ΣΤΑΤΙΣΤΙΚΑ','ΥΛΗ');
+
+INSERT INTO lessons VALUES ('ECE_Y102Ε','ΦΥΣΙΚΗ 1','ΠΡΟΓΡΑΜΜΑΤΙΣΜΟΣ','ΕΡΓΑΣΤΗΡΙΟ',1,'Postgraduate','LESSON_LINK','ECLASS_LINK','EVDO3OS_LINK',4,1,2,'ΒΑΣΙΚΟΣ ΚΟΡΜΟΣ','ΓΡΑΠΤΗ','ΩΡΕΣ','ΣΤΑΤΙΣΤΙΚΑ','ΥΛΗ');
+
 INSERT INTO members VALUES ('perdios','pw','Ευσταθιος','Περδιος');
 
 INSERT INTO members VALUES ('kalantonis','pw','Βασιλειος','Καλαντωνης');
@@ -282,4 +286,19 @@ INSERT INTO relative_courses VALUES ('ECE_Y101','ECE_Y103N');
 
 INSERT INTO relative_courses VALUES ('ECE_Y101','ECE_Y102');
 
+INSERT INTO books VALUES ('1111','MATHIMATIKA','George R',2016,331,'Savalas','Perigrafh','a');
+
+INSERT INTO books VALUES ('1121','fisiki','George R',2016,331,'Savalas','Perigrafh','a');
+
+INSERT INTO books VALUES ('2111','PCS','George R',2016,331,'Savalas','Perigrafh','a');
+
+INSERT INTO lesson_book VALUES ('ECE_Y101','1111');
+
+INSERT INTO lesson_book VALUES ('ECE_Y102','1121');
+
+INSERT INTO lesson_book VALUES ('ECE_Y103N','2111');
+
+INSERT INTO lessons_labs VALUES ('ECE_Y102','ECE_Y102Ε');
+
+INSERT INTO lessons_labs VALUES ('ECE_Y103N','ECE_Y103L');
 
