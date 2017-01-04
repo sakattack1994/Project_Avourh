@@ -2,7 +2,7 @@ CREATE TABLE `Students` (
 	`StudentID` varchar(10) NOT NULL  ,
 	`FirstName` varchar(20) NOT NULL,
 	`LastName` varchar(20) NOT NULL,
-	`Photo` longblob NOT NULL,
+	`Photo` varchar(500) NOT NULL,
 	`Telephone` varchar(50) NOT NULL,
 	`Address` varchar(100) NOT NULL,
 	`Email` varchar(30) NOT NULL,
@@ -37,6 +37,7 @@ CREATE TABLE `Members` (
 	`Password` varchar(100) NOT NULL,
 	`FirstName` varchar(20) NOT NULL,
 	`LastName` varchar(20) NOT NULL,
+	`Role` varchar(20) NOT NULL,
 	PRIMARY KEY (`ID`)
 );
 
@@ -44,7 +45,7 @@ CREATE TABLE `Secretariat` (
 	`SecretariatID` varchar(10) NOT NULL  ,
 	`FirstName` varchar(20) NOT NULL,
 	`LastName` varchar(20) NOT NULL,
-	`Photo` longblob NOT NULL,
+	`Photo` varchar(500) NOT NULL,
 	`Telephone` varchar(100) NOT NULL,
 	`Fax` varchar(100) NOT NULL,
 	`Email` varchar(100) NOT NULL,
@@ -56,7 +57,7 @@ CREATE TABLE `Professors` (
 	`FirstName` varchar(20) NOT NULL  ,
 	`LastName` varchar(20) NOT NULL,
 	`Role` varchar(100) NOT NULL,
-	`Photo` longblob NOT NULL,
+	`Photo` varchar(500) NOT NULL,
 	`Resume` varchar(100) NOT NULL,
 	`Sector` varchar(100),
 	`Telephone` varchar(50) NOT NULL,
@@ -258,21 +259,21 @@ INSERT INTO lessons VALUES ('ECE_Y103L','ΕΙΣΑΓΩΓΗ ΣΤΟΥΣ ΥΠΟΛΟ�
 
 INSERT INTO lessons VALUES ('ECE_Y102Ε','ΦΥΣΙΚΗ 1','ΠΡΟΓΡΑΜΜΑΤΙΣΜΟΣ','ΕΡΓΑΣΤΗΡΙΟ',1,'Postgraduate','LESSON_LINK','ECLASS_LINK','EVDO3OS_LINK',4,1,2,'ΒΑΣΙΚΟΣ ΚΟΡΜΟΣ','ΓΡΑΠΤΗ','ΩΡΕΣ','ΣΤΑΤΙΣΤΙΚΑ','ΥΛΗ');
 
-INSERT INTO members VALUES ('perdios','pw','Ευσταθιος','Περδιος');
+INSERT INTO members VALUES ('perdios','pw','Ευσταθιος','Περδιος','prof');
 
-INSERT INTO members VALUES ('kalantonis','pw','Βασιλειος','Καλαντωνης');
+INSERT INTO members VALUES ('kalantonis','pw','Βασιλειος','Καλαντωνης','prof');
 
-INSERT INTO members VALUES ('kounavis','pw','Παναγιωτης','Κουναβης');
+INSERT INTO members VALUES ('kounavis','pw','Παναγιωτης','Κουναβης','prof');
 
-INSERT INTO members VALUES ('avourhs','pw','Αβουρης','Νικολαος');
+INSERT INTO members VALUES ('avourhs','pw','Αβουρης','Νικολαος','prof');
 
-INSERT INTO professors VALUES ('perdios','Ευσταθιος','Περδιος','Καθηγητης','CH','RESUME','ΓΕΝΙΚΟ ΤΜΗΜΑ','+302610997897','+30610997897','eperdios@upatras.gr','Τετάρτη 14-17 Πεμπτη 15-18 ','website','scholar');
+INSERT INTO professors VALUES ('perdios','Ευσταθιος','Περδιος','Καθηγητης','/myDepartment/myresources/prof_pics/perdios_photo.jpg','RESUME','ΓΕΝΙΚΟ ΤΜΗΜΑ','+302610997897','+30610997897','eperdios@upatras.gr','Τετάρτη 14-17 Πεμπτη 15-18 ','website','scholar');
 
-INSERT INTO professors VALUES ('kalantonis','Βασιλειος','Καλαντωνης','Καθηγητης','CH','RESUME','ΓΕΝΙΚΟ ΤΜΗΜΑ','+302610996868','+302610996868','kalantonis@upatras.gr','Τετάρτη 14-17 Πεμπτη 15-18 ','website','scholar');
+INSERT INTO professors VALUES ('kalantonis','Βασιλειος','Καλαντωνης','Καθηγητης','/myDepartment/myresources/prof_pics/kalantonis_photo.jpg','RESUME','ΓΕΝΙΚΟ ΤΜΗΜΑ','+302610996868','+302610996868','kalantonis@upatras.gr','Τετάρτη 14-17 Πεμπτη 15-18 ','website','scholar');
 
-INSERT INTO professors VALUES ('kounavis','Παναγιωτης','Κουναβης','Καθηγητης','CH','RESUME','ΓΕΝΙΚΟ ΤΜΗΜΑ','+302610996868','+302610996868','pkounavis@upatras.gr','Τετάρτη 14-17 Πεμπτη 15-18 ','website','scholar');
+INSERT INTO professors VALUES ('kounavis','Παναγιωτης','Κουναβης','Καθηγητης','/myDepartment/myresources/prof_pics/kounavis_photo.JPG','RESUME','ΓΕΝΙΚΟ ΤΜΗΜΑ','+302610996868','+302610996868','pkounavis@upatras.gr','Τετάρτη 14-17 Πεμπτη 15-18 ','website','scholar');
 
-INSERT INTO professors VALUES ('avourhs','Αβουρης','Νικολαος','Καθηγητης','CH','RESUME','ΓΕΝΙΚΟ ΤΜΗΜΑ','+302610996868','+302610996868','avouris@upatras.gr','Τετάρτη 14-17 Πεμπτη 15-18 ','website','scholar');
+INSERT INTO professors VALUES ('avourhs','Αβουρης','Νικολαος','Καθηγητης','/myDepartment/myresources/prof_pics/avouris_photo.jpg','RESUME','ΓΕΝΙΚΟ ΤΜΗΜΑ','+302610996868','+302610996868','avouris@upatras.gr','Τετάρτη 14-17 Πεμπτη 15-18 ','website','scholar');
 
 INSERT INTO professor_lessons_thisyear VALUES ('perdios','ECE_Y101','1');
 

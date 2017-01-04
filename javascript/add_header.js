@@ -80,7 +80,7 @@ function add_header(){
           <li>\
     						Personnel + &nbsp;&nbsp;\
     					<ul class=\"sub-menu\">\
-    							<li>Faculty</li>\
+    							<li><a href=\"faculty_show.php\">Faculty</a></li>\
     							<li>Εmeriti Professors</li>\
     							<li>Honoris Causa Professors</li>\
                   <li>Research Collaborators</li>\
