@@ -2,7 +2,10 @@
 
 body {
 	background-color: #eee;
-	background-image: url(../Images/patterns/light_toast.png);
+	background-image: url(../Images/background.jpg);
+	background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 	color: #666;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 12px;
@@ -48,17 +51,23 @@ ol, ul {
 /* HEADER */
 #wrap > header {
 	background-color: #333;
-	padding-bottom: 20px;
+	height:80px;
+	padding-top: 80px;
+	border-radius: 0px 0px 20px 20px;
 }
 .logo {
 	display: inline-block;
 	font-size: 0;
 	padding-top:15px;
+	text-align: center;
+	width:180px;
+	border-radius:15px;
 }
 #navigation {
 	position: absolute;
 	right: 40px;
 	bottom: 0px;
+	padding-top: 200px;
 }
 
 #menu-toggle {
@@ -67,30 +76,23 @@ ol, ul {
 }
 
 /* HEADER > MENU */
-#main-menu {
-	float: right;
-	font-size: 0;
-	margin: 10px 0;
-}
 
 #main-menu > li {
+	margin-top: 100px;
 	display: inline-block;
-	margin-left: 30px;
+	margin-left: 0px;
 	padding: 2px 0;
 }
 
 #main-menu > li.parent {
-	background-image: url(../Images/plus-gray.png);
+	background-image: url(../images/plus-gray.png);
 	background-size: 7px 7px;
 	background-repeat: no-repeat;
 	background-position: left center;
+	padding-left: 25px;
 }
 
-#main-menu > li.parent > a {
-	padding-left: 14px;
-}
-
-#main-menu > li > a {
+#main-menu > li{
 	color: #eee;
 	font-size: 14px;
 	line-height: 14px;
@@ -98,12 +100,18 @@ ol, ul {
 	text-decoration:none;
 }
 
-#main-menu > li:hover > a,
-#main-menu > li.current-menu-item > a {
+#main-menu > li:hover ,
+#main-menu > li.current-menu-item {
 	color: #23dbdb;
 }
 
 /* HEADER > MENU > DROPDOWN */
+#main-menu {
+ -	float: right;
+ -	font-size: 0;
+ -	margin: 10px 0;
+ -}
+
 #main-menu li {
 	position: relative;
 }
@@ -125,7 +133,7 @@ ul.sub-menu ul.sub-menu { /* level 3+ */
 	top: 0px;
 }
 
-ul.sub-menu > li > a {
+ul.sub-menu > li {
 	background-color: #333;
 	border: 1px solid #444;
 	border-top: none;
@@ -136,7 +144,7 @@ ul.sub-menu > li > a {
 	padding: 10px 12px;
 }
 
-ul.sub-menu > li > a:hover {
+ul.sub-menu > li :hover {
 	background-color: #2a2a2a;
 	color: #fff;
 }
@@ -149,11 +157,11 @@ ul.sub-menu ul.sub-menu > li:first-child {
 	border-top: 1px solid #444;
 }
 
-ul.sub-menu > li:last-child > a {
+ul.sub-menu > li:last-child {
 	border-radius: 0 0 2px 2px;
 }
 
-ul.sub-menu > li > a.parent {
+ul.sub-menu > li {
 	background-image: url(../images/arrow.png);
 	background-size: 5px 9px;
 	background-repeat: no-repeat;
@@ -168,7 +176,7 @@ ul.sub-menu > li > a.parent {
 
 	#navigation {
 		position: static;
-		margin-top: 20px;
+		margin-top: 100px;
 	}
 
 	#menu-toggle {
@@ -194,7 +202,7 @@ ul.sub-menu > li > a.parent {
 		margin-top: 0;
 	}
 
-	#main-menu > li > a {
+	#main-menu > li {
 		background-color: #333;
 		border: 1px solid #444;
 		color: #bbb;
@@ -204,7 +212,7 @@ ul.sub-menu > li > a.parent {
 		padding: 0;
 	}
 
-	#main-menu li > a:hover {
+	#main-menu li :hover {
 		background-color: #444;
 	}
 
@@ -213,8 +221,8 @@ ul.sub-menu > li > a.parent {
 		padding: 0;
 	}
 
-	#main-menu > li:hover > a,
-	#main-menu > li.current-menu-item > a {
+	#main-menu > li:hover ,
+	#main-menu > li.current-menu-item {
 		border: 1px solid #444 !important;
 		color: #fff !important;
 	}
@@ -232,7 +240,7 @@ ul.sub-menu > li > a.parent {
 		border-top: 1px solid #444 !important;
 	}
 
-	ul.sub-menu > li > a.parent {
+	ul.sub-menu > li{
 		background: #333 !important;
 	}
 }

@@ -1,0 +1,59 @@
+<h1>Structure</h1>
+<br><br>
+<table class=table table-bordered table-hover>
+ 
+   <thead>
+        
+    <tr style="background-color:rgb(41,127,184);">
+
+          <th colspan=2 style="text-align: center;"><font color=#fff>Head of the Department</font></th>
+ 
+    </tr>
+          
+    <th colspan=2 style="text-align: center;">Professor Stauros Koumpias</th>  
+   </thead>
+     
+</table>
+<table class=table table-bordered table-hover>
+ 
+   <thead>
+        
+    <tr style="background-color:rgb(41,127,184);">
+
+          <th colspan=2 style="text-align: center;"><font color=#fff>Directors of Divisions</font></th>
+ 
+    </tr>
+            
+   </thead>
+
+   <tbody>
+    <tr> 
+	<td>Director of the Division of Telecommunications & Information Technology:</td>
+	<td>Nikos Fakwtakis </td>
+    </tr> 
+    <tr> 
+	<td>Director of the Division of Electric Power:</td>
+	<td>Antwnios Alexandridis</td>
+    </tr> 
+    <tr> 
+	<td>Director of the Division of Electronics & Computers:</td>
+	<td>Efthymios Housos</td>
+    </tr> 
+    <tr> 
+	<td>Director of the Division of Systems & Automatic Control:</td>
+	<td>Nikos Koussoulas</td>
+    </tr> 
+    </tbody>
+</table>
+<br>
+
+<p style="color:rgb(41,127,184); text-align: left;">Departmental General Assembly</p>
+<p style="text-align: left;">Thirty five faculty members representing the faculty.<br>
+Representatives of the Students (2 representatives).<br>
+Representatives of Postgraduate Students (1 representative).<br>
+Representatives of Laboratory (1) and Technical Staff (1).</p>
+<br>
+
+<p style="color:rgb(41,127,184); text-align: left;">Departmental General Assembly with special Synthesis</p>
+<p style="text-align: left;">Thirty faculty members representing the faculty<br>
+Two representatives of the postgraduate students</p>

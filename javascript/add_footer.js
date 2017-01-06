@@ -1,36 +1,21 @@
 function add_footer(){
     var footer;
-    footer="<table class=\"footer\" cellpadding=\"0\"  cellspacing=\"4\">\
-    <tr>\
-        <td class=\"left_column\" rowspan=\"2\">\
-          <img alt=\"\" src=\"Images/ValidXHTML10.png\" />\
-        </td>\
-    <td class=\"center_column footer_first_line\" >\
-      <a href=\"HTML pages/ContactMe.html\" >\
-        Contact Me\
-      </a>\
-      &nbsp;|&nbsp;\
-      <a href=\"HTML pages/PrivacyPolicy.html\">\
-        Privacy Policy\
-      </a>\
-    </td>\
-\
-    <td class=\"right_column\">\
-    \
-    </td>\
-\
-    <tr> \
-      <td class=\"center_column footer_second_line\" > \
-        © 2010 G. G. Gustafson, All Rights Reserved \
-        </td> \
-\
-      <td class=\"right_column\">\
-\
-      </td>\
-    </tr>\
-       \
-    </table> \
-    ";
+    footer="<footer class=\"footer\">\
+          <div class=\"container\">\
+            <div class=\"row\">\
+              <div class=\"col-md-7\">Secretariat, 1st Floor, Department of Electrical & Computer Engineering <br>\
+                Polytechnic Faculty, University of Patras, Rio Campus <br>\
+                Patras 26504, Greece\
+              </div>\
+              <div class=\"col-md-5\">\
+                <ul class=\"footer-nav\">\
+                  <li><a href=\"HTML pages/ContactMe.html\" target=\"_blank\">Contact Us</a></li>\
+                  <li><a href=\"index.php\">Home</a></li>\
+                  </ul>\
+              </div>\
+            </div>\
+          </div>\
+        </footer>";
 
     $('#footer').append(footer) ;
 };
