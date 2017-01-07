@@ -26,7 +26,7 @@ if(isset($_POST['prof_choose'])){
       $sql = "SELECT * FROM lessons WHERE LessonID=\"".$choice['LessonID']."\"";
       $result2 = $conn->query($sql);
       while($choice2 = $result2->fetch_assoc()){
-        $lessons.="<button type=\"submit\" name=\"lesson_choose\" value=".$choice2['LessonID']."><font size=\"3px\">".$choice2['LessonID']." : ".$choice2['Title']."</font></button>";
+        $lessons.="<button type=\"submit\" name=\"lesson_choose\" value=".$choice2['LessonID']."><font size=\"3px\">".$choice2['LessonID']." : ".$choice2['Title']."</font></button><br>";
       }
     }
     $sql = "SELECT * FROM professors WHERE ProfessorID=\"".$_POST['prof_choose']."\"";

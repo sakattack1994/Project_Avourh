@@ -1,0 +1,26 @@
+<h2>ACADEMIC CALENDAR</h2>
+<p >The dates for the beginning and end of courses and examination periods of the academic year 2016-2017, University of Patras are:</p>
+<p style="color:rgb(41,127,184); font-size:20px;">Start and End of courses</p>
+<p style="color:red; font-size:17px;">First Semester (Fall)</p>
+<p >-Start of courses: 03/10/2016<br>-End of Courses: 13/01/2017</p>
+<p style=" color:red; font-size:17px;">Second Semester (Spring)</p>
+<p >-Start of courses: 20/02/2017<br>-End of Courses: 02/06/2017</p>
+<p style="color:rgb(41,127,184); font-size:20px;">Start and End of exams</p>
+<p>Exam period September 2016: 29/08/2016 - 09/23/2016</p>
+<p >-Start of courses: 03/10/2016<br>
+-End of Courses: 13/01/2017</p>
+<p style="color:red; font-size:17px;">First Semester (Fall)</p>
+<p >-Start of exams: 23/01/2017<br>-End of exams: 10/02/2017</p>
+<p style=" color:red; font-size:17px;">Second Semester (Spring)</p>
+<p >-Start of exams: 12/06/2017<br>-End of exams: 30/06/2017</p>
+<p style="color:rgb(41,127,184); font-size:20px;">Public holidays</p>
+<p >-National Day: 28 October<br>
+-November 17<br>
+-St. Andrew: November 30<br>
+-Christmas Holidays: from December 24 until January 6<br>
+-University Day Three Hierarchs: January 30<br>
+-Green Monday<br>
+-National Day: 25 March<br>
+-Easter Holidays: from Saturday Lazarus until Low Sunday<br>
+-May 1<br>
+-Day of student elections</p>
