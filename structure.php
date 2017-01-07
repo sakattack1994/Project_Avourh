@@ -8,9 +8,9 @@ function process_file($f){
     $f=2;
   }
   else{
-    unlink($_SERVER['DOCUMENT_ROOT']."/myDepartment/myresources/departmentCommittees.txt");
+    unlink($_SERVER['DOCUMENT_ROOT']."/myDepartment/myresources/structure.txt");
     move_uploaded_file($_FILES["file"]["tmp_name"],$_SERVER['DOCUMENT_ROOT'] .'/myDepartment/myresources/'.$_FILES['file']['name']);
-    rename("myresources/".$_FILES['file']['name'],"myresources/departmentCommittees.txt");
+    rename("myresources/".$_FILES['file']['name'],"myresources/structure.txt");
     $f=1;
   }
   return $f;
@@ -27,26 +27,26 @@ function process_file($f){
   }
   if(isset($_POST['edit'])){
     $txt=$_POST['edit'];
-    $myfile = fopen("myresources/departmentCommittees.txt", "w") or die("Unable to open file!");
+    $myfile = fopen("myresources/structure.txt", "w") or die("Unable to open file!");
     ftruncate($myfile, 0);
     fwrite($myfile, $txt);
     fclose($myfile);
     $alert="<div class=\"alert alert-success\"><strong>The edit was successful.</strong></div>";
   }
-  $myfile = fopen("myresources/departmentCommittees.txt", "r") or die("Unable to open file!");
-  $page=fread($myfile,filesize("myresources/departmentCommittees.txt"));
+  $myfile = fopen("myresources/structure.txt", "r") or die("Unable to open file!");
+  $page=fread($myfile,filesize("myresources/structure.txt"));
   $content="<div class=\"col-md-9\"><div id=\"content\">
       ".$page."
       <br>  <br>  <br>
       ".$alert."
-      <form action=\"departmentCommittees.php\" id=\"edit_page\" method=\"POST\">
+      <form action=\"structure.php\" id=\"edit_page\" method=\"POST\">
             <h3>If you want to edit this edit this page, enter your text below and press edit:</h3>
             <textarea type=\"text\" rows=\"10\" cols=\"100\" name=\"edit\">".$page."</textarea>
             <br>
             <input type=\"submit\" value=\"EDIT\" class=\"add_new_button\">
       </form>
 
-      <form enctype=\"multipart/form-data\" action=\"departmentCommittees.php\" method=\"post\">
+      <form enctype=\"multipart/form-data\" action=\"structure.php\" method=\"post\">
         <label><h3>Replace this page with a new txt file:</h3></label>
         <input name=\"file\" type=\"file\" id=\"file\"  >
         <input type=\"submit\" class=\"add_new_button\" value=\"&#9546;REPLACE\">

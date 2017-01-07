@@ -1,5 +1,5 @@
 <h1>Health and Safety</h1>
-
+<br>
 <p> The Department applies the Occupational Health and Safety policies of the University.
 You can find more information at the official University H&S website <a href="http://osh.upatras.gr/" target="_blank">http://osh.upatras.gr</a></p>
 

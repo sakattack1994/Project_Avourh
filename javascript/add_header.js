@@ -16,23 +16,10 @@ function add_header(){
 						<ul class=\"sub-menu\">\
 							<li class=\"bgnone\"><a href=\"welcome.php\">Welcome</a></li>\
 							<li><a href=\"history.php\">History</a></li>\
-							<li>Structure</li>\
+							<li><a href=\"structure.php\">Structure</a></li>\
               <li><a href=\"secretariat.php\">Secretariat</a></li>\
               <li><a href=\"departmentCommittees.php\">Department Committees</a></li>\
               <li><a href=\"healthAndSafety.php\">Health and Safety</a></li>\
-							<li>\
-								Department Scientific Events\
-								<ul class=\"sub-menu\">\
-									<li>'Green Electric Power and Smart Grids' Workshop</li>\
-								</ul>\
-							</li>\
-              <li>\
-								Department Events\
-								<ul class=\"sub-menu\">\
-									<li></li>\
-								</ul>\
-							</li>\
-              <li>Alumni</li>\
 						</ul>\
 					</li>\
 					<li>\
@@ -45,6 +32,7 @@ function add_header(){
 								<ul class=\"sub-menu\">\
 									<li><a href=\"regulation.php\">Regulation</a></li>\
                   <li><a href=\"courses.php\">Courses</a></li>\
+                  <li><a href=\"divisions.php\">Divisions</a></li>\
                   <li><a href=\"study_schedule.php\">Study Schedule</a></li>\
                   <li><a href=\"lesson_declaration_rules.php\">Lesson Declaration Rules</a></li>\
                   <li><a href=\"graduation_rules.php\">Graduation Rules</a></li>\
@@ -69,15 +57,6 @@ function add_header(){
             </ul>\
           </li>\
           <li>\
-    						Research + &nbsp;&nbsp;\
-    					<ul class=\"sub-menu\">\
-    							<li>Divisions</li>\
-    							<li>Laboratories</li>\
-    							<li>Publications</li>\
-                  <li>Awards</li>\
-              </ul>\
-          </li>\
-          <li>\
     						Personnel + &nbsp;&nbsp;\
     					<ul class=\"sub-menu\">\
     							<li><a href=\"faculty_show.php\">Faculty</a></li>\
@@ -89,48 +68,12 @@ function add_header(){
                   <li>Administrative Staff</li>\
               </ul>\
           </li>\
-          <li>\
-    						Evaluation Reports + &nbsp;&nbsp;\
-    					<ul class=\"sub-menu\">\
-    							<li>Internal</li>\
-    							<li>External</li>\
-              </ul>\
-          </li>\
           <li><a href=\"announcements.php\">Announcements</a> &nbsp;&nbsp;</li>\
           <li>\
                 Information + &nbsp;&nbsp;\
               <ul class=\"sub-menu\">\
-                  <li>Location</li>\
+                  <li><a href=\"location.php\">Location</a></li>\
                   <li>Maps</li>\
-                  <li>\
-    								Links\
-    								<ul class=\"sub-menu\">\
-    									<li>Universities</li>\
-                      <li>Research Institutions</li>\
-                      <li>Research Societies</li>\
-                      <li>Government Institutions</li>\
-                      <li>Websites</li>\
-    								</ul>\
-    							</li>\
-                  <li>\
-    								Student Care\
-    								<ul class=\"sub-menu\">\
-    									<li>Residence</li>\
-                      <li>Meals</li>\
-                      <li>Library</li>\
-                      <li>Athletics University Gymnasium</li>\
-                      <li>Health Care</li>\
-                      <li>Foreign Student Admission</li>\
-    								</ul>\
-    							</li>\
-                  <li>\
-    								General\
-    								<ul class=\"sub-menu\">\
-    									<li>Transportation</li>\
-                      <li>Cultural Events</li>\
-                      <li>Secretariat of the Department</li>\
-    								</ul>\
-    							</li>\
               </ul>\
           </li>\
 				</ul>\

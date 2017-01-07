@@ -1,0 +1,48 @@
+<h2>Divisions</h2>
+  
+
+<p style="text-align: left;">The backbone of post-graduate studies is the Research and Development (R&D) that is being carried out in the Department of Electrical & Computer Engineering. <br>
+As a rule, the research is conducted in the existing Laboratories of the Department, within the framework of the research programs of each Laboratory (cf. The Department of Electrical & Computer Engineering, Areas of Activity). <br>
+The research programs are supported either by current state funding awarded to the University Laboratories, or by non-university institutions (The General Secretariat of Research and Technology, Industry, the EU, etc.) which, by various means, fund research and development at the University. <br>
+Ever since it was founded, the Department of Electrical & Computer Engineering has developed intense activity in research as well as in development. Its participation in international research projects, and its collaboration with the industry is of special importance. <br>
+The result of this effort is manifested in the high number of doctorates awarded and of papers presented at international conferences and published in international journals.</p>
+
+<p style="text-align: left; color:rgb(41,127,184);"><b>Telecommunications & Information Technology (TTP)</p>
+
+<p style="text-align: left;"><b>(E&CE Building, 3rd floor)</b> <br>
+<b>Director: Professor Nikos Fakotakis</b> <br>
+The Division of Telecommunications and Information Technology has as its goal education and research in modern telecommunications, and in information technology. 
+Specifically, the subjects of its activity are in the areas: Electromagnetic fields. 
+Wave propaga-tion and Antennae design. Telecommunications Systems. Multimedia Communications. Telephone Systems. Broadband Telecommunication Networks. 
+Teletraffic Engineering. Information Systems. Information Theory. Computer Networks. 
+Telematics. Speech and Natural Language Processing. Electroacoustics.
+The Division has 15 faculty members, and three undergraduate and research laboratories, i.e. the Wire Communications Laboratory, the Wireless Communications Laboratory, the Laboratory of Electromagnetics.
+The Laboratories of the Division are well equipped with state of the art equipment, computers and CAD/ CAM systems. 
+The Laboratories participate in many EU projects (ESPRIT, RACE, etc.) and projects of the Greek Ministry of Research and Technology. 
+Approximately 50 Doctoral candidates are preparing their research thesis in the laboratories of the Division.Generally, the Division of Telecommunications & Information Technology has given emphasis to applied education and research. 
+Therefore, it has developed cooperation with industry in Greece and abroad and many developed products have reached the phase of industrial exploitation.</p>
+
+<p style="text-align: left; color:rgb(41,127,184);"><b>Electric Power Systems (SHE)</p>
+
+<p style="text-align: left;">
+<b>(E&CE Building, Wing of Power Laboratories)</b><br>
+<b>Director: Professor Antonios Alexandridis</b><br>
+The Electric Power Division has as its primary objective to educate Electrical Engineering students in the general field of Electrical Energy Systems, and to conduct research in this field. This field consists of the following basic areas of study: Structure of electrical machines and analysis of the steady state and transient operation. Electric drive systems. Methods of electric power generation. Modelling of basic power system components. Power system stability. Electrical installations. Systems of renewable energy sources. High voltage generation and measurements. Dielectric stresses. Insulating materials. Magnetic and dielectric properties of materials. <br>
+The objects of research coincide with the above mentioned fields. According to the program of study of the Electrical Computer Engineering Department, all students take courses in the basic subjects offered by other divisions of the Department irrespective of the specialisation which will be finally selected. This specialisation starts at the beginning of the 7th semester when students have to follow the study program offered by one of the four Divisions of the Department. Students following the program of study of the Electric Power Division, as well as students from other Divisions selecting some Power courses, have the opportunity to study topics of the above mentioned subjects in depth. The basic goal is to prepare the students in order to meet, as Electrical Engineers, the specific requirements in different fields of their future activities. The range of these activities, besides the research interests, is development and production of electric machinery, devices and electrical equipment, planning, construction and operation of electric power systems, electric networks, industrial electrical installations, design and operation for production units of industrial products, etc. <br>
+The accomplishment of the teaching and research goals of the Electric Power Division is undertaken by the staff of its laboratories. These laboratories are housed in the Power Laboratories building which has been specially constructed for installation of heavy laboratory equipment. Its infrastructure includes an up to date system for the supply of high power with variable voltage and frequency.</p>
+
+<p style="text-align: left; color:rgb(41,127,184);"><b>Electronics and Computer (H/Y)</p>
+
+<p style="text-align: left;"><b>(E&CE Building, 2nd Floor)</b><br>
+<b>Director: Professor Efthymios Housos</b><br>
+The mission of the Division of Electronics & Computers is to educate our students and do research in electronics, signals and computer technology. More specifically, the themes of its activity are in the areas: Analogue and Digital Electronics, Microelectronics, Telecommunication Electronics, Computer Aided Design of Integrated Circuits, Microprocessors, Wireless Technology, Networked Embedded Systems, Real Time Distributed Systems, DSPs for Image Processing and Base-band Algorithms, Software Engineering, Operating Systems, Data Bases, Distributed and Ubiquitous Computing.<br> <br>
+The Division has 14 faculty members and four main laboratories that are organized in such a way so as to offer quality education at the undergraduate level and the necessary infrastructure for research at the graduate level. These laboratories are: the Applied Electronics Laboratory, the VLSI Design Laboratory, the Computer Systems Laboratory and the Digital Signal Processing Laboratory.<br> <br>
+The Laboratories of the Division are well equipped with state-of-the-art equipment, computers and design automation tools. They participate in many EU programs and projects of the Greek Ministry of Research and Technology. Many Doctoral candidates are doing their research thesis in the laboratories of the Division. Approximately, 10-15 Ph.D. students complete their degree every year in this division.</p>
+
+<p style="text-align: left; color:rgb(41,127,184);"><b>Systems and Control (SAE)</p>
+
+<p style="text-align: left;">(E&CE Building 1st Floor)</b><br>
+<b>Director: Professor Nick Koussoulas</b><br>
+The Division of Systems and Control has as its primary objective the training of students and undertaking of research in the area of Systems and Control. The academic activities of the Division are in the following areas: Electrical Circuit Analysis, Measurements Methodology, Signal and System Analysis, Automatic Control Systems, Dynamic System Analysis, Digital Control, Industrial Automation, Numeric and Digital Methods in System Design, Optimisation and Optimal Control, Adaptive Control, Expert Systems and Artificial Intelligence, Robotics, and a variety of special topics in System Design and Automatic Control. The program of study of the Division is augmented by relevant courses offered by the other Divisions of the Department.<br> <br>
+The Division has nine Faculty members and three laboratories: Systems and Measurements, Automatic Control, Automation and Robotics. In addition, there is a divisional laboratory facility  for the more efficient support of research and teaching of common interest to its faculty.<br> <br>
+The Laboratories are equipped with modern equipment for the educational needs of the departmental and divisional curriculum. Furthermore, there is the necessary equipment and computer facilities to support research on a theoretical level, and for industrial automation, control of industrial processes, robotics, navigation systems, CIM, etc. Current research of the Division is financed by the University as well as by external sources such as Greek Industry, the EC, the Greek General Secretariat for Research and Technology, et al.

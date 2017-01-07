@@ -39,3 +39,6 @@ function new_book() {
   $('#update_table').append("<tr><td>New Book(ISBN) "+k+":</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_book_new"+k+"\" style=\"height:100%; width:100%;\"></td></tr>");
   k=k+1;
 };
+function new_doc() {
+  $('#Γενικά έντυπα ετήσεων').append("<p>maria</p>");
+};
