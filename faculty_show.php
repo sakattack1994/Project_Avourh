@@ -8,7 +8,7 @@ $sql='SET NAMES utf8';
 $result = $conn->query($sql);
 $table="<table class=\"table table-bordered table-hover\">";
 $table.="<form action=\"professor_show.php\" method=\"POST\">";
-$sql = "SELECT * FROM professors WHERE Role=\"Καθηγητης\"";
+$sql = "SELECT * FROM professors WHERE Role=\"Καθηγητής\" OR Role=\"Αναπληρωτής καθηγητής\" OR Role=\"Επίκουρος καθηγητής\"";
 $result = $conn->query($sql);
 $i=0;
 while($prof = $result->fetch_assoc()){
