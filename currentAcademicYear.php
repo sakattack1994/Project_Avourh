@@ -1,21 +1,21 @@
 <?php
   $alert="";
   if(isset($_POST['header']) OR isset($_POST['paragraph'])){
-    $myfile = fopen("myresources/location.txt", "w") or die("Unable to open file!");
+    $myfile = fopen("myresources/currentAcademicYear.txt", "w") or die("Unable to open file!");
     ftruncate($myfile, 0);
-    fwrite($myfile,"<h2>".$_POST['header']."</h2><br><p id=\"paragraph\" style=\"text-align:left;\">".$_POST['paragraph']."</p>");
+    fwrite($myfile,"<h2>".$_POST['header']."</h2><p id=\"paragraph\">".$_POST['paragraph']."</p>");
     fclose($myfile);
     $alert="<div class=\"alert alert-success\"><strong>The edit was successful.</strong></div>";
   }
-  $myfile = fopen("myresources/location.txt", "r") or die("Unable to open file!");
-  $page=fread($myfile,filesize("myresources/location.txt"));
+  $myfile = fopen("myresources/currentAcademicYear.txt", "r") or die("Unable to open file!");
+  $page=fread($myfile,filesize("myresources/currentAcademicYear.txt"));
   $page=nl2br($page);
 
   preg_match('/<h2>(.*?)<\/h2>/siU',$page,$getTheHeader);
   $header=$getTheHeader[1];
   $header = html_entity_decode(strip_tags($header));
 
-  preg_match('/<p id=\"paragraph\" style=\"text-align:left;\">(.*?)<\/p>/siU',$page,$getTheP);
+  preg_match('/<p id=\"paragraph\">(.*?)<\/p>/siU',$page,$getTheP);
   $paragraph=$getTheP[1];
   $paragraph = html_entity_decode(strip_tags($paragraph));
 
@@ -23,7 +23,7 @@
       ".$page."
       <br>  <br>  <br>
       ".$alert."
-      <form action=\"location.php\" id=\"edit_page\" method=\"POST\">
+      <form action=\"currentAcademicYear.php\" id=\"edit_page\" method=\"POST\">
         <div class=\"form-group\">
             <h2 style=\"color:blue;\">Edit this page:</h2>
             <br>
@@ -31,7 +31,7 @@
             <textarea type=\"text\" rows=\"2\" cols=\"10\" class=\"form-control\" name=\"header\">".$header."</textarea>
             <br>
             <h3>Page Content:</h3>
-            <textarea type=\"text\" rows=\"15\" cols=\"10\" class=\"form-control\" name=\"paragraph\">".$paragraph."</textarea>
+            <textarea type=\"text\" rows=\"10\" cols=\"10\" class=\"form-control\" name=\"paragraph\">".$paragraph."</textarea>
             <br>
             <input type=\"submit\" value=\"EDIT\" class=\"add_new_button\">
         </div>

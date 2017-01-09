@@ -1,55 +1,40 @@
 <?php
-function process_file($f){
-  $name=$_FILES['file']['name'];
-  if($_FILES["file"]["error"]>0){
-    $f=2;
-  }
-  elseif(substr($name, -4)!=".txt"){
-    $f=2;
-  }
-  else{
-    unlink($_SERVER['DOCUMENT_ROOT']."/myDepartment/myresources/healthAndSafety.txt");
-    move_uploaded_file($_FILES["file"]["tmp_name"],$_SERVER['DOCUMENT_ROOT'] .'/myDepartment/myresources/'.$_FILES['file']['name']);
-    rename("myresources/".$_FILES['file']['name'],"myresources/healthAndSafety.txt");
-    $f=1;
-  }
-  return $f;
-}
-  $f=0;
   $alert="";
-  if(isset($_FILES["file"]["name"])){
-    $f=process_file($f);
-  }
-  if($f==1){
-    $alert="<div class=\"alert alert-success\"><strong>Upload was successfully commited.</strong></div>";
-  }elseif ($f==2) {
-    $alert="<div class=\"alert alert-danger\"><strong>Upload wasn't commited. Maybe it's not a .txt file</strong></div>";
-  }
-  if(isset($_POST['edit'])){
-    $txt=$_POST['edit'];
+  if(isset($_POST['header']) OR isset($_POST['paragraph'])){
     $myfile = fopen("myresources/healthAndSafety.txt", "w") or die("Unable to open file!");
     ftruncate($myfile, 0);
-    fwrite($myfile, $txt);
+    fwrite($myfile,"<h2>".$_POST['header']."</h2><br><p id=\"paragraph\">".$_POST['paragraph']."</p>");
     fclose($myfile);
     $alert="<div class=\"alert alert-success\"><strong>The edit was successful.</strong></div>";
   }
   $myfile = fopen("myresources/healthAndSafety.txt", "r") or die("Unable to open file!");
   $page=fread($myfile,filesize("myresources/healthAndSafety.txt"));
+  $page=nl2br($page);
+
+  preg_match('/<h2>(.*?)<\/h2>/siU',$page,$getTheHeader);
+  $header=$getTheHeader[1];
+  $header = html_entity_decode(strip_tags($header));
+
+  preg_match('/<p id=\"paragraph\">(.*?)<\/p>/siU',$page,$getTheP);
+  $paragraph=$getTheP[1];
+  $paragraph = html_entity_decode(strip_tags($paragraph));
+
   $content="<div class=\"col-md-9\"><div id=\"content\">
       ".$page."
       <br>  <br>  <br>
       ".$alert."
       <form action=\"healthAndSafety.php\" id=\"edit_page\" method=\"POST\">
-            <h3>If you want to edit this edit this page, enter your text below and press edit:</h3>
-            <textarea type=\"text\" rows=\"10\" cols=\"100\" name=\"edit\">".$page."</textarea>
+        <div class=\"form-group\">
+            <h2 style=\"color:blue;\">Edit this page:</h2>
+            <br>
+            <h3>Page Header:</h3>
+            <textarea type=\"text\" rows=\"2\" cols=\"10\" class=\"form-control\" name=\"header\">".$header."</textarea>
+            <br>
+            <h3>Page Content:</h3>
+            <textarea type=\"text\" rows=\"10\" cols=\"10\" class=\"form-control\" name=\"paragraph\">".$paragraph."</textarea>
             <br>
             <input type=\"submit\" value=\"EDIT\" class=\"add_new_button\">
-      </form>
-
-      <form enctype=\"multipart/form-data\" action=\"healthAndSafety.php\" method=\"post\">
-        <label><h3>Replace this page with a new txt file:</h3></label>
-        <input name=\"file\" type=\"file\" id=\"file\"  >
-        <input type=\"submit\" class=\"add_new_button\" value=\"&#9546;REPLACE\">
+        </div>
       </form>
   </div></div>
   <div class=\"col-md-3\"><div id=\"side_bar\"></div></div>";

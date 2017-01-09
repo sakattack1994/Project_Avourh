@@ -26,7 +26,7 @@ function add_header(){
 						Education + &nbsp;&nbsp;\
 						<ul class=\"sub-menu\">\
 							<li><a href=\"study_guide.php\">Study Guide</a></li>\
-							<li><a href=\"current_academic_year.php\">Current Academic Year</li>\
+							<li><a href=\"currentAcademicYear.php\">Current Academic Year</li>\
               <li>\
 								Undergraduate Subjects\
 								<ul class=\"sub-menu\">\

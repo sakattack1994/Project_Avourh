@@ -1,7 +1,7 @@
-<h1>Health and Safety</h1>
-<br>
-<p> The Department applies the Occupational Health and Safety policies of the University.
-You can find more information at the official University H&S website <a href="http://osh.upatras.gr/" target="_blank">http://osh.upatras.gr</a></p>
+<h2>Health and Safety</h2>
+<p id="paragraph">The Department applies the Occupational Health and Safety policies of the University.
+You can find more information at the official University H&S website <a href="http://osh.upatras.gr/" target="_blank">http://osh.upatras.gr</a>
 
-<p>For Health and Safety problems or incidents in our Department you can contact the H&S commitee at
-<a href="mailto:chs_ece@ece.upatras.gr" target="_blank">chs_ece@ece.upatras.gr</a></p>
+For Health and Safety problems or incidents in our Department you can contact the H&S commitee at
+<a href="mailto:chs_ece@ece.upatras.gr" target="_blank">chs_ece@ece.upatras.gr</a>
+</p>

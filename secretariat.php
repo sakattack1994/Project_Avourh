@@ -1,58 +1,68 @@
 <?php
-function process_file($f){
-  $name=$_FILES['file']['name'];
-  if($_FILES["file"]["error"]>0){
-    $f=2;
-  }
-  elseif(substr($name, -4)!=".txt"){
-    $f=2;
-  }
-  else{
-    unlink($_SERVER['DOCUMENT_ROOT']."/myDepartment/myresources/secretariat.txt");
-    move_uploaded_file($_FILES["file"]["tmp_name"],$_SERVER['DOCUMENT_ROOT'] .'/myDepartment/myresources/'.$_FILES['file']['name']);
-    rename("myresources/".$_FILES['file']['name'],"myresources/secretariat.txt");
-    $f=1;
-  }
-  return $f;
-}
-  $f=0;
   $alert="";
-  if(isset($_FILES["file"]["name"])){
-    $f=process_file($f);
-  }
-  if($f==1){
-    $alert="<div class=\"alert alert-success\"><strong>Upload was successfully commited.</strong></div>";
-  }elseif ($f==2) {
-    $alert="<div class=\"alert alert-danger\"><strong>Upload wasn't commited. Maybe it's not a .txt file</strong></div>";
-  }
-  if(isset($_POST['edit'])){
-    $txt=$_POST['edit'];
+  if(isset($_POST['header']) OR isset($_POST['paragraph'])){
     $myfile = fopen("myresources/secretariat.txt", "w") or die("Unable to open file!");
     ftruncate($myfile, 0);
-    fwrite($myfile, $txt);
+    fwrite($myfile,"<h2>".$_POST['header']."</h2><p id=\"par1\">".$_POST['par1']."</p><p id=\"par2\" style=\"text-align:left;\">".$_POST['par2']."</p><p id=\"par3\" style=\"text-align:left;\">".$_POST['par3']."</p><p id=\"par4\" style=\"text-align:left;\">".$_POST['par4']."</p>");
     fclose($myfile);
     $alert="<div class=\"alert alert-success\"><strong>The edit was successful.</strong></div>";
   }
   $myfile = fopen("myresources/secretariat.txt", "r") or die("Unable to open file!");
   $page=fread($myfile,filesize("myresources/secretariat.txt"));
-  $content="<div class=\"col-md-9\"><div id=\"content\">
-      ".$page."
-      <br>  <br>  <br>
-      ".$alert."
-      <form action=\"secretariat.php\" id=\"edit_page\" method=\"POST\">
-            <h3>If you want to edit this edit this page, enter your text below and press edit:</h3>
-            <textarea type=\"text\" rows=\"10\" cols=\"100\" name=\"edit\">".$page."</textarea>
-            <br>
-            <input type=\"submit\" value=\"EDIT\" class=\"add_new_button\">
-      </form>
+  $page=nl2br($page);
 
-      <form enctype=\"multipart/form-data\" action=\"secretariat.php\" method=\"post\">
-        <label><h3>Replace this page with a new txt file:</h3></label>
-        <input name=\"file\" type=\"file\" id=\"file\"  >
-        <input type=\"submit\" class=\"add_new_button\" value=\"&#9546;REPLACE\">
-      </form>
+  preg_match('/<h2>(.*?)<\/h2>/siU',$page,$getTheHeader);
+  $header=$getTheHeader[1];
+  $header = html_entity_decode(strip_tags($header));
+
+  $par1="";
+  $start = strpos($page, "<p id=\"par1\">");
+  $end = strpos($page, '</p>', $start);
+  $par1 = substr($page, $start, $end-$start+4);
+  $par1 = html_entity_decode(strip_tags($par1));
+  $par2="";
+  $par3="";
+  $par4="";
+  for($i=2;$i<5;$i++){
+    $start = strpos($page, "<p id=\"par".$i."\" style=\"text-align:left;\">");
+    $end = strpos($page, '</p>', $start);
+    if ($i==2) {
+      $par2 = substr($page, $start, $end-$start+4);
+      $par2 = html_entity_decode(strip_tags($par2));
+    }elseif ($i==3) {
+      $par3 = substr($page, $start, $end-$start+4);
+      $par3 = html_entity_decode(strip_tags($par3));
+    }else{
+      $par4 = substr($page, $start, $end-$start+4);
+      $par4 = html_entity_decode(strip_tags($par4));
+    }
+  }
+
+  $content="<div class=\"col-md-9\"><div id=\"content\">
+  ".$page."
+  <br>  <br>  <br>
+  ".$alert."
+  <form action=\"secretariat.php\" id=\"edit_page\" method=\"POST\">
+    <div class=\"form-group\">
+        <h2 style=\"color:blue;\">Edit this page:</h2>
+        <br>
+        <h3>Page Header:</h3>
+        <textarea type=\"text\" rows=\"2\" cols=\"10\" class=\"form-control\" name=\"header\">".$header."</textarea>
+        <br>
+        <h3>Paragraph 1:</h3>
+        <textarea type=\"text\" rows=\"10\" cols=\"10\" class=\"form-control\" name=\"par1\">".$par1."</textarea>
+        <h3>Paragraph 2:</h3>
+        <textarea type=\"text\" rows=\"10\" cols=\"10\" class=\"form-control\" name=\"par2\">".$par2."</textarea>
+        <h3>Paragraph 3:</h3>
+        <textarea type=\"text\" rows=\"10\" cols=\"10\" class=\"form-control\" name=\"par3\">".$par3."</textarea>
+        <h3>Paragraph 4:</h3>
+        <textarea type=\"text\" rows=\"10\" cols=\"10\" class=\"form-control\" name=\"par4\">".$par4."</textarea>
+        <br>
+        <input type=\"submit\" value=\"EDIT\" class=\"add_new_button\">
+    </div>
+  </form>
   </div></div>
   <div class=\"col-md-3\"><div id=\"side_bar\"></div></div>";
   include 'WebPageTemplate.php';
   fclose($myfile);
-?>
+  ?>

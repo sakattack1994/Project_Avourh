@@ -32,12 +32,12 @@
     <br>
     ";
   }
-  $prof_list="";
   $sql = "SELECT Title,LessonID FROM lessons WHERE Semester=2";
   $result = $conn->query($sql);
   while($temp = $result->fetch_assoc()){
     $sql = "SELECT ProfessorID,FirstName,LastName FROM professors";
     $profs = $conn->query($sql);
+    $prof_list="";
     while($temp2 = $profs->fetch_assoc()){
       $prof_list.="<input type=\"checkbox\" name=\"2s".$temp['LessonID']."[]\" value=\"".$temp2['ProfessorID']."\">".$temp2['LastName']." ".$temp2['FirstName'];
     }
@@ -48,12 +48,12 @@
     <br>
     ";
   }
-  $prof_list="";
   $sql = "SELECT Title,LessonID FROM lessons WHERE Semester=3";
   $result = $conn->query($sql);
   while($temp = $result->fetch_assoc()){
     $sql = "SELECT ProfessorID,FirstName,LastName FROM professors";
     $profs = $conn->query($sql);
+    $prof_list="";
     while($temp2 = $profs->fetch_assoc()){
       $prof_list.="<input type=\"checkbox\" name=\"3s".$temp['LessonID']."[]\" value=\"".$temp2['ProfessorID']."\">".$temp2['LastName']." ".$temp2['FirstName'];
     }
@@ -64,12 +64,12 @@
     <br>
       ";
   }
-  $prof_list="";
   $sql = "SELECT Title,LessonID FROM lessons WHERE Semester=4";
   $result = $conn->query($sql);
   while($temp = $result->fetch_assoc()){
     $sql = "SELECT ProfessorID,FirstName,LastName FROM professors";
     $profs = $conn->query($sql);
+    $prof_list="";
     while($temp2 = $profs->fetch_assoc()){
       $prof_list.="<input type=\"checkbox\" name=\"4s".$temp['LessonID']."[]\" value=\"".$temp2['ProfessorID']."\">".$temp2['LastName']." ".$temp2['FirstName'];
     }
@@ -80,12 +80,12 @@
     <br>
     ";
   }
-  $prof_list="";
   $sql = "SELECT Title,LessonID FROM lessons WHERE Semester=5";
   $result = $conn->query($sql);
   while($temp = $result->fetch_assoc()){
     $sql = "SELECT ProfessorID,FirstName,LastName FROM professors";
     $profs = $conn->query($sql);
+    $prof_list="";
     while($temp2 = $profs->fetch_assoc()){
       $prof_list.="<input type=\"checkbox\" name=\"5s".$temp['LessonID']."[]\" value=\"".$temp2['ProfessorID']."\">".$temp2['LastName']." ".$temp2['FirstName'];
     }
@@ -96,12 +96,12 @@
     <br>
     ";
   }
-  $prof_list="";
   $sql = "SELECT Title,LessonID FROM lessons WHERE Semester=6";
   $result = $conn->query($sql);
   while($temp = $result->fetch_assoc()){
     $sql = "SELECT ProfessorID,FirstName,LastName FROM professors";
     $profs = $conn->query($sql);
+    $prof_list="";
     while($temp2 = $profs->fetch_assoc()){
       $prof_list.="<input type=\"checkbox\" name=\"6s".$temp['LessonID']."[]\" value=\"".$temp2['ProfessorID']."\">".$temp2['LastName']." ".$temp2['FirstName'];
     }
@@ -112,12 +112,12 @@
     <br>
     ";
   }
-  $prof_list="";
   $sql = "SELECT Title,LessonID FROM lessons WHERE Semester=7";
   $result = $conn->query($sql);
   while($temp = $result->fetch_assoc()){
     $sql = "SELECT ProfessorID,FirstName,LastName FROM professors";
     $profs = $conn->query($sql);
+    $prof_list="";
     while($temp2 = $profs->fetch_assoc()){
       $prof_list.="<input type=\"checkbox\" name=\"7s".$temp['LessonID']."[]\" value=\"".$temp2['ProfessorID']."\">".$temp2['LastName']." ".$temp2['FirstName'];
     }
@@ -128,12 +128,12 @@
     <br>
     ";
   }
-  $prof_list="";
   $sql = "SELECT Title,LessonID FROM lessons WHERE Semester=8";
   $result = $conn->query($sql);
   while($temp = $result->fetch_assoc()){
     $sql = "SELECT ProfessorID,FirstName,LastName FROM professors";
     $profs = $conn->query($sql);
+    $prof_list="";
     while($temp2 = $profs->fetch_assoc()){
       $prof_list.="<input type=\"checkbox\" name=\"8s".$temp['LessonID']."[]\" value=\"".$temp2['ProfessorID']."\">".$temp2['LastName']." ".$temp2['FirstName'];
     }
@@ -144,12 +144,12 @@
     <br>
     ";
   }
-  $prof_list="";
   $sql = "SELECT Title,LessonID FROM lessons WHERE Semester=9";
   $result = $conn->query($sql);
   while($temp = $result->fetch_assoc()){
     $sql = "SELECT ProfessorID,FirstName,LastName FROM professors";
     $profs = $conn->query($sql);
+    $prof_list="";
     while($temp2 = $profs->fetch_assoc()){
       $prof_list.="<input type=\"checkbox\" name=\"9s".$temp['LessonID']."[]\" value=\"".$temp2['ProfessorID']."\">".$temp2['LastName']." ".$temp2['FirstName'];
     }
@@ -160,12 +160,12 @@
     <br>
     ";
   }
-  $prof_list="";
   $sql = "SELECT Title,LessonID FROM lessons WHERE Semester=10";
   $result = $conn->query($sql);
   while($temp = $result->fetch_assoc()){
     $sql = "SELECT ProfessorID,FirstName,LastName FROM professors";
     $profs = $conn->query($sql);
+    $prof_list="";
     while($temp2 = $profs->fetch_assoc()){
       $prof_list.="<input type=\"checkbox\" name=\"10s".$temp['LessonID']."[]\" value=\"".$temp2['ProfessorID']."\">".$temp2['LastName']." ".$temp2['FirstName'];
     }
