@@ -73,7 +73,6 @@ function add_header(){
                 Information + &nbsp;&nbsp;\
               <ul class=\"sub-menu\">\
                   <li><a href=\"location.php\">Location</a></li>\
-                  <li>Maps</li>\
               </ul>\
           </li>\
 				</ul>\

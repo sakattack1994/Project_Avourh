@@ -1,10 +1,5 @@
-<h2>Structure</h2>
-<p id="par1"><font style="color:rgb(41,127,184); font-size:20px;">Head of the Department</font>
-
-<font style="text-align: center;">Professor Stauros Koumpias</font></p>
-<p id="par2"><font style="color:rgb(41,127,184); font-size:20px;">Directors of Divisions</font>
-
-Director of the Division of Telecommunications & Information Technology: Nikos Fakwtakis
+<h2>Structure</h2><p id="header1" style="color:rgb(41,127,184); font-size:20px;">Head of the Department</p><p id="par1" style="text-align:center;">Professor Stauros Koumpias</p>
+<p id="header2" style="color:rgb(41,127,184); font-size:20px;">Directors of Divisions</p><p id="par2" style="text-align:center;">Director of the Division of Telecommunications & Information Technology: Nikos Fakwtakis
 Director of the Division of Electric Power: Antwnios Alexandridis
 Director of the Division of Electronics & Computers: Efthymios Housos
 Director of the Division of Systems & Automatic Control: Nikos Koussoulas</p>

@@ -3,7 +3,7 @@
   if(isset($_POST['header']) OR isset($_POST['paragraph'])){
     $myfile = fopen("myresources/secretariat.txt", "w") or die("Unable to open file!");
     ftruncate($myfile, 0);
-    fwrite($myfile,"<h2>".$_POST['header']."</h2><p id=\"par1\">".$_POST['par1']."</p><p id=\"par2\" style=\"text-align:left;\">".$_POST['par2']."</p><p id=\"par3\" style=\"text-align:left;\">".$_POST['par3']."</p><p id=\"par4\" style=\"text-align:left;\">".$_POST['par4']."</p>");
+    fwrite($myfile,"<h2>".$_POST['header']."</h2><p id=\"par1\" style=\"text-align:left;\">".$_POST['par1']."</p><p id=\"par2\" style=\"text-align:left;\">".$_POST['par2']."</p><p id=\"par3\" style=\"text-align:left;\">".$_POST['par3']."</p><p id=\"par4\" style=\"text-align:left;\">".$_POST['par4']."</p>");
     fclose($myfile);
     $alert="<div class=\"alert alert-success\"><strong>The edit was successful.</strong></div>";
   }
@@ -16,17 +16,17 @@
   $header = html_entity_decode(strip_tags($header));
 
   $par1="";
-  $start = strpos($page, "<p id=\"par1\">");
-  $end = strpos($page, '</p>', $start);
-  $par1 = substr($page, $start, $end-$start+4);
-  $par1 = html_entity_decode(strip_tags($par1));
   $par2="";
   $par3="";
   $par4="";
-  for($i=2;$i<5;$i++){
+  for($i=1;$i<5;$i++){
     $start = strpos($page, "<p id=\"par".$i."\" style=\"text-align:left;\">");
     $end = strpos($page, '</p>', $start);
-    if ($i==2) {
+    if ($i==1) {
+      $par1 = substr($page, $start, $end-$start+4);
+      $par1 = html_entity_decode(strip_tags($par1));
+    }
+    elseif ($i==2) {
       $par2 = substr($page, $start, $end-$start+4);
       $par2 = html_entity_decode(strip_tags($par2));
     }elseif ($i==3) {
