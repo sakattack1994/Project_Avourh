@@ -1,8 +1,4 @@
-1) evgala to lesson pou sindeetai mia anakoinwsh
-
-
-2) 8a exoume 2 odhgous spoudwn giati exoume mono 2 pinakes gia tous professor lessons
-
+1) evgala to lesson pou sindeetai mia anakoinwsh*
 
 3)to enroll se ma8imata pou diagraf8ikan
 
@@ -12,8 +8,9 @@ STOXOI:
 1-EDIT LESSON(1-TA SXOLIA)
 5-ENROLL STO MA8IMA
 6-UNENROLL
-7-ama exw ore3h diaxeiristikothta sta sketa koumpia(MARIA)
-8-na testarw ta scientific publications
 
 
 !!!! na valw checkbox me default times se diafora add
+************************************************************
+parathrhseis gia th maria:
+1)to menu sth mesh

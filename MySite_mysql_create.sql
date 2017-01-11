@@ -96,7 +96,7 @@ CREATE TABLE `Lesson_Book` (
 CREATE TABLE `ScientificPublications` (
 	`PublicationID` varchar(100) NOT NULL  ,
 	`Title` varchar(100) NOT NULL,
-	`YearOfPublish` DATE NOT NULL,
+	`YearOfPublish` varchar(100) NOT NULL,
 	PRIMARY KEY (`PublicationID`)
 );
 

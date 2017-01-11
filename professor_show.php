@@ -33,6 +33,41 @@ if(isset($_POST['prof_choose'])){
     $result = $conn->query($sql);
     while($choice = $result->fetch_assoc()){
       $prof.="
+
+
+
+
+
+      <div class=\"row\">
+        <div class=\"col-md-8\">
+          <h3>If you want to edit this professor info press here:</h3>
+        </div>
+      </div>
+      <div class=\"row\">
+        <div class=\"col-md-8\">
+          <form action=\"edit_member.php\" method=\"POST\">
+            <button type=\"submit\" name=\"professor_edit\" value=".$_POST['prof_choose']." class=\"add_new_button\">EDIT PROFESSOR</button>
+          </form>
+        </div>
+      </div>
+      <div class=\"row\">
+        <div class=\"col-md-8\">
+          <h3>If you want to delete this professor press here:</h3>
+        </div>
+      </div>
+      <div class=\"row\">
+        <div class=\"col-md-8\">
+          <form action=\"faculty_show.php\" method=\"POST\">
+            <button type=\"submit\" name=\"professor_delete\" value=".$_POST['prof_choose']." class=\"add_new_button\">DELETE PROFESSOR</button>
+          </form>
+        </div>
+      </div>
+
+
+
+
+
+
       <div class=\"row\">
           <div class=\"col-md-8\"><h1>".$choice['LastName']." ".$choice['FirstName']."</h1></div>
       </div><br><br>

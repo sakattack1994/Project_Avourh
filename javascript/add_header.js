@@ -60,12 +60,12 @@ function add_header(){
     						Personnel + &nbsp;&nbsp;\
     					<ul class=\"sub-menu\">\
     							<li><a href=\"faculty_show.php\">Faculty</a></li>\
-    							<li>Εmeriti Professors</li>\
-    							<li>Honoris Causa Professors</li>\
-                  <li>Research Collaborators</li>\
-                  <li>Laboratory Staff</li>\
-                  <li>Technical Staff</li>\
-                  <li>Administrative Staff</li>\
+    							<li><a href=\"emeriti_show.php\">Εmeriti Professors</a></li>\
+    							<li><a href=\"honoris_show.php\">Honoris Causa Professors</a></li>\
+                  <li><a href=\"researchstaff_show.php\">Research Collaborators</a></li>\
+                  <li><a href=\"labstaff_show.php\">Laboratory Staff</a></li>\
+                  <li><a href=\"technicalstaff_show.php\">Technical Staff</a></li>\
+                  <li><a href=\"adminstaff_show.php\">Administrative Staff</a></li>\
               </ul>\
           </li>\
           <li><a href=\"announcements.php\">Announcements</a> &nbsp;&nbsp;</li>\
