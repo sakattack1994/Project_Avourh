@@ -488,7 +488,7 @@ INSERT INTO relative_courses VALUES ('ECE_Y601','ECE_Y501');
 INSERT INTO relative_courses VALUES ('ECE_Β703','ECE_Β803');
 INSERT INTO relative_courses VALUES ('ECE_Β803','ECE_Β703');
 
-INSERT INTO books VALUES ('9781907575327','English for Electrical Engineering in Higher Education Studies Course Book with audio CDs','Roger H. C. Smith',2014,1,'Ανδρέας Μπέτσης','Σύγγραμμα','χωρίς εξώφυλλο');
+INSERT INTO books VALUES ('9781907575327','English for Electrical Engineering in Higher Education Studies Course Book with audio CDs','Roger H. C. Smith',2014,1,'Ανδρέας Μπέτσης','Σύγγραμμα','/myDepartment/myresources/books_cover/default.png');
 INSERT INTO books VALUES ('9789609427289','ΕΦΑΡΜΟΣΜΕΝΑ ΜΑΘΗΜΑΤΙΚΑ','ΜΑΡΚΕΛΛΟΣ ΒΑΣΙΛΕΙΟΣ',2013,1,'ΓΚΟΤΣΗΣ ΚΩΝ/ΝΟΣ & ΣΙΑ Ε.Ε.','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-9789609427289.jpg');
 INSERT INTO books VALUES ('978-960-524-7309-70-9','ΓΡΑΜΜΙΚΗ ΑΛΓΕΒΡΑ ΚΑΙ ΕΦΑΡΜΟΓΕΣ','STRANG GILBERT',2009,1,'ΙΔΡΥΜΑ ΤΕΧΝΟΛΟΓΙΑΣ & ΕΡΕΥΝΑΣ-ΠΑΝΕΠΙΣΤΗΜΙΑΚΕΣ ΕΚΔΟΣΕΙΣ ΚΡΗΤΗΣ','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-978-960-524-7309-70-9.jpg');
 INSERT INTO books VALUES ('978-960-524-470-5','PYTHON - Εισαγωγή στους υπολογιστές','ΝΙΚΟΛΑΟΣ ΑΒΟΥΡΗΣ, ΜΙΧΑΗΛ ΚΟΥΚΙΑΣ, ΒΑΣΙΛΕΙΟΣ ΠΑΛΙΟΥΡΑΣ, ΚΥΡΙΑΚΟΣ ΣΓΑΡΜΠΑΣ',2016,3,'ΙΔΡΥΜΑ ΤΕΧΝΟΛΟΓΙΑΣ & ΕΡΕΥΝΑΣ-ΠΑΝΕΠΙΣΤΗΜΙΑΚΕΣ ΕΚΔΟΣΕΙΣ ΚΡΗΤΗΣ','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-978-960-524-470-5.png');
@@ -496,7 +496,7 @@ INSERT INTO books VALUES ('978-960-418-342-5Α','Φυσική για Επιστ�
 INSERT INTO books VALUES ('978-960-456-462-0','Τεχνικό Σχέδιο για Ηλεκτρολόγους Μηχανικούς','Βοβός Παναγής, Τοπάλης Ευάγγελος',2016,2,'Ζήτη Πελαγία & Σια Ο.Ε.','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-978-960-456-462-0.jpg');
 INSERT INTO books VALUES ('978-960-351-718-4','Αποτελεσματική οργάνωση και διοίκηση πωλήσεων','Αυλωνίτης Γεώργιος Ι., Σταθακόπουλος Βλάσης',2008,2,'ΕΚΔΟΣΕΙΣ ΣΤΑΜΟΥΛΗ ΑΕ','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-978-960-351-718-4.jpg');
 INSERT INTO books VALUES ('960-211-292-1','Εισαγωγή στη νεότερη ελληνική λογοτεχνία','Ρόντερικ Μπήτον',2010,2,'Ι. Δουβίτσας & ΣΙΑ Ε.Ε.','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-960-211-292-1.gif');
-INSERT INTO books VALUES ('978-960-491-084-7','Ψηφιακή Σχεδίαση','Mano Morris, Ciletti Michael',2013,5,'Α. ΠΑΠΑΣΩΤΗΡΙΟΥ & ΣΙΑ Ι.Κ.Ε.','Σύγγραμμα','/myDepartment/myresources/books_cover/978-960-491-084-7.jpg');
+INSERT INTO books VALUES ('978-960-491-084-7','Ψηφιακή Σχεδίαση','Mano Morris, Ciletti Michael',2013,5,'Α. ΠΑΠΑΣΩΤΗΡΙΟΥ & ΣΙΑ Ι.Κ.Ε.','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-978-960-491-084-7.jpg');
 INSERT INTO books VALUES ('978-960-418-342-5Β','Φυσική για Επιστήμονες και Μηχανικούς','Giancoli',2011,4,'ΕΚΔΟΣΕΙΣ Α. ΤΖΙΟΛΑ & ΥΙΟΙ Α.Ε.','Τόμος Β','/myDepartment/myresources/books_cover/cover-978-960-418-342-5-Β.jpg');
 INSERT INTO books VALUES ('978-618-80949-1-8','ΜΑΘΗΜΑΤΙΚΕΣ ΜΕΘΟΔΟΙ ΓΙΑ ΜΗΧΑΝΙΚΟΥΣ ΚΑΙ ΕΠΙΣΤΗΜΟΝΕΣ: Λογισμός Συναρτήσεων Πολλών Μεταβλητών και Διανυσματική Ανάλυση.','Παύλος Χατζηκωνσταντίνου',2014,3,'ΠΑΥΛΟΣ ΧΑΤΖΗΚΩΝΣΤΑΝΤΙΝΟΥ','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-978-618-80949-1-8.jpg');
 INSERT INTO books VALUES ('978-960-418-202-2','Ανάλυση ηλεκτρικών κυκλωμάτων','Μάργαρης Νίκος Ι.',2010,1,'ΕΚΔΟΣΕΙΣ Α. ΤΖΙΟΛΑ & ΥΙΟΙ Α.Ε.','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-978-960-418-202-2.jpg');

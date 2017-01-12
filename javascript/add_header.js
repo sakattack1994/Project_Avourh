@@ -32,6 +32,7 @@ function add_header(){
 								<ul class=\"sub-menu\">\
 									<li><a href=\"regulation.php\">Regulation</a></li>\
                   <li><a href=\"courses.php\">Courses</a></li>\
+                  <li><a href=\"books.php\">Books</a></li>\
                   <li><a href=\"divisions.php\">Divisions</a></li>\
                   <li><a href=\"study_schedule.php\">Study Schedule</a></li>\
                   <li><a href=\"lesson_declaration_rules.php\">Lesson Declaration Rules</a></li>\

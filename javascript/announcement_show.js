@@ -45,10 +45,3 @@ function new_scientific_publication() {
   $('#update_table').append("<tr><td>Year of Publish: "+l+":</td><td style=\"padding:0;\"><input type=\"text\" name=\"pub_year_new"+l+"\" style=\"height:100%; width:100%;\"></td></tr>");
   l=l+1;
 };
-
-function new_doc() {
-  $('#Γενικά έντυπα ετήσεων').append("<p>maria</p>");
-};
-function new_doc() {
-  $('#Γενικά έντυπα ετήσεων').append("<p>maria</p>");
-};
