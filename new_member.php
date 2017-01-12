@@ -37,8 +37,8 @@
           <option value=\"Ομότιμος Καθηγητής\">Ομότιμος Καθηγητής</option>
           <option value=\"Επίτιμος Καθηγητής\">Επίτιμος Καθηγητής / Διδάκτορας</option>
           <option value=\"Επιστημονικός Συνεργάτης\">Επιστημονικός Συνεργάτης</option>
-          <option value=\"Ε.ΔΙ.Π\">ΕΔΙΠ</option>
-          <option value=\"Ε.Τ.Ε.Π.\">ΕΤΕΠ</option>
+          <option value=\"ΕΔΙΠ\">ΕΔΙΠ</option>
+          <option value=\"ΕΤΕΠ\">ΕΤΕΠ</option>
           <option value=\"Διοικητικό Προσωπικό\">Διοικητικό Προσωπικό</option>
         </select>
       </td>

@@ -62,8 +62,8 @@ if(isset($_POST['professor_edit'])){
           <option value=\"Ομότιμος Καθηγητής\">Ομότιμος Καθηγητής</option>
           <option value=\"Επίτιμος Καθηγητής\">Επίτιμος Καθηγητής / Διδάκτορας</option>
           <option value=\"Επιστημονικός Συνεργάτης\">Επιστημονικός Συνεργάτης</option>
-          <option value=\"Ε.ΔΙ.Π\">Ε.ΔΙ.Π</option>
-          <option value=\"Ε.Τ.Ε.Π.\">Ε.Τ.Ε.Π.</option>
+          <option value=\"Ε.ΔΙ.Π\">ΕΔΙΠ</option>
+          <option value=\"Ε.Τ.Ε.Π.\">ΕΤΕΠ</option>
           <option value=\"Διοικητικό Προσωπικό\">Διοικητικό Προσωπικό</option>
         </select>
         </td>
