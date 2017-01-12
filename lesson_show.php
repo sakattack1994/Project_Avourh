@@ -41,10 +41,10 @@ if(isset($_POST['lesson_choose'])){
       $result2 = $conn->query($sql);
       $books="";
       while($choice2 = $result2->fetch_assoc()){
-        $sql = "SELECT ISBN,Title FROM books WHERE ISBN=\"".$choice2['ISBN']."\"";
+        $sql = "SELECT ISBN,Title,Cover FROM books WHERE ISBN=\"".$choice2['ISBN']."\"";
         $result3 = $conn->query($sql);
         while($choice3 = $result3->fetch_assoc()){
-          $books.=$choice3['ISBN']." ".$choice3['Title']."<br>";
+          $books.="ISBN: ".$choice3['ISBN'].", ".$choice3['Title']."<form action=\"book_show.php\" method=\"POST\"><button type=\"submit\" name=\"book_choose\" value=".$choice3['ISBN']."><font size=\"3px\"><img src=\"".$choice3['Cover']."\" width=\"140px\" height=\"150px\"></font></button></form><br>";
         }
       }
       $lesson.="

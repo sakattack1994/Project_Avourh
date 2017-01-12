@@ -77,7 +77,7 @@ CREATE TABLE `Books` (
 	`PublicationNumber` int NOT NULL,
 	`Publisher` varchar(100) NOT NULL,
 	`Description` varchar(1000) NOT NULL,
-	`Cover` longblob,
+	`Cover` varchar(500) NOT NULL,
 	PRIMARY KEY (`ISBN`)
 );
 
@@ -96,7 +96,7 @@ CREATE TABLE `Lesson_Book` (
 CREATE TABLE `ScientificPublications` (
 	`PublicationID` varchar(100) NOT NULL  ,
 	`Title` varchar(100) NOT NULL,
-	`YearOfPublish` varchar(100) NOT NULL,
+	`YearOfPublish` DATE NOT NULL,
 	PRIMARY KEY (`PublicationID`)
 );
 
@@ -194,6 +194,13 @@ CREATE TABLE `Study_Schedule` (
 	PRIMARY KEY (`id`)
 );
 
+CREATE TABLE `Usefull_Documents` (
+	`dir` varchar(500) NOT NULL,
+	`title` varchar(100) NOT NULL,
+	`category` varchar(50) NOT NULL,
+	PRIMARY KEY (`title`,`category`)
+);
+
 ALTER TABLE `Students` ADD CONSTRAINT `Students_fk0` FOREIGN KEY (`StudentID`) REFERENCES `Members`(`ID`);
 
 ALTER TABLE `Secretariat` ADD CONSTRAINT `Secretariat_fk0` FOREIGN KEY (`SecretariatID`) REFERENCES `Members`(`ID`);
@@ -278,7 +285,7 @@ INSERT INTO lessons VALUES ('ECE_Y202','Φυσική ΙΙ','Ηλεκτροστα
 Μαγνητισμός: Ορισμός Μαγνητικού Πεδίου, Δύναμη Lorentz, Έργο Μαγνητικής Δύναμης, Κίνηση κυκλότρου, Κυκλοειδής κίνηση, Φαινόμενο Hall, Νόμος Biot-Savart, Νόμος Αμπέρ, Μαγνητική ροή, Ενέργεια Μαγνητοστατικού πεδίου, Ρεύμα Μετατόπισης, Νόμος Faraday, Κανόνας Lenz, Αυτεπαγωγή και Αμοιβαία Επαγωγή, Σωληνοειδή Πηνία, Αποθήκευση Μαγνητικής Ενέργειας, Ομοαξονικό καλώδιο, Σύνθετη Αντίσταση, Ισχύς και ενέργεια κυκλώματος AC ρεύματος.
    Ηλεκτρομαγνητικά κύματα: Εξισώσεις Maxwell, Επίπεδα κύματα, Μέτωπο και Ταχύτητα ηλεκτρομαγνητκού κύματος, Ενέργεια και διάνυσμα-Poynting.','ΔΙΔΑΣΚΑΛΙΑ',2,'Postgraduate','LESSON_LINK','ECLASS_LINK','EVDO3OS_LINK',3,1,2,'ΒΑΣΙΚΟΣ ΚΟΡΜΟΣ','ΓΡΑΠΤΗ','ΩΡΕΣ','ΣΤΑΤΙΣΤΙΚΑ','ΥΛΗ');
 INSERT INTO lessons VALUES ('ECE_Y202E','Φυσική ΙΙ','','ΕΡΓΑΣΤΗΡΙΟ',2,'Postgraduate','LESSON_LINK','ECLASS_LINK','EVDO3OS_LINK',3,1,2,'ΒΑΣΙΚΟΣ ΚΟΡΜΟΣ','ΓΡΑΠΤΗ','ΩΡΕΣ','ΣΤΑΤΙΣΤΙΚΑ','ΥΛΗ');
-INSERT INTO lessons VALUES ('ECE_ΞΓ210','Αγγλικά Ι','','ΔΙΔΑΣΚΑΛΙΑ',2,'Postgraduate','LESSON_LINK','ECLASS_LINK','EVDO3OS_LINK',3,0,0,'Optional','ΓΡΑΠΤΗ','ΩΡΕΣ','ΣΤΑΤΙΣΤΙΚΑ','ΥΛΗ');
+INSERT INTO lessons VALUES ('ECE_ΞΓ210','Αγγλικά','','ΔΙΔΑΣΚΑΛΙΑ',2,'Postgraduate','LESSON_LINK','ECLASS_LINK','EVDO3OS_LINK',3,0,0,'Optional','ΓΡΑΠΤΗ','ΩΡΕΣ','ΣΤΑΤΙΣΤΙΚΑ','ΥΛΗ');
 INSERT INTO lessons VALUES ('ECE_Y302','Ηλεκτρικά Κυκλώματα & Μετρήσεις','Κυκλώματα συγκεντρωμένων στοιχείων και οι νόμοι του Kirchhoff. Στοιχεία κυκλωμάτων. Συνδεσμολογίες στοιχείων: σειριακή, παράλληλη, διαιρέτες, αστέρας, τρίγωνο, γέφυρα. Ανάλυση απλών κυκλωμάτων. Μέθοδοι κομβικών τάσεων και βροχικών εντάσεων. Απόκριση απλών κυκλωμάτων RC, RL, RLC. Απόκριση γραμμικών χρονικά αμετάβλητων κυκλωμάτων. Μόνιμη ημιτονοειδής κατάσταση, συντονισμός.','ΔΙΔΑΣΚΑΛΙΑ',3,'Postgraduate','LESSON_LINK','ECLASS_LINK','EVDO3OS_LINK',4,2,2,'ΒΑΣΙΚΟΣ ΚΟΡΜΟΣ','ΓΡΑΠΤΗ','ΩΡΕΣ','ΣΤΑΤΙΣΤΙΚΑ','ΥΛΗ');
 INSERT INTO lessons VALUES ('ECE_Y302E','Ηλεκτρικά Κυκλώματα & Μετρήσεις','','ΕΡΓΑΣΤΗΡΙΟ',3,'Postgraduate','LESSON_LINK','ECLASS_LINK','EVDO3OS_LINK',4,2,2,'ΒΑΣΙΚΟΣ ΚΟΡΜΟΣ','ΓΡΑΠΤΗ','ΩΡΕΣ','ΣΤΑΤΙΣΤΙΚΑ','ΥΛΗ');
 
@@ -470,21 +477,75 @@ INSERT INTO professor_lessons_thisyear VALUES ('serpanos','ECE_Γ008','1');
 INSERT INTO professor_lessons_thisyear VALUES ('mpitswrhs','ECE_Δ907','1');
 INSERT INTO professor_lessons_thisyear VALUES ('maneshs','ECE_Δ001','1');
 
-INSERT INTO relative_courses VALUES ('ECE_Y101','ECE_Y103N');
+INSERT INTO relative_courses VALUES ('ECE_Y102','ECE_Y202');
+INSERT INTO relative_courses VALUES ('ECE_Y202','ECE_Y102');
+INSERT INTO relative_courses VALUES ('ECE_Y302','ECE_Y402');
+INSERT INTO relative_courses VALUES ('ECE_Y402','ECE_Y302');
+INSERT INTO relative_courses VALUES ('ECE_Y505','ECE_Y605');
+INSERT INTO relative_courses VALUES ('ECE_Y605','ECE_Y505');
+INSERT INTO relative_courses VALUES ('ECE_Y501','ECE_Y601');
+INSERT INTO relative_courses VALUES ('ECE_Y601','ECE_Y501');
+INSERT INTO relative_courses VALUES ('ECE_Β703','ECE_Β803');
+INSERT INTO relative_courses VALUES ('ECE_Β803','ECE_Β703');
 
-INSERT INTO relative_courses VALUES ('ECE_Y101','ECE_Y102');
+INSERT INTO books VALUES ('9781907575327','English for Electrical Engineering in Higher Education Studies Course Book with audio CDs','Roger H. C. Smith',2014,1,'Ανδρέας Μπέτσης','Σύγγραμμα','χωρίς εξώφυλλο');
+INSERT INTO books VALUES ('9789609427289','ΕΦΑΡΜΟΣΜΕΝΑ ΜΑΘΗΜΑΤΙΚΑ','ΜΑΡΚΕΛΛΟΣ ΒΑΣΙΛΕΙΟΣ',2013,1,'ΓΚΟΤΣΗΣ ΚΩΝ/ΝΟΣ & ΣΙΑ Ε.Ε.','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-9789609427289.jpg');
+INSERT INTO books VALUES ('978-960-524-7309-70-9','ΓΡΑΜΜΙΚΗ ΑΛΓΕΒΡΑ ΚΑΙ ΕΦΑΡΜΟΓΕΣ','STRANG GILBERT',2009,1,'ΙΔΡΥΜΑ ΤΕΧΝΟΛΟΓΙΑΣ & ΕΡΕΥΝΑΣ-ΠΑΝΕΠΙΣΤΗΜΙΑΚΕΣ ΕΚΔΟΣΕΙΣ ΚΡΗΤΗΣ','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-978-960-524-7309-70-9.jpg');
+INSERT INTO books VALUES ('978-960-524-470-5','PYTHON - Εισαγωγή στους υπολογιστές','ΝΙΚΟΛΑΟΣ ΑΒΟΥΡΗΣ, ΜΙΧΑΗΛ ΚΟΥΚΙΑΣ, ΒΑΣΙΛΕΙΟΣ ΠΑΛΙΟΥΡΑΣ, ΚΥΡΙΑΚΟΣ ΣΓΑΡΜΠΑΣ',2016,3,'ΙΔΡΥΜΑ ΤΕΧΝΟΛΟΓΙΑΣ & ΕΡΕΥΝΑΣ-ΠΑΝΕΠΙΣΤΗΜΙΑΚΕΣ ΕΚΔΟΣΕΙΣ ΚΡΗΤΗΣ','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-978-960-524-470-5.png');
+INSERT INTO books VALUES ('978-960-418-342-5Α','Φυσική για Επιστήμονες και Μηχανικούς','Giancoli',2011,4,'ΕΚΔΟΣΕΙΣ Α. ΤΖΙΟΛΑ & ΥΙΟΙ Α.Ε.','Τόμος Α','/myDepartment/myresources/books_cover/cover-978-960-418-342-5-Α.jpg');
+INSERT INTO books VALUES ('978-960-456-462-0','Τεχνικό Σχέδιο για Ηλεκτρολόγους Μηχανικούς','Βοβός Παναγής, Τοπάλης Ευάγγελος',2016,2,'Ζήτη Πελαγία & Σια Ο.Ε.','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-978-960-456-462-0.jpg');
+INSERT INTO books VALUES ('978-960-351-718-4','Αποτελεσματική οργάνωση και διοίκηση πωλήσεων','Αυλωνίτης Γεώργιος Ι., Σταθακόπουλος Βλάσης',2008,2,'ΕΚΔΟΣΕΙΣ ΣΤΑΜΟΥΛΗ ΑΕ','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-978-960-351-718-4.jpg');
+INSERT INTO books VALUES ('960-211-292-1','Εισαγωγή στη νεότερη ελληνική λογοτεχνία','Ρόντερικ Μπήτον',2010,2,'Ι. Δουβίτσας & ΣΙΑ Ε.Ε.','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-960-211-292-1.gif');
+INSERT INTO books VALUES ('978-960-491-084-7','Ψηφιακή Σχεδίαση','Mano Morris, Ciletti Michael',2013,5,'Α. ΠΑΠΑΣΩΤΗΡΙΟΥ & ΣΙΑ Ι.Κ.Ε.','Σύγγραμμα','/myDepartment/myresources/books_cover/978-960-491-084-7.jpg');
+INSERT INTO books VALUES ('978-960-418-342-5Β','Φυσική για Επιστήμονες και Μηχανικούς','Giancoli',2011,4,'ΕΚΔΟΣΕΙΣ Α. ΤΖΙΟΛΑ & ΥΙΟΙ Α.Ε.','Τόμος Β','/myDepartment/myresources/books_cover/cover-978-960-418-342-5-Β.jpg');
+INSERT INTO books VALUES ('978-618-80949-1-8','ΜΑΘΗΜΑΤΙΚΕΣ ΜΕΘΟΔΟΙ ΓΙΑ ΜΗΧΑΝΙΚΟΥΣ ΚΑΙ ΕΠΙΣΤΗΜΟΝΕΣ: Λογισμός Συναρτήσεων Πολλών Μεταβλητών και Διανυσματική Ανάλυση.','Παύλος Χατζηκωνσταντίνου',2014,3,'ΠΑΥΛΟΣ ΧΑΤΖΗΚΩΝΣΤΑΝΤΙΝΟΥ','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-978-618-80949-1-8.jpg');
+INSERT INTO books VALUES ('978-960-418-202-2','Ανάλυση ηλεκτρικών κυκλωμάτων','Μάργαρης Νίκος Ι.',2010,1,'ΕΚΔΟΣΕΙΣ Α. ΤΖΙΟΛΑ & ΥΙΟΙ Α.Ε.','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-978-960-418-202-2.jpg');
+INSERT INTO books VALUES ('978-960-411-332-3','Ταλαντώσεις και κύματα','Παϊπέτης Στέφανος Α.,Πολύζος Δημοσθένης Κ.',2003,1,'ΣΤΕΛΛΑ ΠΑΡΙΚΟΥ & ΣΙΑ ΟΕ','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-978-960-411-332-3.jpg');
+INSERT INTO books VALUES ('978-960-418-192-6','Ηλεκτρικές μηχανές ac-dc','Chapman Stephen J.',2009,4,'ΕΚΔΟΣΕΙΣ Α. ΤΖΙΟΛΑ & ΥΙΟΙ Α.Ε.','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-978-960-418-192-6.jpg');
+INSERT INTO books VALUES ('978-960-524-381-4','ΕΙΣΑΓΩΓΗ ΣΤΗΝ ΗΛΕΚΤΡΟΔΥΝΑΜΙΚΗ [ΣΕ ΕΝΑΝ ΤΟΜΟ]','GRIFFITHS J. DAVID',2012,1,'ΙΔΡΥΜΑ ΤΕΧΝΟΛΟΓΙΑΣ & ΕΡΕΥΝΑΣ-ΠΑΝΕΠΙΣΤΗΜΙΑΚΕΣ ΕΚΔΟΣΕΙΣ ΚΡΗΤΗΣ','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-978-960-524-381-4.jpg');
+INSERT INTO books VALUES ('960-418-085-1','Μικροκύματα','Collin Robert E.',2005,2,'ΕΚΔΟΣΕΙΣ Α. ΤΖΙΟΛΑ & ΥΙΟΙ Α.Ε.','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-960-418-085-1.jpg');
+INSERT INTO books VALUES ('978-960-418-250-3','Εισαγωγή στα ηλεκτρονικά ισχύος','Mohan Ned,Undeland Tore A.,Robbins William P.',2010,3,'ΕΚΔΟΣΕΙΣ Α. ΤΖΙΟΛΑ & ΥΙΟΙ Α.Ε.','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-978-960-418-250-3.jpg');
+INSERT INTO books VALUES ('978-960-411-509-9','Κεραίες - Ανάλυση και Σχεδίαση','Balanis A. Constantine',2005,1,'ΣΤΕΛΛΑ ΠΑΡΙΚΟΥ & ΣΙΑ ΟΕ','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-978-960-411-509-9.jpg');
+INSERT INTO books VALUES ('978-960-418-326-5','Αρχιτεκτονική Υπολογιστών','Hennessy John L., Patterson David A.',2011,4,'ΕΚΔΟΣΕΙΣ Α. ΤΖΙΟΛΑ & ΥΙΟΙ Α.Ε.','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-978-960-418-326-5.jpg');
+INSERT INTO books VALUES ('978-960-418-481-1','Λειτουργικά Συστήματα','Stallings William',2014,8,'ΕΚΔΟΣΕΙΣ Α. ΤΖΙΟΛΑ & ΥΙΟΙ Α.Ε.','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-978-960-418-481-1.jpg');
+INSERT INTO books VALUES ('960-7219-99-6','Βιομηχανικά ηλεκτρονικά','Petruzella Frank D.',1999,1,'ΕΚΔΟΣΕΙΣ Α. ΤΖΙΟΛΑ & ΥΙΟΙ Α.Ε.','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-960-7219-99-6.jpg');
+INSERT INTO books VALUES ('960-91281-0-6','ΕΙΣΑΓΩΓΗ ΣΤΟΝ ΑΥΤΟΜΑΤΟ ΕΛΕΓΧΟ ΤΟΜΟΣ Α: ΘΕΩΡΙΑ','Π. Ν. ΠΑΡΑΣΚΕΥΟΠΟΥΛΟΣ',2001,1,'ΠΑΡΑΣΚΕΥΑΣ ΠΑΡΑΣΚΕΥΟΠΟΥΛΟΣ','Τόμος Α','/myDepartment/myresources/books_cover/cover-960-91281-0-6.jpg');
+INSERT INTO books VALUES ('960-209-989-5','ΑΣΥΡΜΑΤΑ ΔΙΚΤΥΑ','P. NICOPOLITIDIS, M. S. OBAIDAT, G. I. PAPADIMITRIOU, A. S. POMPORTSIS',2006,1,'ΕΚΔΟΣΕΙΣ ΚΛΕΙΔΑΡΙΘΜΟΣ ΕΠΕ','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-960-209-989-5.jpg');
+INSERT INTO books VALUES ('978-960-461-117-1','ΒΑΣΙΚΕΣ ΑΡΧΕΣ ΑΣΦΑΛΕΙΑΣ ΔΙΚΤΥΩΝ: ΕΦΑΡΜΟΓΕΣ ΚΑΙ ΠΡΟΤΥΠΑ','WILLIAM STALLINGS',2008,3,'ΕΚΔΟΣΕΙΣ ΚΛΕΙΔΑΡΙΘΜΟΣ ΕΠΕ','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-978-960-461-117-1.jpg');
+INSERT INTO books VALUES ('978-960-461-266-6','ΔΙΚΤΥΑ ΥΠΟΛΟΓΙΣΤΩΝ: ΜΙΑ ΠΡΟΣΕΓΓΙΣΗ ΑΠΟ ΤΗ ΣΚΟΠΙΑ ΤΩΝ ΣΥΣΤΗΜΑΤΩΝ','LARRY L. PETERSON, BRUCE S. DAVIE',2009,4,'ΕΚΔΟΣΕΙΣ ΚΛΕΙΔΑΡΙΘΜΟΣ ΕΠΕ','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-978-960-461-266-6.jpg');
+INSERT INTO books VALUES ('978-960-418-261-9','Υψηλές Τάσεις','Kuffel E., Zangl W.S., Kuffel J.',2010,2,'ΕΚΔΟΣΕΙΣ Α. ΤΖΙΟΛΑ & ΥΙΟΙ Α.Ε.','Σύγγραμμα','/myDepartment/myresources/books_cover/cover-978-960-418-261-9.jpg');
 
-INSERT INTO books VALUES ('1111','MATHIMATIKA','George R',2016,331,'Savalas','Perigrafh','a');
-
-INSERT INTO books VALUES ('1121','fisiki','George R',2016,331,'Savalas','Perigrafh','a');
-
-INSERT INTO books VALUES ('2111','PCS','George R',2016,331,'Savalas','Perigrafh','a');
-
-INSERT INTO lesson_book VALUES ('ECE_Y101','1111');
-
-INSERT INTO lesson_book VALUES ('ECE_Y102','1121');
-
-INSERT INTO lesson_book VALUES ('ECE_Y103N','2111');
+INSERT INTO lesson_book VALUES ('ECE_Y101','9789609427289');
+INSERT INTO lesson_book VALUES ('ECE_ΞΓ210','9781907575327');
+INSERT INTO lesson_book VALUES ('ECE_Y104','978-960-524-7309-70-9');
+INSERT INTO lesson_book VALUES ('ECE_Y103N','978-960-524-470-5');
+INSERT INTO lesson_book VALUES ('ECE_Y102','978-960-418-342-5Α');
+INSERT INTO lesson_book VALUES ('ECE_Y111','978-960-456-462-0');
+INSERT INTO lesson_book VALUES ('ECE_Ε133','978-960-351-718-4');
+INSERT INTO lesson_book VALUES ('ECE_Ε138','960-211-292-1');
+INSERT INTO lesson_book VALUES ('ECE_Y105','978-960-491-084-7');
+INSERT INTO lesson_book VALUES ('ECE_Y202','978-960-418-342-5Β');
+INSERT INTO lesson_book VALUES ('ECE_Y201','978-618-80949-1-8');
+INSERT INTO lesson_book VALUES ('ECE_Y302','978-960-418-202-2');
+INSERT INTO lesson_book VALUES ('ECE_Y311','978-960-411-332-3');
+INSERT INTO lesson_book VALUES ('ECE_Y402','978-960-418-202-2');
+INSERT INTO lesson_book VALUES ('ECE_Y505','978-960-418-192-6');
+INSERT INTO lesson_book VALUES ('ECE_Y501','978-960-524-381-4');
+INSERT INTO lesson_book VALUES ('ECE_Y601','978-960-524-381-4');
+INSERT INTO lesson_book VALUES ('ECE_Y605','978-960-418-192-6');
+INSERT INTO lesson_book VALUES ('ECE_Α701','960-418-085-1');
+INSERT INTO lesson_book VALUES ('ECE_Β703','978-960-418-250-3');
+INSERT INTO lesson_book VALUES ('ECE_Α706','978-960-411-509-9');
+INSERT INTO lesson_book VALUES ('ECE_Β803','978-960-418-250-3');
+INSERT INTO lesson_book VALUES ('ECE_Γ801','978-960-418-326-5');
+INSERT INTO lesson_book VALUES ('ECE_Γ802','978-960-418-481-1');
+INSERT INTO lesson_book VALUES ('ECE_Δ704','960-7219-99-6');
+INSERT INTO lesson_book VALUES ('ECE_Δ801','960-91281-0-6');
+INSERT INTO lesson_book VALUES ('ECE_Α908','960-209-989-5');
+INSERT INTO lesson_book VALUES ('ECE_Γ910','978-960-461-117-1');
+INSERT INTO lesson_book VALUES ('ECE_Α005','978-960-461-266-6');
+INSERT INTO lesson_book VALUES ('ECE_Β011','978-960-418-261-9');
+INSERT INTO lesson_book VALUES ('ECE_Γ008','978-960-461-266-6');
 
 INSERT INTO lessons_labs VALUES ('ECE_Y102','ECE_Y102Ε');
 INSERT INTO lessons_labs VALUES ('ECE_Y103N','ECE_Y103L');
@@ -496,5 +557,32 @@ INSERT INTO lessons_labs VALUES ('ECE_Y505','ECE_Y505E');
 INSERT INTO lessons_labs VALUES ('ECE_Y605','ECE_Y605E');
 INSERT INTO lessons_labs VALUES ('ECE_Β703','ECE_Β703E');
 INSERT INTO lessons_labs VALUES ('ECE_Β803','ECE_Β803E');
+
+INSERT INTO Usefull_Documents VALUES
+('/myDepartment/myresources/usefull documents/Αίτηση_Γενική.doc','Αίτηση Γενική','general'), 
+('/myDepartment/myresources/usefull documents/Υπεύθυνη_Δήλωση_Ν._1599.doc','Υπεύθυνη Δήλωση Ν.1599','general'),
+('/myDepartment/myresources/usefull documents/Αίτηση_Αναστολής_Σπουδών.doc','Αίτηση Αναστολής Σπουδών','general'),
+('/myDepartment/myresources/usefull documents/Αίτηση_για_επανέκδοση_πάσου-ταυτότητας_2.doc','Αίτηση Επανέκδοσης Φοιτητικής Ταυτότητας - πάσο','general'),
+('/myDepartment/myresources/usefull documents/Αίτηση_για_ΕΦΘ.doc','Αίτηση για ΕΦΘ','general'),
+('/myDepartment/myresources/usefull documents/Αίτηση_Διπλωματούχου_για_Πιστοποιητικά.doc','Αίτηση Διπλωματούχου για Πιστοποιητικά','general'),
+('/myDepartment/myresources/usefull documents/Αίτηση_για_διόρθωση_βαθμολογίας.doc','Αίτηση για διόρθωση βαθμολογίας','general'),
+('/myDepartment/myresources/usefull documents/Αίτηση_για_προσθήκη_βαθμολογίας.doc','Αίτηση για προσθήκη βαθμολογίας','general'),
+('/myDepartment/myresources/usefull documents/Δήλωση_ΤομέαΕκπν_διπλ.docx','Δήλωση Τομέα Εκπόνησης Διπλωματικής Εργασίας','diplomatic'),
+('/myDepartment/myresources/usefull documents/Δήλωση_θέματος_Διπλ_εργασίας3.docx','Έντυπο δήλωσης θέματος διπλωματικής','diplomatic'),
+('/myDepartment/myresources/usefull documents/Αίτηση_αλλαγής___διπλωματικής_1.doc','Αίτηση αλλαγής Διπλωματικής Εργασίας','diplomatic'),
+('/myDepartment/myresources/usefull documents/Εντυπο_βαθμολόγ_Διπλωμ_Εργασίας.doc','Έντυπο βαθμολόγησης διπλωματικής','diplomatic'),
+('/myDepartment/myresources/usefull documents/Δικαιολογητικά_Διαγραφής.doc','Δικαιολογητικά Διαγραφής','delete'),
+('/myDepartment/myresources/usefull documents/Υπεύθυνη_Δήλωση_Ν._1599.doc','Υπεύθυνη Δήλωση Ν.1599','delete'),
+('/myDepartment/myresources/usefull documents/Αίτηση_Διαγραφής.doc','Αίτηση Διαγραφής','delete'),
+('/myDepartment/myresources/usefull documents/Υπεύθυνη_Δήλωση_Ν._1599_για_διαγραφη_μεταπτυχιακου_φοιτητη.docx','Υπεύθυνη Δήλωση Ν. 1599 για διαγραφή μεταπτυχιακού φοιτητή','metaptuxiako'),
+('/myDepartment/myresources/usefull documents/Δικαιολογητικά_Διαγραφής_Μεταπτυχιακού_Φοιτητή.docx','Δικαιολογητικά Διαγραφής Μεταπτυχιακού Φοιτητή','metaptuxiako'),
+('/myDepartment/myresources/usefull documents/Αίτηση_Διαγραφής_Μεταπτυχιακου_Φοιτητη.docx','Αίτηση Διαγραφής Μεταπτυχιακού Φοιτητή','metaptuxiako'),
+('/myDepartment/myresources/usefull documents/αιτηση_για_εκδοση_πιστοποιητικου_διπλωματουχου_μεταπτυχιακου_φοιτητη.docx','Αίτηση για εκδοση πιστοποιητικού διπλωματούχου μεταπτυχιακού φοιτητή','metaptuxiako'),
+('/myDepartment/myresources/usefull documents/Δικαιολογητικα_για_Αναγορευση_2.doc','Δικαιολογητικά για Αναγόρευση','didaktoriko'),
+('/myDepartment/myresources/usefull documents/αιτηση_για_εκδοση_πιστοποιητικου.docx','Άιτηση για έκδοση πιστοποιητικού','didaktoriko'),
+('/myDepartment/myresources/usefull documents/αλλαγη_μαθηματος.docx','Αλλαγή μαθήματος','didaktoriko'),
+('/myDepartment/myresources/usefull documents/Αίτηση_Διαγραφής_Διδακτορα.docx','Αίτηση Διαγραφής Διδακτορα','didaktoriko'),
+('/myDepartment/myresources/usefull documents/Δικαιολογητικά_Διαγραφής_Υποψήφιου_Διδακτορα.doc','Δικαιολογητικά Διαγραφής Υποψήφιου Διδακτορα','didaktoriko'),
+('/myDepartment/myresources/usefull documents/Υπεύθυνη_Δήλωση_Ν._1599_για_διαγραφη_υποψηφιου_διδακτορα.doc','Υπεύθυνη Δήλωση Ν.1599 για διαγραφή υποψηφίου διδάκτορα','didaktoriko');
 
 
