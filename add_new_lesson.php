@@ -53,10 +53,26 @@
       <td>Ects of Lab:</td><td style=\"padding:0;\"><input type=\"text\" name=\"new_Ε\" style=\"height:100%; width:100%;\" required=\"\"></td>
     </tr>
     <tr>
-      <td>Sector:</td><td style=\"padding:0;\"><input type=\"text\" name=\"new_sector\" style=\"height:100%; width:100%;\" required=\"\"></td>
+    <td>Sector:</td><td style=\"padding:0;\">
+        <select name=\"new_sector\" style=\"height:100%; width:100%;\" required=\"\">
+          <option value=\"ΒΑΣΙΚΟΣ ΚΟΡΜΟΣ\">ΒΑΣΙΚΟΣ ΚΟΡΜΟΣ</option>
+          <option value=\"Telecommunications & Information Technology\">Telecommunications & Information Technology</option>
+          <option value=\"Electric Power Systems\">Electric Power Systems</option>
+          <option value=\"Electronics & Computers\">Electronics & Computers</option>
+          <option value=\"Systems & Automatic Control\">Systems & Automatic Control</option>
+          <option value=\"Optional\">Optional</option>
+        </select>
+      </td>
     </tr>
     <tr>
-      <td>System of examination:</td><td style=\"padding:0;\"><input type=\"text\" name=\"new_exams\" style=\"height:100%; width:100%;\" required=\"\"></td>
+      <td>System of examination:</td>
+      <td style=\"padding:0;\">
+        <select name=\"new_exams\" style=\"height:100%; width:100%;\" required=\"\">
+          <option value=\"ΓΡΑΠΤΗ\">ΓΡΑΠΤΗ</option>
+          <option value=\"ΠΡΟΦΟΡΙΚΗ\">ΠΡΟΦΟΡΙΚΗ</option>
+        </select>
+      </td>
+      </td>
     </tr>
     <tr>
       <td>Teaching hours and place:</td><td style=\"padding:0;\"><input type=\"text\" name=\"new_hours\" style=\"height:100%; width:100%;\" required=\"\"></td>

@@ -19,7 +19,7 @@
   $sql = "SELECT Title,LessonID FROM lessons WHERE Semester=1";
   $result = $conn->query($sql);
   while($temp = $result->fetch_assoc()){
-    $sql = "SELECT ProfessorID,FirstName,LastName FROM professors";
+    $sql = "SELECT ProfessorID,FirstName,LastName FROM professors ORDER BY LastName";
     $profs = $conn->query($sql);
     $prof_list="";
     while($temp2 = $profs->fetch_assoc()){
@@ -35,7 +35,7 @@
   $sql = "SELECT Title,LessonID FROM lessons WHERE Semester=2";
   $result = $conn->query($sql);
   while($temp = $result->fetch_assoc()){
-    $sql = "SELECT ProfessorID,FirstName,LastName FROM professors";
+    $sql = "SELECT ProfessorID,FirstName,LastName FROM professors ORDER BY LastName";
     $profs = $conn->query($sql);
     $prof_list="";
     while($temp2 = $profs->fetch_assoc()){
@@ -51,7 +51,7 @@
   $sql = "SELECT Title,LessonID FROM lessons WHERE Semester=3";
   $result = $conn->query($sql);
   while($temp = $result->fetch_assoc()){
-    $sql = "SELECT ProfessorID,FirstName,LastName FROM professors";
+    $sql = "SELECT ProfessorID,FirstName,LastName FROM professors ORDER BY LastName";
     $profs = $conn->query($sql);
     $prof_list="";
     while($temp2 = $profs->fetch_assoc()){
@@ -67,7 +67,7 @@
   $sql = "SELECT Title,LessonID FROM lessons WHERE Semester=4";
   $result = $conn->query($sql);
   while($temp = $result->fetch_assoc()){
-    $sql = "SELECT ProfessorID,FirstName,LastName FROM professors";
+    $sql = "SELECT ProfessorID,FirstName,LastName FROM professors ORDER BY LastName";
     $profs = $conn->query($sql);
     $prof_list="";
     while($temp2 = $profs->fetch_assoc()){
@@ -83,7 +83,7 @@
   $sql = "SELECT Title,LessonID FROM lessons WHERE Semester=5";
   $result = $conn->query($sql);
   while($temp = $result->fetch_assoc()){
-    $sql = "SELECT ProfessorID,FirstName,LastName FROM professors";
+    $sql = "SELECT ProfessorID,FirstName,LastName FROM professors ORDER BY LastName";
     $profs = $conn->query($sql);
     $prof_list="";
     while($temp2 = $profs->fetch_assoc()){
@@ -99,7 +99,7 @@
   $sql = "SELECT Title,LessonID FROM lessons WHERE Semester=6";
   $result = $conn->query($sql);
   while($temp = $result->fetch_assoc()){
-    $sql = "SELECT ProfessorID,FirstName,LastName FROM professors";
+    $sql = "SELECT ProfessorID,FirstName,LastName FROM professors ORDER BY LastName";
     $profs = $conn->query($sql);
     $prof_list="";
     while($temp2 = $profs->fetch_assoc()){
@@ -115,7 +115,7 @@
   $sql = "SELECT Title,LessonID FROM lessons WHERE Semester=7";
   $result = $conn->query($sql);
   while($temp = $result->fetch_assoc()){
-    $sql = "SELECT ProfessorID,FirstName,LastName FROM professors";
+    $sql = "SELECT ProfessorID,FirstName,LastName FROM professors ORDER BY LastName";
     $profs = $conn->query($sql);
     $prof_list="";
     while($temp2 = $profs->fetch_assoc()){
@@ -131,7 +131,7 @@
   $sql = "SELECT Title,LessonID FROM lessons WHERE Semester=8";
   $result = $conn->query($sql);
   while($temp = $result->fetch_assoc()){
-    $sql = "SELECT ProfessorID,FirstName,LastName FROM professors";
+    $sql = "SELECT ProfessorID,FirstName,LastName FROM professors ORDER BY LastName";
     $profs = $conn->query($sql);
     $prof_list="";
     while($temp2 = $profs->fetch_assoc()){
@@ -147,7 +147,7 @@
   $sql = "SELECT Title,LessonID FROM lessons WHERE Semester=9";
   $result = $conn->query($sql);
   while($temp = $result->fetch_assoc()){
-    $sql = "SELECT ProfessorID,FirstName,LastName FROM professors";
+    $sql = "SELECT ProfessorID,FirstName,LastName FROM professors ORDER BY LastName";
     $profs = $conn->query($sql);
     $prof_list="";
     while($temp2 = $profs->fetch_assoc()){
@@ -163,7 +163,7 @@
   $sql = "SELECT Title,LessonID FROM lessons WHERE Semester=10";
   $result = $conn->query($sql);
   while($temp = $result->fetch_assoc()){
-    $sql = "SELECT ProfessorID,FirstName,LastName FROM professors";
+    $sql = "SELECT ProfessorID,FirstName,LastName FROM professors ORDER BY LastName";
     $profs = $conn->query($sql);
     $prof_list="";
     while($temp2 = $profs->fetch_assoc()){

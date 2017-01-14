@@ -64,7 +64,7 @@ $list="";
 while($study_guide = $result->fetch_assoc()){
   $list.="
   <tr>
-    <td id=".$study_guide['id']."><strong>".$study_guide['name']."</strong></td>
+    <td><form action=\"study_schedule_show.php\" method=\"POST\"><button type=\"submit\" name=\"study_schedule_id\" value=".$study_guide['id']."><strong>".$study_guide['name']."</strong></button></form></td>
     <td><form action=\"study_schedule.php\" method=\"POST\"><button type=\"submit\" name=\"delete_study_schedule\" value=".$study_guide['id']."><img src=\"images/x.png\" width=25px></button></form></td>
   </tr>";
 }

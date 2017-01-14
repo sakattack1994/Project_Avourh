@@ -83,10 +83,26 @@ if(isset($_POST['lesson_id'])){
         <td>Ects of Lab:</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_Ε\" value=\"".$choice['EctsΕ']."\" style=\"height:100%; width:100%;\"></td>
       </tr>
       <tr>
-        <td>Sector:</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_sector\" value=\"".$choice['Sector']."\" style=\"height:100%; width:100%;\"></td>
+        <td>Sector:</td>
+        <td style=\"padding:0;\">
+            <select name=\"l_sector\" style=\"height:100%; width:100%;\" required=\"\">
+              <option value=\"ΒΑΣΙΚΟΣ ΚΟΡΜΟΣ\">ΒΑΣΙΚΟΣ ΚΟΡΜΟΣ</option>
+              <option value=\"Telecommunications & Information Technology\">Telecommunications & Information Technology</option>
+              <option value=\"Electric Power Systems\">Electric Power Systems</option>
+              <option value=\"Electronics & Computers\">Electronics & Computers</option>
+              <option value=\"Systems & Automatic Control\">Systems & Automatic Control</option>
+              <option value=\"Optional\">Optional</option>
+            </select>
+          </td>
       </tr>
       <tr>
-        <td>System of examination:</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_exams\" value=\"".$choice['SystemOfExamination']."\" style=\"height:100%; width:100%;\"></td>
+        <td>System of examination:</td>
+        <td style=\"padding:0;\">
+        <select name=\"l_exams\" style=\"height:100%; width:100%;\" required=\"\">
+          <option value=\"ΓΡΑΠΤΗ\">ΓΡΑΠΤΗ</option>
+          <option value=\"ΠΡΟΦΟΡΙΚΗ\">ΠΡΟΦΟΡΙΚΗ</option>
+        </select>
+        </td>
       </tr>
       <tr>
         <td>Teaching hours and place:</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_hours\" value=\"".$choice['TeachingHoursAndPlace']."\" style=\"height:100%; width:100%;\"></td>

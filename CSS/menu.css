@@ -33,7 +33,7 @@ ol, ul {
 .inner {
 	margin: 0 auto;
 	max-width: 940px;
-	padding: 0 40px;
+	padding: 0 0px;
 }
 
 .relative {
@@ -80,8 +80,9 @@ ol, ul {
 #main-menu > li {
 	margin-top: 100px;
 	display: inline-block;
-	margin-left: 0px;
+	margin-right: 30px;
 	padding: 2px 0;
+	float: inherit;
 }
 
 #main-menu > li.parent {
@@ -107,7 +108,7 @@ ol, ul {
 
 /* HEADER > MENU > DROPDOWN */
 #main-menu {
- -	float: right;
+ -	float: center;
  -	font-size: 0;
  -	margin: 10px 0;
  -}
@@ -213,7 +214,7 @@ ul.sub-menu > li {
 	}
 
 	#main-menu li :hover {
-		background-color: #444;
+		background-color: #555;
 	}
 
 	#main-menu > li.parent {
@@ -230,7 +231,7 @@ ul.sub-menu > li {
 	ul.sub-menu {
 		display: block;
 		margin-top: -1px;
-		margin-left: 20px;
+		margin-left: 0px;
 		position: static;
 		padding: 0;
 		width: inherit;
