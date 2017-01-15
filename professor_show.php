@@ -1,5 +1,9 @@
 <?php
 if(isset($_POST['prof_choose'])){
+  if(!isset($_SESSION))
+      {
+        session_start();
+      }
     $prof="";
     $prof.="<div class=\"container\">";
     $conn = new mysqli('localhost', 'root', '', 'mydepartment');
@@ -31,6 +35,25 @@ if(isset($_POST['prof_choose'])){
     }
     $sql = "SELECT * FROM professors WHERE ProfessorID=\"".$_POST['prof_choose']."\"";
     $result = $conn->query($sql);
+    if(isset($_SESSION['user'])){
+      if($_SESSION['user']==$_POST['prof_choose']){
+        $edit="<div class=\"row\">
+            <div class=\"col-md-8\">
+              <h3>If you want to edit this professor info press here:</h3>
+              </div>
+            </div>
+            <div class=\"row\">
+            <div class=\"col-md-8\">
+              <form action=\"edit_member.php\" method=\"POST\">
+                <button type=\"submit\" name=\"professor_edit\" value=".$_POST['prof_choose']." class=\"add_new_button\">EDIT PROFESSOR</button>
+                </form>
+            </div>
+          </div>";
+        }
+        else{
+          $edit="";
+        }
+    }
     while($choice = $result->fetch_assoc()){
       $prof.="
 
@@ -38,18 +61,7 @@ if(isset($_POST['prof_choose'])){
 
 
 
-      <div class=\"row\">
-        <div class=\"col-md-8\">
-          <h3>If you want to edit this professor info press here:</h3>
-        </div>
-      </div>
-      <div class=\"row\">
-        <div class=\"col-md-8\">
-          <form action=\"edit_member.php\" method=\"POST\">
-            <button type=\"submit\" name=\"professor_edit\" value=".$_POST['prof_choose']." class=\"add_new_button\">EDIT PROFESSOR</button>
-          </form>
-        </div>
-      </div>
+      ".$edit."
       <div class=\"row\">
         <div class=\"col-md-8\">
           <h3>If you want to delete this professor press here:</h3>

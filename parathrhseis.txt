@@ -6,6 +6,11 @@
 
 STOXOI:
 1-EDIT LESSON(1-TA SXOLIA)
-2-pio e3ipno ta ma8imata 7-10 semester
 5-ENROLL STO MA8IMA
 6-UNENROLL
+
+
+!!!! na valw checkbox me default times se diafora add
+************************************************************
+parathrhseis gia th maria:
+1)to menu sth mesh

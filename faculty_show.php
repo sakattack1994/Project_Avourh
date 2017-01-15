@@ -1,5 +1,9 @@
 <?php
 $alert="";
+if(!isset($_SESSION))
+    {
+      session_start();
+    }
 if(isset($_POST['new_id'])){
   $conn = new mysqli('localhost', 'root', '', 'mydepartment');
   // Check connection

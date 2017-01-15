@@ -1,4 +1,8 @@
 <?php
+if(!isset($_SESSION))
+    {
+      session_start();
+    }
   $alert="";
   if(isset($_POST['header']) OR isset($_POST['paragraph'])){
     $myfile = fopen("myresources/intro.txt", "w") or die("Unable to open file!");
@@ -19,23 +23,30 @@
   $paragraph=$getTheP[1];
   $paragraph = html_entity_decode(strip_tags($paragraph));
 
+if(isset($_SESSION['secretariat'])){
+  $edit="<form action=\"index.php\" id=\"edit_page\" method=\"POST\">
+    <div class=\"form-group\">
+        <h2 style=\"color:blue;\">Edit this page:</h2>
+        <br>
+        <h3>Page Header:</h3>
+        <textarea type=\"text\" rows=\"2\" cols=\"10\" class=\"form-control\" name=\"header\">".$header."</textarea>
+        <br>
+        <h3>Page Content:</h3>
+        <textarea type=\"text\" rows=\"10\" cols=\"10\" class=\"form-control\" name=\"paragraph\">".$paragraph."</textarea>
+        <br>
+        <input type=\"submit\" value=\"EDIT\" class=\"add_new_button\">
+    </div>
+  </form>";
+}
+else{
+  $edit="";
+}
+
   $content="<div class=\"col-md-9\"><div id=\"content\">
       ".$page."
       <br>  <br>  <br>
-      ".$alert."
-      <form action=\"index.php\" id=\"edit_page\" method=\"POST\">
-        <div class=\"form-group\">
-            <h2 style=\"color:blue;\">Edit this page:</h2>
-            <br>
-            <h3>Page Header:</h3>
-            <textarea type=\"text\" rows=\"2\" cols=\"10\" class=\"form-control\" name=\"header\">".$header."</textarea>
-            <br>
-            <h3>Page Content:</h3>
-            <textarea type=\"text\" rows=\"10\" cols=\"10\" class=\"form-control\" name=\"paragraph\">".$paragraph."</textarea>
-            <br>
-            <input type=\"submit\" value=\"EDIT\" class=\"add_new_button\">
-        </div>
-      </form>
+      ".$alert.$edit."
+
   </div></div>
   <div class=\"col-md-3\"><div id=\"side_bar\"></div></div>";
   include 'WebPageTemplate.php';

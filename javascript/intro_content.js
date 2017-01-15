@@ -4,63 +4,17 @@ function login(){
     <div class=\"wrapper\">\
 			<div class=\"content\">\
 				<div id=\"form_wrapper\" class=\"form_wrapper\">\
-					<form class=\"register\">\
-						<h3>Register</h3>\
-						<div class=\"column\">\
-							<div>\
-								<label>First Name:</label>\
-								<input type=\"text\" />\
-								<span class=\"error\">This is an error</span>\
-							</div>\
-							<div>\
-								<label>Last Name:</label>\
-								<input type=\"text\" />\
-								<span class=\"error\">This is an error</span>\
-							</div>\
-							<div>\
-								<label>Website:</label>\
-								<input type=\"text\" value=\"http://\"/>\
-								<span class=\"error\">This is an error</span>\
-							</div>\
-						</div>\
-						<div class=\"column\">\
-							<div>\
-								<label>Username:</label>\
-								<input type=\"text\"/>\
-								<span class=\"error\">This is an error</span>\
-							</div>\
-							<div>\
-								<label>Email:</label>\
-								<input type=\"text\" />\
-								<span class=\"error\">This is an error</span>\
-							</div>\
-							<div>\
-								<label>Password:</label>\
-								<input type=\"password\" />\
-								<span class=\"error\">This is an error</span>\
-							</div>\
-						</div>\
-						<div class=\"bottom\">\
-							<div class=\"remember\">\
-								<input type=\"checkbox\" />\
-								<span>Send me updates</span>\
-							</div>\
-							<input type=\"submit\" value=\"Register\" />\
-							<a href=\"index.html\" rel=\"login\" class=\"linkform\">You have an account already? Log in here</a>\
-							<div class=\"clear\"></div>\
-						</div>\
-					</form>\
-					<form class=\"login active\">\
+					<form class=\"login active\" action=\"login.php\" method=\"POST\">\
 						<h3>Login</h3>\
 						<div>\
 							<label>Username:</label>\
-							<input type=\"text\" />\
-							<span class=\"error\">This is an error</span>\
+							<input type=\"text\" name=\"username\" required=\"\"/>\
+							<span class=\"error_user\">Username not found!</span>\
 						</div>\
 						<div>\
 							<label>Password: <a href=\"forgot_password.html\" rel=\"forgot_password\" class=\"forgot linkform\">Forgot your password?</a></label>\
-							<input type=\"password\" />\
-							<span class=\"error\">This is an error</span>\
+							<input type=\"password\" name=\"password\" required=\"\"/>\
+							<span class=\"error_pw\">Wrong password!</span>\
 						</div>\
 						<div class=\"bottom\">\
 							<div class=\"remember\"><input type=\"checkbox\" /><span>Keep me logged in</span></div>\

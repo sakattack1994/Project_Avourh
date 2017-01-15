@@ -1,5 +1,5 @@
 CREATE TABLE `Students` (
-	`StudentID` varchar(10) NOT NULL  ,
+	`StudentID` varchar(20) NOT NULL  ,
 	`FirstName` varchar(20) NOT NULL,
 	`LastName` varchar(20) NOT NULL,
 	`Photo` varchar(500) NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE `Lessons` (
 );
 
 CREATE TABLE `Members` (
-	`ID` varchar(10) NOT NULL  ,
+	`ID` varchar(20) NOT NULL  ,
 	`Password` varchar(100) NOT NULL,
 	`FirstName` varchar(20) NOT NULL,
 	`LastName` varchar(20) NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE `Members` (
 );
 
 CREATE TABLE `Secretariat` (
-	`SecretariatID` varchar(10) NOT NULL  ,
+	`SecretariatID` varchar(20) NOT NULL  ,
 	`FirstName` varchar(20) NOT NULL,
 	`LastName` varchar(20) NOT NULL,
 	`Photo` varchar(500) NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE `Secretariat` (
 );
 
 CREATE TABLE `Professors` (
-	`ProfessorID` varchar(10) NOT NULL  ,
+	`ProfessorID` varchar(20) NOT NULL  ,
 	`FirstName` varchar(20) NOT NULL  ,
 	`LastName` varchar(20) NOT NULL,
 	`Role` varchar(100) NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE `Books` (
 );
 
 CREATE TABLE `Students_Lessons_enroll` (
-	`StudentID` varchar(10) NOT NULL  ,
+	`StudentID` varchar(20) NOT NULL  ,
 	`LessonID` varchar(10) NOT NULL  ,
 	PRIMARY KEY (`StudentID`,`LessonID`)
 );
@@ -101,20 +101,20 @@ CREATE TABLE `ScientificPublications` (
 );
 
 CREATE TABLE `Professors_Publications` (
-	`ProfessorID` varchar(10) NOT NULL  ,
+	`ProfessorID` varchar(20) NOT NULL  ,
 	`PublicationID` varchar(100) NOT NULL  ,
 	PRIMARY KEY (`ProfessorID`,`PublicationID`)
 );
 
 CREATE TABLE `Professor_Lessons_ThisYear` (
-	`ProfessorID` varchar(10) NOT NULL  ,
+	`ProfessorID` varchar(20) NOT NULL  ,
 	`LessonID` varchar(10) NOT NULL  ,
 	`StudyScheduleID` varchar(50) NOT NULL  ,
 	PRIMARY KEY (`ProfessorID`,`LessonID`,`StudyScheduleID`)
 );
 
 CREATE TABLE `Professor_Lessons_LastYears` (
-	`ProfessorID` varchar(10) NOT NULL  ,
+	`ProfessorID` varchar(20) NOT NULL  ,
 	`LessonID` varchar(10) NOT NULL  ,
 	`StudyScheduleID` varchar(50) NOT NULL  ,
 	PRIMARY KEY (`ProfessorID`,`LessonID`,`StudyScheduleID`)
@@ -129,7 +129,7 @@ CREATE TABLE `Comments` (
 CREATE TABLE `Lesson_Comments` (
 	`LessonID` varchar(10) NOT NULL  ,
 	`CommentID` varchar(100) NOT NULL  ,
-	`StudentID` varchar(10) NOT NULL  ,
+	`StudentID` varchar(20) NOT NULL  ,
 	PRIMARY KEY (`LessonID`,`CommentID`,`StudentID`)
 );
 
@@ -176,7 +176,7 @@ CREATE TABLE `Lessons_Labs` (
 );
 
 CREATE TABLE `Passed_Lessons` (
-	`StudentID` varchar(10) NOT NULL  ,
+	`StudentID` varchar(20) NOT NULL  ,
 	`LessonID` varchar(10) NOT NULL  ,
 	PRIMARY KEY (`StudentID`,`LessonID`)
 );

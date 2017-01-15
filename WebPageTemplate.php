@@ -1,3 +1,9 @@
+<?php
+if(!isset($_SESSION))
+    {
+      session_start();
+    }
+?>
 <html xmlns="http://www.w3.org/1999/xhtml" class="csstransforms no-csstransforms3d csstransitions">
   <head>
     <title></title>
@@ -8,11 +14,13 @@
     <link rel="stylesheet" type="text/css" href="CSS/stylesheets.css">
     <link rel="stylesheet" type="text/css" href="CSS/menu.css">
     <link rel="stylesheet" type="text/css" href="CSS/login.css">
+    <link rel="stylesheet" type="text/css" href="CSS/user_menu.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <script type="text/javascript" src="javascript/add_header.js"></script>
     <script type="text/javascript" src="javascript/add_footer.js"></script>
     <script type="text/javascript" src="javascript/intro_content.js"></script>
+    <script type="text/javascript" src="javascript/user_menu.js"></script>
     <script type="text/javascript" src="javascript/announcement_show.js"></script>
     <script type="text/javascript" src="javascript/general_scripts.js"></script>
 
@@ -34,12 +42,21 @@
         <div class="col-md-12"><div id="footer"></div></div>
     </div>
     </div>
-
-<script>
+<?php
+if(isset($_SESSION['user'])){
+  echo "<script>
+  add_header();
+  user_menu();
+  add_footer();
+  </script>";
+}
+else{
+echo "<script>
 add_header();
 login();
 add_footer();
-</script>
-
+</script>";
+}
+?>
     </body>
 </html>
