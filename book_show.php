@@ -1,4 +1,8 @@
 <?php
+if(!isset($_SESSION))
+    {
+      session_start();
+    }
 
 if(isset($_POST['book_choose'])){
     $conn = new mysqli('localhost', 'root', '', 'mydepartment');
@@ -11,8 +15,9 @@ if(isset($_POST['book_choose'])){
     $sql = "SELECT * FROM books WHERE ISBN=\"".$_POST['book_choose']."\"";
     $result = $conn->query($sql);
     $book = $result->fetch_assoc();
-    $list="<div class=\"container\">
-        <div class=\"row\">
+
+    if(isset($_SESSION['secretariat'])){
+        $editORdeleteBOOK="<div class=\"row\">
           <div class=\"col-md-8\">
             <h3>If you want to edit this book press here:</h3>
           </div>
@@ -35,8 +40,13 @@ if(isset($_POST['book_choose'])){
               <button type=\"submit\" name=\"book_delete\" value=".$book['ISBN']." class=\"add_new_button\">DELETE BOOK</button>
             </form>
           </div>
-        </div>
+        </div>";
+    }else{
+        $editORdeleteBOOK="";
+    }
 
+    $list="<div class=\"container\">
+      ".$editORdeleteBOOK."
       <div class=\"row\">
         <div class=\"col-md-8\"><h1>".$book['Title']."</h1></div>
       </div><br><br>
@@ -54,6 +64,7 @@ if(isset($_POST['book_choose'])){
   </div>";
   $conn->close();
 }
+
 $content="
 <div class=\"col-md-9\">
   <div id=\"content\">

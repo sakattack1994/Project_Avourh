@@ -54,6 +54,17 @@
 .usermenu ul li:focus {
   outline: none;
 }
+.usermenu .logout{
+  text-align: center;
+  font-size: 18px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 100px;
+  background: rgba(0, 0, 0, 0.1);
+}
+.usermenu .logout a{
+  color:black;
+}
 @media screen and (max-width: 900px) and (min-width: 400px) {
   body {
     padding-left: 90px;
@@ -118,6 +129,7 @@
     transform: translate3d(0px, -50%, 0);
   }
 }
+
 @media screen and (max-width: 400px) {
   body {
     padding-left: 0;
@@ -162,4 +174,5 @@
   .usermenu:focus .smartphone-usermenu-trigger {
     pointer-events: none;
   }
+
 }

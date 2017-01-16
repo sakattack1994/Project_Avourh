@@ -1,4 +1,9 @@
 <?php
+if(!isset($_SESSION))
+    {
+      session_start();
+    }
+
 $alert="";
 if(isset($_POST['new_isbn'])){
   $conn = new mysqli('localhost', 'root', '', 'mydepartment');
@@ -101,6 +106,14 @@ if(isset($_POST['p_isbn'])){
   $alert="<div class=\"alert alert-success\"><strong>The book ".$_POST['p_isbn']." ".$_POST['p_title']." was successfully updated.</strong></div>";
 }
 
+if(isset($_SESSION['secretariat'])){
+    $addbook="<h3>If you want to add a new book press here:</h3>
+    <form action=\"new_book.php\" method=\"POST\">
+      <button type=\"submit\" name=\"book_add\" class=\"add_new_button\">ADD NEW BOOK</button>
+    </form>";
+}else{
+    $addbook="";
+}
 
 $conn = new mysqli('localhost', 'root', '', 'mydepartment');
   // Check connection
@@ -132,12 +145,8 @@ $content="
 <div class=\"col-md-9\">
   <div id=\"content\">
     <h1>Books</h1><br>
-    ".$alert."
-    <h3>If you want to add a new book press here:</h3>
-    <form action=\"new_book.php\" method=\"POST\">
-      <button type=\"submit\" name=\"book_add\" class=\"add_new_button\">ADD NEW BOOK</button>
-    </form>
-    <br> <br> <br>
+    ".$alert.$addbook."
+    <br> <br>
     ".$table."
     </div>
 </div>

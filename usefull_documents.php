@@ -1,4 +1,9 @@
 <?php
+if(!isset($_SESSION))
+    {
+      session_start();
+    }
+
 if(isset($_FILES["file"]["name"])){
   move_uploaded_file($_FILES["file"]["tmp_name"],$_SERVER['DOCUMENT_ROOT'] .'/myDepartment/myresources/usefull documents/'.$_FILES['file']['name']);
   $conn = new mysqli('localhost', 'root', '', 'mydepartment');
@@ -58,29 +63,37 @@ while($doc = $result->fetch_assoc()){
   }
 }
 $conn->close();
+
+if(isset($_SESSION['secretariat'])){
+  $addORdeleteDOC="<form action=\"usefull_documents.php\" method=\"POST\" enctype=\"multipart/form-data\">
+     <label><h2>Add document:</h2></label>
+     <input type=\"file\" name=\"file\" id=\"file\" >
+     <label><h3>Category of the document:</h3></label>
+     <select name=\"doc_category\" style=\"font-size=25px\">
+       <option value=\"general\">Γενικά έντυπα ετήσεων</option>
+       <option value=\"diplomatic\">Έντυπα Διπλωματικών Εργασιών</option>
+       <option value=\"delete\">Έντυπα Διαγραφών Φοιτητή</option>
+       <option value=\"metaptuxiako\">Έντυπα για Μεταπτυχιακές Σπουδές</option>
+       <option value=\"didaktoriko\">Έντυπα για Διδακτορικές Σπουδές</option>
+     </select>
+    <input type=\"submit\" class=add_new_button value=\"&#9546;Add document\">
+  </form>
+  <br>
+  <form action=\"usefull_documents.php\" method=\"post\">
+    <label><h3>Select a document you want to delete:</h3></label>
+    <select name=\"delete_doc\" style=\"font-size=25px\">".$list."
+    </select>
+    <input type=\"submit\" value=\"Delete\">
+  </form>";
+}
+else{
+  $addORdeleteDOC="";
+}
+
 $content="
 <div class=\"col-md-9\">
   <div id=\"content\">
-   <form action=\"usefull_documents.php\" method=\"POST\" enctype=\"multipart/form-data\">
-      <label><h2>Add document:</h2></label>
-      <input type=\"file\" name=\"file\" id=\"file\" >
-      <label><h3>Category of the document:</h3></label>
-      <select name=\"doc_category\" style=\"font-size=25px\">
-        <option value=\"general\">Γενικά έντυπα ετήσεων</option>
-        <option value=\"diplomatic\">Έντυπα Διπλωματικών Εργασιών</option>
-        <option value=\"delete\">Έντυπα Διαγραφών Φοιτητή</option>
-        <option value=\"metaptuxiako\">Έντυπα για Μεταπτυχιακές Σπουδές</option>
-        <option value=\"didaktoriko\">Έντυπα για Διδακτορικές Σπουδές</option>
-      </select>
-     <input type=\"submit\" class=add_new_button value=\"&#9546;Add document\">
-   </form>
-   <br>
-   <form action=\"usefull_documents.php\" method=\"post\">
-     <label><h3>Select a document you want to delete:</h3></label>
-     <select name=\"delete_doc\" style=\"font-size=25px\">".$list."
-     </select>
-     <input type=\"submit\" value=\"Delete\">
-   </form>
+   ".$addORdeleteDOC."
   <br>
     <h1>Χρήσιμα Έντυπα</h1>
     <br>

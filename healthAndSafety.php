@@ -1,4 +1,8 @@
 <?php
+if(!isset($_SESSION))
+    {
+      session_start();
+    }
   $alert="";
   if(isset($_POST['header']) OR isset($_POST['paragraph'])){
     $myfile = fopen("myresources/healthAndSafety.txt", "w") or die("Unable to open file!");
@@ -19,11 +23,8 @@
   $paragraph=$getTheP[1];
   $paragraph = html_entity_decode(strip_tags($paragraph));
 
-  $content="<div class=\"col-md-9\"><div id=\"content\">
-      ".$page."
-      <br>  <br>  <br>
-      ".$alert."
-      <form action=\"healthAndSafety.php\" id=\"edit_page\" method=\"POST\">
+  if(isset($_SESSION['secretariat'])){
+    $edit="<form action=\"healthAndSafety.php\" id=\"edit_page\" method=\"POST\">
         <div class=\"form-group\">
             <h2 style=\"color:blue;\">Edit this page:</h2>
             <br>
@@ -35,7 +36,16 @@
             <br>
             <input type=\"submit\" value=\"EDIT\" class=\"add_new_button\">
         </div>
-      </form>
+      </form>";
+  }
+  else{
+    $edit="";
+  }
+
+  $content="<div class=\"col-md-9\"><div id=\"content\">
+      ".$page."
+      <br>  <br>  <br>
+      ".$alert.$edit."
   </div></div>
   <div class=\"col-md-3\"><div id=\"side_bar\"></div></div>";
   include 'WebPageTemplate.php';

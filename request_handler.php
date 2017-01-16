@@ -43,7 +43,6 @@ if(isset($_POST['userID'])){
   $conn->close();
   $html="
   <nav class=\"usermenu\" tabindex=\"0\">
-	<div class=\"smartphone-usermenu-trigger\"></div>
   <header class=\"avatar\">
 		<img src=\"".$photo."\" />
     <h2>".$name."</h2>
@@ -54,6 +53,7 @@ if(isset($_POST['userID'])){
     <li tabindex=\"0\" class=\"icon-users\"><span>Users</span></li>
     <li tabindex=\"0\" class=\"icon-settings\"><span>Settings</span></li>
   </ul>
+  <div class=\"logout\"><a href=\"logout.php\">Logout</a></div>
 </nav>";
 echo $html;
 }

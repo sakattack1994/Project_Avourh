@@ -1,4 +1,9 @@
 <?php
+if(!isset($_SESSION))
+    {
+      session_start();
+    }
+
   $alert="";
   if(isset($_POST['header'])){
     $myfile = fopen("myresources/currentAcademicYear.txt", "w") or die("Unable to open file!");
@@ -50,28 +55,35 @@
       $header3 = html_entity_decode(strip_tags($header3));
     }
   }
+
+  if(isset($_SESSION['secretariat'])){
+    $edit="<form action=\"currentAcademicYear.php\" id=\"edit_page\" method=\"POST\">
+      <div class=\"form-group\">
+          <h2 style=\"color:blue;\">Edit this page:</h2>
+          <br>
+          <h3>Page Header:</h3>
+          <textarea type=\"text\" rows=\"2\" cols=\"10\" class=\"form-control\" name=\"header\">".$header."</textarea>
+          <br>
+          <h3>Page Content:</h3>
+          <textarea type=\"text\" rows=\"2\" cols=\"10\" class=\"form-control\" name=\"par\">".$par."</textarea>
+          <textarea type=\"text\" rows=\"2\" cols=\"10\" class=\"form-control\" name=\"header1\">".$header1."</textarea>
+          <textarea type=\"text\" rows=\"10\" cols=\"10\" class=\"form-control\" name=\"par1\">".$par1."</textarea>
+          <textarea type=\"text\" rows=\"2\" cols=\"10\" class=\"form-control\" name=\"header2\">".$header2."</textarea>
+          <textarea type=\"text\" rows=\"10\" cols=\"10\" class=\"form-control\" name=\"par2\">".$par2."</textarea>
+          <textarea type=\"text\" rows=\"2\" cols=\"10\" class=\"form-control\" name=\"header3\">".$header3."</textarea>
+          <textarea type=\"text\" rows=\"10\" cols=\"10\" class=\"form-control\" name=\"par3\">".$par3."</textarea>
+          <input type=\"submit\" value=\"EDIT\" class=\"add_new_button\">
+      </div>
+    </form>";
+  }
+  else{
+    $edit="";
+  }
+
   $content="<div class=\"col-md-9\"><div id=\"content\">
       ".$page."
       <br>  <br>  <br>
-      ".$alert."
-      <form action=\"currentAcademicYear.php\" id=\"edit_page\" method=\"POST\">
-        <div class=\"form-group\">
-            <h2 style=\"color:blue;\">Edit this page:</h2>
-            <br>
-            <h3>Page Header:</h3>
-            <textarea type=\"text\" rows=\"2\" cols=\"10\" class=\"form-control\" name=\"header\">".$header."</textarea>
-            <br>
-            <h3>Page Content:</h3>
-            <textarea type=\"text\" rows=\"2\" cols=\"10\" class=\"form-control\" name=\"par\">".$par."</textarea>
-            <textarea type=\"text\" rows=\"2\" cols=\"10\" class=\"form-control\" name=\"header1\">".$header1."</textarea>
-            <textarea type=\"text\" rows=\"10\" cols=\"10\" class=\"form-control\" name=\"par1\">".$par1."</textarea>
-            <textarea type=\"text\" rows=\"2\" cols=\"10\" class=\"form-control\" name=\"header2\">".$header2."</textarea>
-            <textarea type=\"text\" rows=\"10\" cols=\"10\" class=\"form-control\" name=\"par2\">".$par2."</textarea>
-            <textarea type=\"text\" rows=\"2\" cols=\"10\" class=\"form-control\" name=\"header3\">".$header3."</textarea>
-            <textarea type=\"text\" rows=\"10\" cols=\"10\" class=\"form-control\" name=\"par3\">".$par3."</textarea>
-            <input type=\"submit\" value=\"EDIT\" class=\"add_new_button\">
-        </div>
-      </form>
+      ".$alert.$edit."
   </div></div>
   <div class=\"col-md-3\"><div id=\"side_bar\"></div></div>";
   include 'WebPageTemplate.php';
