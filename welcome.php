@@ -3,7 +3,6 @@ if(!isset($_SESSION))
     {
       session_start();
     }
-
   $alert="";
   if(isset($_POST['header']) OR isset($_POST['par1'])  OR isset($_POST['par2']) OR isset($_POST['par3']) OR isset($_POST['par4']) OR isset($_POST['par5'])){
     $myfile = fopen("myresources/welcome.txt", "w") or die("Unable to open file!");

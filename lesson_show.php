@@ -1,4 +1,8 @@
 <?php
+if(!isset($_SESSION))
+    {
+      session_start();
+    }
 if(isset($_POST['lesson_choose'])){
     $lesson="";
     $conn = new mysqli('localhost', 'root', '', 'mydepartment');
@@ -54,38 +58,43 @@ if(isset($_POST['lesson_choose'])){
           <h1>".$choice['Title']."</h1>
         </div>
       </div>";
-
-
-      $lesson.="<br><br>
-      <div class=\"row\">
-        <div class=\"col-md-8\">
-          <h3>If you want to edit this lesson press here:</h3>
+      if(isset($_SESSION['user'])){
+        $sql = "SELECT ProfessorID FROM professor_lessons_thisyear WHERE LessonID=\"".$_POST['lesson_choose']."\"";
+        $result2 = $conn->query($sql);
+        while($choice2 = $result2->fetch_assoc()){
+          if($_SESSION['user']==$choice2['ProfessorID']){
+            $lesson.="<br><br>
+            <div class=\"row\">
+              <div class=\"col-md-8\">
+                <h3>If you want to edit this lesson press here:</h3>
+              </div>
+            </div>
+            <div class=\"row\">
+              <div class=\"col-md-8\">
+                <form action=\"edit_lesson.php\" method=\"POST\">
+                  <button type=\"submit\" name=\"lesson_id\" value=".$_POST['lesson_choose']." class=\"add_new_button\">EDIT LESSON</button>
+                </form>
+              </div>
+            </div>";
+          }
+        }
+      }
+      if(isset($_SESSION['secretariat'])){
+        $lesson.="<br><br>
+        <div class=\"row\">
+          <div class=\"col-md-8\">
+            <h3>If you want to delete this lesson press here:</h3>
+          </div>
         </div>
-      </div>
-      <div class=\"row\">
-        <div class=\"col-md-8\">
-          <form action=\"edit_lesson.php\" method=\"POST\">
-            <button type=\"submit\" name=\"lesson_id\" value=".$_POST['lesson_choose']." class=\"add_new_button\">EDIT LESSON</button>
-          </form>
+        <div class=\"row\">
+          <div class=\"col-md-8\">
+            <form action=\"courses.php\" method=\"POST\">
+              <button type=\"submit\" name=\"lesson_delete\" value=".$_POST['lesson_choose']." class=\"add_new_button\">DELETE LESSON</button>
+            </form>
+          </div>
         </div>
-      </div>";
-      $lesson.="<br><br>
-      <div class=\"row\">
-        <div class=\"col-md-8\">
-          <h3>If you want to delete this lesson press here:</h3>
-        </div>
-      </div>
-      <div class=\"row\">
-        <div class=\"col-md-8\">
-          <form action=\"courses.php\" method=\"POST\">
-            <button type=\"submit\" name=\"lesson_delete\" value=".$_POST['lesson_choose']." class=\"add_new_button\">DELETE LESSON</button>
-          </form>
-        </div>
-      </div>
-      <br><br>";
-
-
-
+        <br><br>";
+      }
       $lesson.="
       <div class=\"row\">
         <div class=\"col-md-8\">

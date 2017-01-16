@@ -1,4 +1,8 @@
 <?php
+if(!isset($_SESSION))
+    {
+      session_start();
+    }
 $alert="";
 if(isset($_POST['delete_study_schedule'])){
     $conn = new mysqli('localhost', 'root', '', 'mydepartment');
@@ -64,20 +68,31 @@ $list="";
 while($study_guide = $result->fetch_assoc()){
   $list.="
   <tr>
-    <td><form action=\"study_schedule_show.php\" method=\"POST\"><button type=\"submit\" name=\"study_schedule_id\" value=".$study_guide['id']."><strong>".$study_guide['name']."</strong></button></form></td>
-    <td><form action=\"study_schedule.php\" method=\"POST\"><button type=\"submit\" name=\"delete_study_schedule\" value=".$study_guide['id']."><img src=\"images/x.png\" width=25px></button></form></td>
-  </tr>";
+    <td><form action=\"study_schedule_show.php\" method=\"POST\"><button type=\"submit\" name=\"study_schedule_id\" value=".$study_guide['id']."><strong>".$study_guide['name']."</strong></button></form></td>";
+  if(isset($_SESSION['secretariat'])){
+  $list.="<td><form action=\"study_schedule.php\" method=\"POST\"><button type=\"submit\" name=\"delete_study_schedule\" value=".$study_guide['id']."><img src=\"images/x.png\" width=25px></button></form></td>";
+  }
+  $list.="</tr>";
 }
 $conn->close();
-$delete="<th>Delete</th>";
+if(isset($_SESSION['secretariat'])){
+  $edit="<h3>If you want to add new study guide press here:</h3>
+  <a href=\"add_study_schedule.php\"><button type=button class=\"add_new_button\">&#9546;Add New</button></a>
+  <br> <br>";
+  $delete="<th>Delete</th>";
+}
+else{
+  $edit="";
+  $delete="";
+}
 $content="<div class=\"col-md-9\"><div id=\"content\">
   <h1>Study guides</h1>".$alert."
+  <p>Here you can see all the study schedules of our department for each year and understand all the demandments of
+  every academic year.
+  </p>
 
+  ".$edit."
 
-
-  <h3>If you want to add new study guide press here:</h3>
-  <a href=\"add_study_schedule.php\"><button type=button class=\"add_new_button\">&#9546;Add New</button></a>
-  <br> <br>
 
 
   <table class=\"table table-bordered table-hover\">

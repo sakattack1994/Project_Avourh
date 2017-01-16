@@ -37,6 +37,10 @@ if(isset($_POST['delete_study_guide'])){
   $conn->close();
 }
 //---------------------------------------------------------------------------------------------------
+if(!isset($_SESSION))
+    {
+      session_start();
+    }
   $f=0;
   $alert="";
   if(isset($_FILES["file"]["name"])){
@@ -67,27 +71,28 @@ if(isset($_POST['delete_study_guide'])){
   else{
     $name=basename($dir);
   }
+  if(isset($_SESSION['secretariat'])){
+    $edit=$alert."
+    <form enctype=\"multipart/form-data\" action=\"study_guide.php\" method=\"post\">
+      <label><h3>Add new study guide:</h3></label>
+      <input name=\"file\" type=\"file\" id=\"file\"  >
+      <input type=\"submit\" class=\"add_new_button\" value=\"&#9546;Upload\">
+    </form>
+    <form action=\"study_guide.php\" method=\"post\">
+      <label><h3>Select a study guide you want to delete:</h3></label>
+      <select name=\"delete_study_guide\" style=\"font-size=25px\">".$list."
+      </select>
+      <input type=\"submit\" value=\"Delete\">
+    </form>
+    <br><br>";
+  }
+  else{
+    $edit="";
+  }
   $content="
   <div class=\"col-md-9\">
     <div id=\"content\">
-      <h1>Study guides</h1>
-
-
-      ".$alert."
-      <form enctype=\"multipart/form-data\" action=\"study_guide.php\" method=\"post\">
-        <label><h3>Add new study guide:</h3></label>
-        <input name=\"file\" type=\"file\" id=\"file\"  >
-        <input type=\"submit\" class=\"add_new_button\" value=\"&#9546;Upload\">
-      </form>
-      <form action=\"study_guide.php\" method=\"post\">
-        <label><h3>Select a study guide you want to delete:</h3></label>
-        <select name=\"delete_study_guide\" style=\"font-size=25px\">".$list."
-        </select>
-        <input type=\"submit\" value=\"Delete\">
-      </form>
-      <br><br>
-
-
+      <h1>Study guides</h1>".$edit."
       <label>Choose the study guide you want to see:</label>
       <form action=\"study_guide.php\" method=\"post\">
         <select name=\"study_guides\" style=\"font-size=25px\">".$list."

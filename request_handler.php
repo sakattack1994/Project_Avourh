@@ -51,9 +51,8 @@ if(isset($_POST['userID'])){
     <li tabindex=\"0\" class=\"icon-dashboard\"><span>Dashboard</span></li>
     <li tabindex=\"0\" class=\"icon-customers\"><span>Customers</span></li>
     <li tabindex=\"0\" class=\"icon-users\"><span>Users</span></li>
-    <li tabindex=\"0\" class=\"icon-settings\"><span>Settings</span></li>
+    <a href=\"logout.php\"><li tabindex=\"0\" class=\"icon-settings\"><font style=\"color:rgba(0, 0, 0, 0.6)\"><span>Logout</span></font></li></a>
   </ul>
-  <div class=\"logout\"><a href=\"logout.php\">Logout</a></div>
 </nav>";
 echo $html;
 }

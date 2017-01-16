@@ -19,6 +19,7 @@ var i=1;
 var j=1;
 var k=1;
 var l=1;
+var q=1;
 function check(id) {
   if($('#lchoose'+id).is(":checked")) {
       $(".profs"+id).css('visibility','visible');
@@ -39,6 +40,10 @@ function new_rel() {
 function new_book() {
   $('#update_table').append("<tr><td>New Book(ISBN) "+k+":</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_book_new"+k+"\" style=\"height:100%; width:100%;\"></td></tr>");
   k=k+1;
+};
+function new_att() {
+  $('#new_attachment').append("<input type=\"file\" name=\"ann_attachment"+q+"\">");
+  q=q+1;
 };
 function new_scientific_publication() {
   $('#update_table').append("<tr><td>New Publication Title: "+l+":</td><td style=\"padding:0;\"><input type=\"text\" name=\"pub_title_new"+l+"\" style=\"height:100%; width:100%;\"></td></tr>");

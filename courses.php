@@ -1,4 +1,8 @@
 <?php
+if(!isset($_SESSION))
+    {
+      session_start();
+    }
 $alert="";
 if(isset($_POST['new_id'])){
   $conn = new mysqli('localhost', 'root', '', 'mydepartment');
@@ -308,26 +312,23 @@ for($i=4;$i<6;$i++){
   $semester=9;
 }
 $conn->close();
-$content="<div class=\"col-md-9\"><div id=\"content\">
-  <form action=\"lesson_show.php\" method=\"POST\">
-  <h1>Courses</h1>
-  <br>".$alert."<br>
-  ".$list."</form>
-
-
-  <br>
+if(isset($_SESSION['secretariat'])){
+  $edit="<br>
       <h3>If you want to add a new lesson press here:</h3>
       <form action=\"add_new_lesson.php\" method=\"POST\">
         <button type=\"submit\" name=\"lesson_add\" class=\"add_new_button\">ADD NEW LESSON</button>
       </form>
-  <br>
-
-
-
-
-
-
-
+  <br>";
+}
+else{
+  $edit="";
+}
+$content="<div class=\"col-md-9\"><div id=\"content\">
+  <h1>Courses</h1>
+  ".$edit."
+  <form action=\"lesson_show.php\" method=\"POST\">
+  ".$alert."<br>
+  ".$list."</form>
   </div></div>
   <div class=\"col-md-3\"><div id=\"side_bar\"></div></div>";
   include 'WebPageTemplate.php';

@@ -1,4 +1,8 @@
 <?php
+if(!isset($_SESSION))
+    {
+      session_start();
+    }
 $conn = new mysqli('localhost', 'root', '', 'mydepartment');
   // Check connection
 if ($conn->connect_error) {
@@ -28,23 +32,21 @@ while($prof = $result->fetch_assoc()){
 }
 $conn->close();
 $table.="</form></table>";
+if(isset($_SESSION['secretariat'])){
+  $edit="<h3>If you want to add a new professor press here:</h3>
+  <form action=\"new_member.php\" method=\"POST\">
+    <button type=\"submit\" name=\"member_add\" class=\"add_new_button\">ADD NEW PERSONEL MEMBER</button>
+  </form>
+  <br>";
+}
+else{
+  $edit="";
+}
 $content="
 <div class=\"col-md-9\">
   <div id=\"content\">
     <h1>Technical staff</h1><br>
-
-
-
-    <h3>If you want to add a new professor press here:</h3>
-    <form action=\"new_member.php\" method=\"POST\">
-      <button type=\"submit\" name=\"member_add\" class=\"add_new_button\">ADD NEW PERSONEL MEMBER</button>
-    </form>
-    <br>
-
-
-
-
-
+".$edit."
     ".$table."
     </div>
 </div>

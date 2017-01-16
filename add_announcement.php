@@ -36,7 +36,7 @@
 
       <div class=\"row\">
         <div class=\"col-md-8\">
-          <input type=\"file\" name=\"ann_attachments[]\" multiple>
+          <div id=\"new_attachment\"></div>
         </div>
       </div>
 
@@ -54,6 +54,12 @@
             <option value=\"Phd studies\">Phd studies</option>
             <option value=\"Scholarships\">Scholarships</option>
           </select>
+        </div>
+      </div>
+      <br>
+      <div class=\"row\">
+        <div class=\"col-md-8\">
+          <button type=\"button\" class=\"add_new_button\" onclick=\"new_att();\">&#9546;ADD ATTACHMENT</button><br>
         </div>
       </div>
       <br>

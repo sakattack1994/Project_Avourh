@@ -21,7 +21,7 @@ if(!isset($_SESSION))
     <script type="text/javascript" src="javascript/add_footer.js"></script>
     <script type="text/javascript" src="javascript/intro_content.js"></script>
     <script type="text/javascript" src="javascript/user_menu.js"></script>
-    <script type="text/javascript" src="javascript/announcement_show.js"></script>
+    <script type="text/javascript" src="javascript/general_functions.js"></script>
     <script type="text/javascript" src="javascript/general_scripts.js"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"crossorigin="anonymous">

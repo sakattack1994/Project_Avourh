@@ -8,6 +8,7 @@ STOXOI:
 1-EDIT LESSON(1-TA SXOLIA)
 5-ENROLL STO MA8IMA
 6-UNENROLL
+8-anakoinwsh pou afora ma8ima
 
 
 !!!! na valw checkbox me default times se diafora add
