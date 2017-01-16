@@ -376,6 +376,13 @@ INSERT INTO members VALUES ('denazhs','pw','Σπύρος','Δενάζης','prof
 INSERT INTO members VALUES ('alexandridhs','pw','Αντώνης','Αλεξανδρίδης','prof');
 INSERT INTO members VALUES ('svarnas','pw','Παναγιώτης','Σβάρνας','prof');
 
+INSERT INTO members VALUES ('ece8097','pw','Μαρία','Κριζέα','student');
+INSERT INTO members VALUES ('ece8013','pw','Ιωάννα','Παπαδοπούλου','student');
+INSERT INTO members VALUES ('ece8090','pw','Αναστάσιος','Ντούρβας','student');
+INSERT INTO members VALUES ('ece8022','pw','Δημήτρης','Δημητρίου','student');
+
+INSERT INTO members VALUES ('dotsika','pw','Ζωή','Ντότσικα','secretariat');
+
 INSERT INTO professors VALUES ('perdios','Ευστάθιος','Περδίος','Καθηγητής','/myDepartment/myresources/prof_pics/perdios_photo.jpg','Πτυχίο Mαθηματικών Πανεπιστημίου Πατρών, Διδακτορικό Δίπλωμα Γενικού Tμήματος Πολυτεχνικής Σχολής Πανεπιστημίου Πατρών.','ΓΕΝΙΚΟ ΤΜΗΜΑ','+302610997897','+30610997897','eperdios@upatras.gr','Τετάρτη 14-17 Πεμπτη 15-18 ','website','scholar');
 INSERT INTO professors VALUES ('kalantonis','Βασίλειος','Καλαντώνης','Καθηγητής','/myDepartment/myresources/prof_pics/kalantonis_photo.jpg','Πτυχίο του Τμήματος  Μαθηματικών του Πανεπιστημίου Πατρών, Μεταπτυχιακό Δίπλωμα Ειδίκευσης του Τμήματος Μαθηματικών και του Τμήματος Μηχανικών Ηλεκτρονικών Υπολογιστών και Πληροφορικής του Πανεπιστημίου Πατρών, Διδακτορικό Δίπλωμα του Γενικού Τμήματος του Πανεπιστημίου Πατρών','ΓΕΝΙΚΟ ΤΜΗΜΑ','+302610996868','+302610996868','kalantonis@upatras.gr','Τετάρτη 14-17 Πεμπτη 15-18 ','website','scholar');
 INSERT INTO professors VALUES ('kounavis','Παναγιώτης','Κουνάβης','Καθηγητής','/myDepartment/myresources/prof_pics/kounavis_photo.JPG','Πτυχίο Φυσικής στο Τμήμα Φυσικής του Πανεπιστήμιο Πατρών, Διδακτορικό Δίπλωμα στο Τμήμα Φυσικής του Πανεπιστήμιο Πατρών','ΓΕΝΙΚΟ ΤΜΗΜΑ','+302610996868','+302610996868','pkounavis@upatras.gr','Τετάρτη 14-17 Πεμπτη 15-18 ','website','scholar');
@@ -585,4 +592,11 @@ INSERT INTO Usefull_Documents VALUES
 ('/myDepartment/myresources/usefull documents/Δικαιολογητικά_Διαγραφής_Υποψήφιου_Διδακτορα.doc','Δικαιολογητικά Διαγραφής Υποψήφιου Διδακτορα','didaktoriko'),
 ('/myDepartment/myresources/usefull documents/Υπεύθυνη_Δήλωση_Ν._1599_για_διαγραφη_υποψηφιου_διδακτορα.doc','Υπεύθυνη Δήλωση Ν.1599 για διαγραφή υποψηφίου διδάκτορα','didaktoriko');
 
+INSERT INTO Students VALUES
+('ece8097','Μαρία','Κριζέα','/myDepartment/myresources/stud_pics/default.png','6984366469','Πάτρα, Μουρούζη 35','ece8097@upnet.gr',-1,9), 
+('ece8013','Ιωάννα','Παπαδοπούλου','/myDepartment/myresources/stud_pics/default.png','6984581664','Πάτρα, Αράτου 20','ece8013@upnet.gr',-1,9), 
+('ece8090','Αναστάσιος','Ντούρβας','/myDepartment/myresources/stud_pics/default.png','6941522856','Πάτρα, Αγίας Σοφίας και Ζακύνθου 5','ece8090@upnet.gr',-1,9), 
+('ece8022','Δημήτρης','Δημητρίου','/myDepartment/myresources/stud_pics/default.png','6984571983','Πάτρα, Κορίνθου 8','ece8022@upnet.gr',-1,7);
 
+INSERT INTO Secretariat VALUES
+('dotsika','Ζωή','Ντότσικα','/myDepartment/myresources/secret_pics/default.png','+302610.996.420','+302610.991.720','secretary@ece.upatras.gr');

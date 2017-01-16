@@ -24,7 +24,7 @@ if(isset($_POST['userID'])){
       }
     }
     else if($member['Role']=='student'){
-      $sql = "SELECT * FROM students WHERE ID=\"".$_SESSION['user']."\"";
+      $sql = "SELECT * FROM students WHERE StudentID=\"".$_SESSION['user']."\"";
       $result2 = $conn->query($sql);
       while($student = $result2->fetch_assoc()){
         $name=$student['LastName']." ".$student['FirstName'];
@@ -32,7 +32,7 @@ if(isset($_POST['userID'])){
       }
     }
     else if($member['Role']=='secretariat'){
-      $sql = "SELECT * FROM secretariat WHERE ID=\"".$_SESSION['user']."\"";
+      $sql = "SELECT * FROM secretariat WHERE SecretariatID=\"".$_SESSION['user']."\"";
       $result3 = $conn->query($sql);
       while($secretariat = $result3->fetch_assoc()){
         $name=$secretariat['LastName']." ".$secretariat['FirstName'];
