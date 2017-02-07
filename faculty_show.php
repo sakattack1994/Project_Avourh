@@ -180,6 +180,7 @@ if(isset($_POST['p_id'])){
   $sql='SET FOREIGN_KEY_CHECKS=1';
   $result = $conn->query($sql);
   $conn->close();
+  $_SESSION['user']=$_POST['p_id'];
   $alert="<div class=\"alert alert-success\"><strong>The member ".$_POST['p_lname']." ".$_POST['p_fname']." was successfully updated.</strong></div>";
 }
 //-----------------------------------------------------------------------------------

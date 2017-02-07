@@ -36,7 +36,7 @@
           $_SESSION['secretariat']=1;
         }
         $_SESSION['user']=$user['ID'];
-        require 'index.php';
+        require 'welcome_login.php';
       }
       else{
         require 'index.php';

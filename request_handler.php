@@ -41,24 +41,49 @@ if(isset($_POST['userID'])){
     }
   }
   $conn->close();
+  $file="";
+  $name1="";
+  if(isset($_SESSION['prof']))
+  {
+    if($_SESSION['prof']==1){
+      $file="professor_show.php";
+      $name1="prof_choose";
+    }
+  }
+  if(isset($_SESSION['secretariat']))
+  {
+    if($_SESSION['secretariat']==1){
+      $file="secretary_show.php";
+      $name1="sec_choose";
+    }
+  }
+  if(isset($_SESSION['student']))
+  {
+    if($_SESSION['student']==1){
+      $file="student_profile.php";
+      $name1="stu_choose";
+    }
+  }
   $html="
   <nav class=\"usermenu\" tabindex=\"0\">
-  <header class=\"avatar\">
-		<img src=\"".$photo."\" />
-    <h2>".$name."</h2>
-  </header>
+  <form action=\"".$file."\" method=\"POST\" class=\"avatar\">
+  <button type=\"submit\" class=\"avatar\" style=\"border-radius:50%;\" name=\"".$name1."\" value=\"".$_SESSION['user']."\">
+		<img src=\"".$photo."\" title=\"My profile\"/>
+  </button>
+  <h2>".$name."</h2>
 	<ul>
     <li tabindex=\"0\" class=\"icon-dashboard\"><span>Dashboard</span></li>
     <li tabindex=\"0\" class=\"icon-customers\"><span>Customers</span></li>
     <li tabindex=\"0\" class=\"icon-users\"><span>Users</span></li>
     <a href=\"logout.php\"><li tabindex=\"0\" class=\"icon-settings\"><font style=\"color:rgba(0, 0, 0, 0.6)\"><span>Logout</span></font></li></a>
   </ul>
+  </form>
 </nav>";
 echo $html;
 }
 
-if(isset($_POST['announcement_id'])){
-  $announcement_id=$_POST['announcement_id'];
+if(isset($_GET['announcement_id'])){
+  $announcement_id=$_GET['announcement_id'];
   $conn = new mysqli('localhost', 'root', '', 'mydepartment');
   // Check connection
   if ($conn->connect_error) {
