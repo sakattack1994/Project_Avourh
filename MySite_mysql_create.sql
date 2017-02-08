@@ -382,6 +382,7 @@ INSERT INTO members VALUES ('ece8090','pw','Αναστάσιος','Ντούρβ�
 INSERT INTO members VALUES ('ece8022','pw','Δημήτρης','Δημητρίου','student');
 
 INSERT INTO members VALUES ('dotsika','pw','Ζωή','Ντότσικα','secretariat');
+INSERT INTO members VALUES ('papadopoulou','pw','Μαρία','Παπαδοπούλου','secretariat');
 
 INSERT INTO professors VALUES ('perdios','Ευστάθιος','Περδίος','Καθηγητής','/myDepartment/myresources/prof_pics/perdios_photo.jpg','Πτυχίο Mαθηματικών Πανεπιστημίου Πατρών, Διδακτορικό Δίπλωμα Γενικού Tμήματος Πολυτεχνικής Σχολής Πανεπιστημίου Πατρών.','ΓΕΝΙΚΟ ΤΜΗΜΑ','+302610997897','+30610997897','eperdios@upatras.gr','Τετάρτη 14-17 Πεμπτη 15-18 ','website','scholar');
 INSERT INTO professors VALUES ('kalantonis','Βασίλειος','Καλαντώνης','Καθηγητής','/myDepartment/myresources/prof_pics/kalantonis_photo.jpg','Πτυχίο του Τμήματος  Μαθηματικών του Πανεπιστημίου Πατρών, Μεταπτυχιακό Δίπλωμα Ειδίκευσης του Τμήματος Μαθηματικών και του Τμήματος Μηχανικών Ηλεκτρονικών Υπολογιστών και Πληροφορικής του Πανεπιστημίου Πατρών, Διδακτορικό Δίπλωμα του Γενικού Τμήματος του Πανεπιστημίου Πατρών','ΓΕΝΙΚΟ ΤΜΗΜΑ','+302610996868','+302610996868','kalantonis@upatras.gr','Τετάρτη 14-17 Πεμπτη 15-18 ','website','scholar');
@@ -599,4 +600,5 @@ INSERT INTO Students VALUES
 ('ece8022','Δημήτρης','Δημητρίου','/myDepartment/myresources/stud_pics/default.png','6984571983','Πάτρα, Κορίνθου 8','ece8022@upnet.gr',-1,7);
 
 INSERT INTO Secretariat VALUES
-('dotsika','Ζωή','Ντότσικα','/myDepartment/myresources/secret_pics/default.png','+302610.996.420','+302610.991.720','secretary@ece.upatras.gr');
+('dotsika','Ζωή','Ντότσικα','/myDepartment/myresources/secret_pics/default.png','+302610.996.420','+302610.991.720','secretary@ece.upatras.gr'),
+('papadopoulou','Μαρία','Παπαδοπούλου','/myDepartment/myresources/secret_pics/default.png','+302610.996.420','+302610.991.720','secretary@ece.upatras.gr');

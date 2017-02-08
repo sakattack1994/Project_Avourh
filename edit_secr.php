@@ -14,7 +14,7 @@ if(isset($_POST['secr_edit'])){
       $sql = "SELECT * FROM members WHERE ID=\"".$_POST['secr_edit']."\"";
       $result2 = $conn->query($sql);
       while($choice2 = $result2->fetch_assoc()){
-      $secr.="<div class=\"container\"><form action=\"welcome_login.php\" method=\"POST\" enctype=\"multipart/form-data\"><div class=\"form-group\">";
+      $secr.="<div class=\"container\"><form action=\"secretary_members.php\" method=\"POST\" enctype=\"multipart/form-data\"><div class=\"form-group\">";
       $secr.="
       <div class=\"row\">
         <div class=\"col-md-8\">

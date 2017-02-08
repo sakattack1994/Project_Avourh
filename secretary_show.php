@@ -15,11 +15,10 @@ if(isset($_POST['sec_choose'])){
     $result = $conn->query($sql);
     $sql = "SELECT * FROM secretariat WHERE SecretariatID=\"".$_POST['sec_choose']."\"";
     $result = $conn->query($sql);
-    if(isset($_SESSION['user'])){
-      if($_SESSION['user']==$_POST['sec_choose']){
+    if(isset($_SESSION['secretariat'])){
         $edit="<div class=\"row\">
             <div class=\"col-md-8\">
-              <h3>If you want to edit your profile press here:</h3>
+              <h3>If you want to edit the profile press here:</h3>
               </div>
             </div>
             <div class=\"row\">
@@ -28,11 +27,10 @@ if(isset($_POST['sec_choose'])){
                 <button type=\"submit\" name=\"secr_edit\" value=".$_POST['sec_choose']." class=\"add_new_button\">EDIT PROFILE</button>
                 </form>
             </div>
-          </div>";
-        }
-        else if (isset($_SESSION['secretariat'])) {
-          if($_SESSION['secretariat']==1){
-            $edit="<div class=\"row\">
+          </div>
+          ";
+          if($_SESSION['user']!=$_POST['sec_choose']){
+            $edit.="<div class=\"row\">
               <div class=\"col-md-8\">
                 <h3>If you want to delete this secretary member press here:</h3>
               </div>
@@ -40,18 +38,14 @@ if(isset($_POST['sec_choose'])){
             <div class=\"row\">
               <div class=\"col-md-8\">
                 <form action=\"secretary_members.php\" method=\"POST\">
-                  <button type=\"submit\" name=\"secretary_delete\" value=".$_POST['sec_choose']." class=\"add_new_button\">DELETE MEMBER</button>
+                  <button type=\"submit\" name=\"sec_delete\" value=".$_POST['sec_choose']." class=\"add_new_button\">DELETE MEMBER</button>
                 </form>
               </div>
             </div>";
           }
-        }
         else{
-          $edit="";
+          $edit.="";
         }
-    }
-    else{
-      $edit="";
     }
     while($choice = $result->fetch_assoc()){
       $secr.=

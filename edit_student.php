@@ -1,6 +1,10 @@
 <?php
+if(!isset($_SESSION))
+    {
+      session_start();
+    }
 if(isset($_POST['student_edit'])){
-    $secr="";
+    $stu="";
     $conn = new mysqli('localhost', 'root', '', 'mydepartment');
       // Check connection
     if ($conn->connect_error) {
@@ -11,44 +15,55 @@ if(isset($_POST['student_edit'])){
     $sql = "SELECT * FROM students WHERE StudentID=\"".$_POST['student_edit']."\"";
     $result = $conn->query($sql);
     $edit="";
-    if(isset($_SESSION['secretariat']))
-    {
-      if($_SESSION['secretariat']==1){
-        $edit="
-        <tr>
-          <td>Level Of Studies:</td>
-          <select name=\"p_level\" style=\"height:100%; width:100%;\" required=\"\">
-            <option value=\"-1\">Pregraduate</option>
-            <option value=\"1\">Postgraduate</option>
-            <option value=\"0\">Doctora</option>
-          </select>
-          <td style=\"padding:0;\"><input type=\"text\" name=\"p_level\" value=\"".$choice['LevelOfStudies']."\" style=\"height:100%; width:100%;\">
-          </td>
-        </tr>
-        <tr>
-          <td>Semester:</td><td style=\"padding:0;\"><input type=\"text\" name=\"p_semester\" value=\"".$choice['Semester']."\" style=\"height:100%; width:100%;\"></td>
-        </tr>
-        ";
-      }
-    }
+    $pw="";
     while($choice = $result->fetch_assoc()){
       $sql = "SELECT * FROM members WHERE ID=\"".$_POST['student_edit']."\"";
       $result2 = $conn->query($sql);
       while($choice2 = $result2->fetch_assoc()){
-      $secr.="<div class=\"container\"><form action=\"welcome_login.php\" method=\"POST\" enctype=\"multipart/form-data\"><div class=\"form-group\">";
-      $secr.="
+        if(isset($_SESSION['secretariat']))
+        {
+          if($_SESSION['secretariat']==1){
+            $edit="
+            <tr>
+              <td>Level Of Studies:</td><td style=\"padding:0;\">
+              <select name=\"s_level\" style=\"height:100%; width:100%;\" required=\"\">
+                <option value=\"-1\">Pregraduate</option>
+                <option value=\"1\">Postgraduate</option>
+                <option value=\"0\">Doctora</option>
+              </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Semester:</td><td style=\"padding:0;\"><input type=\"text\" name=\"s_semester\" value=\"".$choice['Semester']."\" style=\"height:100%; width:100%;\"></td>
+            </tr>
+            <tr>
+              <td>Student ID:</td><td style=\"padding:0;\"><input type=\"text\" name=\"s_id\" value=\"".$choice['StudentID']."\" style=\"height:100%; width:100%;\"></td>
+            </tr>
+            ";
+          }
+        }
+        if(isset($_SESSION['student']))
+        {
+          if($_SESSION['student']==1){
+            $pw="<tr>
+              <td>Password:</td><td style=\"padding:0;\"><input type=\"text\" name=\"s_pwd\" value=\"".$choice2['Password']."\" style=\"height:100%; width:100%;\"></td>
+            </tr>";
+          }
+        }
+      $stu.="<div class=\"container\"><form action=\"all_students.php\" method=\"POST\" enctype=\"multipart/form-data\"><div class=\"form-group\">";
+      $stu.="
       <div class=\"row\">
         <div class=\"col-md-8\">
           <label><h1>".$choice['LastName']." ".$choice['FirstName']."</h1></label>
         </div>
       </div>";
-      $secr.="
+      $stu.="
       <div class=\"row\">
         <div class=\"col-md-8\">
           <label><h1><h3>General information:</h3></h1></label>
         </div>
       </div>";
-      $secr.="
+      $stu.="
       <div class=\"row\"><div class=\"col-md-8\">
       <table class=\"table table-bordered table-hover\" id=\"update_table\">
       <tr>
@@ -62,32 +77,28 @@ if(isset($_POST['student_edit'])){
           <input name=\"file\" type=\"file\" id=\"file\">
         </td>
       </tr>
+      ".$edit."
+      ".$pw."
       <tr>
-        <td>Student ID:</td><td style=\"padding:0;\"><input type=\"text\" name=\"s_id\" value=\"".$choice['StudentID']."\" style=\"height:100%; width:100%;\"></td>
+        <td>Last Name:</td><td style=\"padding:0;\"><input type=\"text\" name=\"s_lname\" value=\"".$choice['LastName']."\" style=\"height:100%; width:100%;\"></td>
       </tr>
       <tr>
-        <td>Password:</td><td style=\"padding:0;\"><input type=\"text\" name=\"p_pwd\" value=\"".$choice2['Password']."\" style=\"height:100%; width:100%;\"></td>
+        <td>First Name:</td><td style=\"padding:0;\"><input type=\"text\" name=\"s_fname\" value=\"".$choice['FirstName']."\" style=\"height:100%; width:100%;\"></td>
       </tr>
       <tr>
-        <td>Last Name:</td><td style=\"padding:0;\"><input type=\"text\" name=\"p_lname\" value=\"".$choice['LastName']."\" style=\"height:100%; width:100%;\"></td>
+        <td>Telephone:</td><td style=\"padding:0;\"><input type=\"text\" name=\"s_telephone\" value=\"".$choice['Telephone']."\" style=\"height:100%; width:100%;\"></td>
       </tr>
       <tr>
-        <td>First Name:</td><td style=\"padding:0;\"><input type=\"text\" name=\"p_fname\" value=\"".$choice['FirstName']."\" style=\"height:100%; width:100%;\"></td>
+        <td>Address:</td><td style=\"padding:0;\"><input type=\"text\" name=\"s_addr\" value=\"".$choice['Address']."\" style=\"height:100%; width:100%;\"></td>
       </tr>
       <tr>
-        <td>Telephone:</td><td style=\"padding:0;\"><input type=\"text\" name=\"p_telephone\" value=\"".$choice['Telephone']."\" style=\"height:100%; width:100%;\"></td>
+        <td>Email:</td><td style=\"padding:0;\"><input type=\"text\" name=\"s_email\" value=\"".$choice['Email']."\" style=\"height:100%; width:100%;\"></td>
       </tr>
-      <tr>
-        <td>Address:</td><td style=\"padding:0;\"><input type=\"text\" name=\"p_addr\" value=\"".$choice['Address']."\" style=\"height:100%; width:100%;\"></td>
-      </tr>
-      <tr>
-        <td>Email:</td><td style=\"padding:0;\"><input type=\"text\" name=\"p_email\" value=\"".$choice['Email']."\" style=\"height:100%; width:100%;\"></td>
-      </tr>".$edit."
       ";
-      $secr.="</table></div></div>";
+      $stu.="</table></div></div>";
       }
     }
-    $secr.="<br><br>
+    $stu.="<br><br>
     <div class=\"row\"><div class=\"col-md-8\">
     <h3>If you finished editing press here:</h3>
     <input type=\"submit\" value=\"FINISH\" class=\"add_new_button\">
@@ -95,7 +106,7 @@ if(isset($_POST['student_edit'])){
     </div></form></div>
     <br><br>";
     $conn->close();
-    $content="<div class=\"col-md-9\"><div id=\"content\">".$secr."
+    $content="<div class=\"col-md-9\"><div id=\"content\">".$stu."
     </div></div>
     <div class=\"col-md-3\"><div id=\"side_bar\"></div></div>";
     include 'WebPageTemplate.php';

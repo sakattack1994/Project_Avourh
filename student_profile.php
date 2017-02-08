@@ -33,6 +33,18 @@ if(isset($_POST['stu_choose'])){
         else if (isset($_SESSION['secretariat'])) {
           if($_SESSION['secretariat']==1){
             $edit="<div class=\"row\">
+                <div class=\"col-md-8\">
+                  <h3>If you want to edit the profile press here:</h3>
+                  </div>
+                </div>
+                <div class=\"row\">
+                <div class=\"col-md-8\">
+                  <form action=\"edit_student.php\" method=\"POST\">
+                    <button type=\"submit\" name=\"student_edit\" value=".$_POST['stu_choose']." class=\"add_new_button\">EDIT PROFILE</button>
+                    </form>
+                </div>
+              </div>
+            <div class=\"row\">
               <div class=\"col-md-8\">
                 <h3>If you want to delete this student from the system press here:</h3>
               </div>
