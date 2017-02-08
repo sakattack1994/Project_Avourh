@@ -15,7 +15,6 @@ if(isset($_POST['student_edit'])){
     $sql = "SELECT * FROM students WHERE StudentID=\"".$_POST['student_edit']."\"";
     $result = $conn->query($sql);
     $edit="";
-    $pw="";
     while($choice = $result->fetch_assoc()){
       $sql = "SELECT * FROM members WHERE ID=\"".$_POST['student_edit']."\"";
       $result2 = $conn->query($sql);
@@ -23,7 +22,7 @@ if(isset($_POST['student_edit'])){
         if(isset($_SESSION['secretariat']))
         {
           if($_SESSION['secretariat']==1){
-            $edit="
+            $edit.="
             <tr>
               <td>Level Of Studies:</td><td style=\"padding:0;\">
               <select name=\"s_level\" style=\"height:100%; width:100%;\" required=\"\">
@@ -40,14 +39,6 @@ if(isset($_POST['student_edit'])){
               <td>Student ID:</td><td style=\"padding:0;\"><input type=\"text\" name=\"s_id\" value=\"".$choice['StudentID']."\" style=\"height:100%; width:100%;\"></td>
             </tr>
             ";
-          }
-        }
-        if(isset($_SESSION['student']))
-        {
-          if($_SESSION['student']==1){
-            $pw="<tr>
-              <td>Password:</td><td style=\"padding:0;\"><input type=\"text\" name=\"s_pwd\" value=\"".$choice2['Password']."\" style=\"height:100%; width:100%;\"></td>
-            </tr>";
           }
         }
       $stu.="<div class=\"container\"><form action=\"all_students.php\" method=\"POST\" enctype=\"multipart/form-data\"><div class=\"form-group\">";
@@ -78,7 +69,9 @@ if(isset($_POST['student_edit'])){
         </td>
       </tr>
       ".$edit."
-      ".$pw."
+      <tr>
+        <td>Password:</td><td style=\"padding:0;\"><input type=\"text\" name=\"s_pwd\" value=\"".$choice2['Password']."\" style=\"height:100%; width:100%;\"></td>
+      </tr>
       <tr>
         <td>Last Name:</td><td style=\"padding:0;\"><input type=\"text\" name=\"s_lname\" value=\"".$choice['LastName']."\" style=\"height:100%; width:100%;\"></td>
       </tr>

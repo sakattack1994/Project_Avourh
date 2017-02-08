@@ -16,11 +16,11 @@ if(isset($_POST['new_id'])){
   $result = $conn->query($sql);
   $pic="";
   if($_FILES["file"]["name"]){
-    move_uploaded_file($_FILES["file"]["tmp_name"],$_SERVER['DOCUMENT_ROOT'] .'/myDepartment/myresources/secret_pics/'.$_FILES['file']['name']);
-    $pic="/myDepartment/myresources/secret_pics/".$_FILES['file']['name'];
+    move_uploaded_file($_FILES["file"]["tmp_name"],$_SERVER['DOCUMENT_ROOT'] .'/myDepartment/myresources/stud_pics/'.$_FILES['file']['name']);
+    $pic="/myDepartment/myresources/stud_pics/".$_FILES['file']['name'];
   }
   else{
-    $pic="/myDepartment/myresources/secret_pics/default.png";
+    $pic="/myDepartment/myresources/stud_pics/default.png";
   }
   $sql="INSERT INTO members VALUES
   (\"".$_POST['new_id']."\",
@@ -30,20 +30,22 @@ if(isset($_POST['new_id'])){
   \"secretariat\"
   )";
   $result = $conn->query($sql);
-  $sql="INSERT INTO secretariat VALUES
+  $sql="INSERT INTO students VALUES
   (\"".$_POST['new_id']."\",
   \"".$_POST['new_fname']."\",
   \"".$_POST['new_lname']."\",
   \"".$pic."\",
   \"".$_POST['new_telephone']."\",
-  \"".$_POST['new_fax']."\",
-  \"".$_POST['new_email']."\"
+  \"".$_POST['new_addr']."\",
+  \"".$_POST['new_email']."\",
+  \"".$_POST['new_level']."\",
+  \"".$_POST['new_semester']."\"
   )";
   $result = $conn->query($sql);
   $sql='SET FOREIGN_KEY_CHECKS=1';
   $result = $conn->query($sql);
   $conn->close();
-  $alert="<div class=\"alert alert-success\"><strong>The member ".$_POST['new_lname']." ".$_POST['new_fname']." was successfully added.</strong></div>";
+  $alert="<div class=\"alert alert-success\"><strong>The student ".$_POST['new_lname']." ".$_POST['new_fname']." was successfully added.</strong></div>";
 }
 if(isset($_POST['student_delete'])){
   $conn = new mysqli('localhost', 'root', '', 'mydepartment');
@@ -71,7 +73,7 @@ if(isset($_POST['student_delete'])){
   $conn->close();
   $alert="<div class=\"alert alert-success\"><strong>The student ".$_POST['student_delete']." was successfully deleted.</strong></div>";
 }
-if(isset($_POST['s_id'])){
+if(isset($_POST['s_pwd'])){
   $conn = new mysqli('localhost', 'root', '', 'mydepartment');
   // Check connection
   if ($conn->connect_error) {
@@ -81,39 +83,71 @@ if(isset($_POST['s_id'])){
   $result = $conn->query($sql);
   $sql='SET FOREIGN_KEY_CHECKS=0';
   $result = $conn->query($sql);
-  $sql="UPDATE students
-  SET StudentID=\"".$_POST['s_id']."\",
-  FirstName=\"".$_POST['s_fname']."\",
-  LastName=\"".$_POST['s_lname']."\",
-  Telephone=\"".$_POST['s_telephone']."\",
-  Address=\"".$_POST['s_addr']."\",
-  Email=\"".$_POST['s_email']."\",
-  LevelOfStudies=\"".$_POST['s_level']."\",
-  Semester=\"".$_POST['s_semester']."\"
-  WHERE StudentID=\"".$_POST['old_code']."\"
-  ";
-  $result = $conn->query($sql);
-  $pic="";
-  if($_FILES["file"]["name"]){
-    move_uploaded_file($_FILES["file"]["tmp_name"],$_SERVER['DOCUMENT_ROOT'] .'/myDepartment/myresources/stud_pics/'.$_FILES['file']['name']);
-    $pic="/myDepartment/myresources/stud_pics/".$_FILES['file']['name'];
+  if(isset($_SESSION['secretariat'])){
     $sql="UPDATE students
-    SET Photo=\"".$pic."\"
-    WHERE StudentID=\"".$_POST['s_id']."\"
+    SET StudentID=\"".$_POST['s_id']."\",
+    FirstName=\"".$_POST['s_fname']."\",
+    LastName=\"".$_POST['s_lname']."\",
+    Telephone=\"".$_POST['s_telephone']."\",
+    Address=\"".$_POST['s_addr']."\",
+    Email=\"".$_POST['s_email']."\",
+    LevelOfStudies=\"".$_POST['s_level']."\",
+    Semester=\"".$_POST['s_semester']."\"
+    WHERE StudentID=\"".$_POST['old_code']."\"
     ";
     $result = $conn->query($sql);
+    $pic="";
+    if($_FILES["file"]["name"]){
+      move_uploaded_file($_FILES["file"]["tmp_name"],$_SERVER['DOCUMENT_ROOT'] .'/myDepartment/myresources/stud_pics/'.$_FILES['file']['name']);
+      $pic="/myDepartment/myresources/stud_pics/".$_FILES['file']['name'];
+      $sql="UPDATE students
+      SET Photo=\"".$pic."\"
+      WHERE StudentID=\"".$_POST['s_id']."\"
+      ";
+      $result = $conn->query($sql);
+    }
+    $sql="UPDATE members
+    SET ID=\"".$_POST['s_id']."\",
+    FirstName=\"".$_POST['s_fname']."\",
+    LastName=\"".$_POST['s_lname']."\",
+    Password=\"".$_POST['s_pwd']."\"
+    WHERE ID=\"".$_POST['old_code']."\"
+    ";
+    $alert="<div class=\"alert alert-success\"><strong>The student ".$_POST['s_lname']." ".$_POST['s_fname']." was successfully updated.</strong></div>";
+
   }
-  $sql="UPDATE members
-  SET ID=\"".$_POST['s_id']."\",
-  FirstName=\"".$_POST['s_fname']."\",
-  LastName=\"".$_POST['s_lname']."\",
-  Password=\"".$_POST['s_pwd']."\"
-  WHERE ID=\"".$_POST['old_code']."\"
-  ";
+  else if(isset($_SESSION['student'])){
+    $sql="UPDATE students
+    SET FirstName=\"".$_POST['s_fname']."\",
+    LastName=\"".$_POST['s_lname']."\",
+    Telephone=\"".$_POST['s_telephone']."\",
+    Address=\"".$_POST['s_addr']."\",
+    Email=\"".$_POST['s_email']."\",
+    WHERE StudentID=\"".$_POST['old_code']."\"
+    ";
+    $result = $conn->query($sql);
+    $pic="";
+    if($_FILES["file"]["name"]){
+      move_uploaded_file($_FILES["file"]["tmp_name"],$_SERVER['DOCUMENT_ROOT'] .'/myDepartment/myresources/stud_pics/'.$_FILES['file']['name']);
+      $pic="/myDepartment/myresources/stud_pics/".$_FILES['file']['name'];
+      $sql="UPDATE students
+      SET Photo=\"".$pic."\"
+      WHERE StudentID=\"".$_POST['old_code']."\"
+      ";
+      $result = $conn->query($sql);
+    }
+    $sql="UPDATE members
+    SET FirstName=\"".$_POST['s_fname']."\",
+    LastName=\"".$_POST['s_lname']."\",
+    Password=\"".$_POST['s_pwd']."\"
+    WHERE ID=\"".$_POST['old_code']."\"
+    ";
+    $alert="<div class=\"alert alert-success\"><strong>The student ".$_POST['s_lname']." ".$_POST['s_fname']." was successfully updated.</strong></div>";
+
+  }
   $sql='SET FOREIGN_KEY_CHECKS=1';
   $result = $conn->query($sql);
   $conn->close();
-  $alert="<div class=\"alert alert-success\"><strong>The student ".$_POST['s_lname']." ".$_POST['s_fname']." was successfully updated.</strong></div>";
 }
 //-----------------------------------------------------------------------------------
 $conn = new mysqli('localhost', 'root', '', 'mydepartment');
@@ -155,18 +189,21 @@ if(isset($_SESSION['secretariat'])){
 else{
   $edit="";
 }
-$content="
-<div class=\"col-md-9\">
-  <div id=\"content\">
-    <h1>Students</h1><br>
-    ".$alert."
-    ".$edit."
-    ".$table."
-    </div>
-</div>
-  <div class=\"col-md-3\">
-    <div id=\"side_bar\">
+
+
+  $content="
+  <div class=\"col-md-9\">
+    <div id=\"content\">
+      <h1>Students</h1><br>
+      ".$alert."
+      ".$edit."
+      ".$table."
+      </div>
   </div>
-</div>";
-include 'WebPageTemplate.php';
+    <div class=\"col-md-3\">
+      <div id=\"side_bar\">
+    </div>
+  </div>";
+  include 'WebPageTemplate.php';
+
 ?>

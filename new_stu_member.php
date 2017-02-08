@@ -1,10 +1,10 @@
 <?php
     $member="";
-    $member.="<div class=\"container\"><form action=\"secretary_members.php\" method=\"POST\" enctype=\"multipart/form-data\"><div class=\"form-group\">";
+    $member.="<div class=\"container\"><form action=\"all_students.php\" method=\"POST\" enctype=\"multipart/form-data\"><div class=\"form-group\">";
     $member.="
     <div class=\"row\">
       <div class=\"col-md-8\">
-        <label><h1>New member edit:</h1></label>
+        <label><h1>New student edit:</h1></label>
       </div>
     </div>";
     $member.="
@@ -17,7 +17,7 @@
     <div class=\"row\"><div class=\"col-md-8\">
     <table class=\"table table-bordered table-hover\" id=\"update_table\">
     <tr>
-      <td>Secretary ID:</td><td style=\"padding:0;\"><input type=\"text\" name=\"new_id\" style=\"height:100%; width:100%;\" required=\"\"></td>
+      <td>Student ID:</td><td style=\"padding:0;\"><input type=\"text\" name=\"new_id\" style=\"height:100%; width:100%;\" required=\"\"></td>
     </tr>
     <tr>
       <td>Password:</td><td style=\"padding:0;\"><input type=\"text\" name=\"new_pwd\" style=\"height:100%; width:100%;\" required=\"\"></td>
@@ -32,11 +32,24 @@
       <td>Telephone:</td><td style=\"padding:0;\"><input type=\"text\" name=\"new_telephone\" style=\"height:100%; width:100%;\" required=\"\"></td>
     </tr>
     <tr>
-      <td>Fax:</td><td style=\"padding:0;\"><input type=\"text\" name=\"new_fax\" style=\"height:100%; width:100%;\" required=\"\"></td>
+      <td>Address:</td><td style=\"padding:0;\"><input type=\"text\" name=\"new_addr\" style=\"height:100%; width:100%;\" required=\"\"></td>
     </tr>
     <tr>
       <td>Email:</td><td style=\"padding:0;\"><input type=\"text\" name=\"new_email\" style=\"height:100%; width:100%;\" required=\"\"></td>
-    </tr>";
+    </tr>
+    <tr>
+      <td>Level Of Studies:</td><td style=\"padding:0;\">
+      <select name=\"new_level\" style=\"height:100%; width:100%;\" required=\"\">
+        <option value=\"-1\">Pregraduate</option>
+        <option value=\"1\">Postgraduate</option>
+        <option value=\"0\">Doctora</option>
+      </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Semester:</td><td style=\"padding:0;\"><input type=\"text\" name=\"new_semester\" style=\"height:100%; width:100%;\" required=\"\"></td>
+    </tr>
+    ";
     $member.="</table></div></div>";
     $member.="
     <div class=\"row\">

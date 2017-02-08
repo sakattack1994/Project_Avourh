@@ -4,8 +4,8 @@ if(!isset($_SESSION))
       session_start();
     }
 if(isset($_POST['stu_choose'])){
-    $secr="";
-    $secr.="<div class=\"container\">";
+    $stud="";
+    $stud.="<div class=\"container\">";
     $conn = new mysqli('localhost', 'root', '', 'mydepartment');
       // Check connection
     if ($conn->connect_error) {
@@ -26,7 +26,7 @@ if(isset($_POST['stu_choose'])){
             <div class=\"col-md-8\">
               <form action=\"edit_student.php\" method=\"POST\">
                 <button type=\"submit\" name=\"student_edit\" value=".$_POST['stu_choose']." class=\"add_new_button\">EDIT PROFILE</button>
-                </form>
+              </form>
             </div>
           </div>";
         }
@@ -52,7 +52,7 @@ if(isset($_POST['stu_choose'])){
             <div class=\"row\">
               <div class=\"col-md-8\">
                 <form action=\"all_students.php\" method=\"POST\">
-                  <button type=\"submit\" name=\"student_delete\" value=".$_POST['stu_choose']." class=\"add_new_button\">DELETE PROFESSOR</button>
+                  <button type=\"submit\" name=\"student_delete\" value=".$_POST['stu_choose']." class=\"add_new_button\">DELETE STUDENT</button>
                 </form>
               </div>
             </div>";
@@ -76,7 +76,7 @@ if(isset($_POST['stu_choose'])){
       else{
         $level="Doctora";
       }
-      $secr.=
+      $stud.=
       $edit."
       <div class=\"row\">
           <div class=\"col-md-8\"><h1>".$choice['LastName']." ".$choice['FirstName']."</h1></div>
@@ -96,8 +96,8 @@ if(isset($_POST['stu_choose'])){
       ";
     }
     $conn->close();
-    $secr.="</div>";
-    $content="<div class=\"col-md-9\"><div id=\"content\">".$secr."
+    $stud.="</div>";
+    $content="<div class=\"col-md-9\"><div id=\"content\">".$stud."
     </div></div>
     <div class=\"col-md-3\"><div id=\"side_bar\"></div></div>";
     include 'WebPageTemplate.php';
