@@ -38,21 +38,6 @@ function add_header(){
                   <li><a href=\"lesson_declaration_rules.php\">Lesson Declaration Rules</a></li>\
                   <li><a href=\"graduation_rules.php\">Graduation Rules</a></li>\
                   <li><a href=\"usefull_documents.php\">Usefull Documents</a></li>\
-                  <li>Practise</li>\
-                  <li>Diploma Theses</li>\
-                  <li>Timetable</li>\
-								</ul>\
-							</li>\
-              <li>Graduate Program</li>\
-              <li>\
-								Postgraduate Subjects\
-								<ul class=\"sub-menu\">\
-									<li>Statute</li>\
-                  <li>Phd Thesis</li>\
-                  <li>Courses</li>\
-                  <li>Postgraduate Students</li>\
-                  <li>Courses and Exams</li>\
-                  <li>Schedule</li>\
 								</ul>\
 							</li>\
             </ul>\

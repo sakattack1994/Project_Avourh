@@ -72,14 +72,6 @@ if(isset($_POST['professor_delete'])){
   $result = $conn->query($sql);
   $sql="DELETE FROM professor_lessons_lastyears WHERE ProfessorID=\"".$_POST['professor_delete']."\"";
   $result = $conn->query($sql);
-  $sql="SELECT * FROM professors_publications WHERE ProfessorID=\"".$_POST['professor_delete']."\"";
-  $result = $conn->query($sql);
-  while($choice = $result->fetch_assoc()){
-    $sql="DELETE FROM scientificpublications WHERE PublicationID=\"".$choice['PublicationID']."\"";
-    $result2 = $conn->query($sql);
-  }
-  $sql="DELETE FROM professors_publications WHERE ProfessorID=\"".$_POST['professor_delete']."\"";
-  $result = $conn->query($sql);
   $sql="DELETE FROM members WHERE ID=\"".$_POST['professor_delete']."\"";
   $result = $conn->query($sql);
   $sql="DELETE FROM professors WHERE ProfessorID=\"".$_POST['professor_delete']."\"";
@@ -148,35 +140,6 @@ if(isset($_POST['p_id'])){
   WHERE ProfessorID=\"".$_POST['old_code']."\"
   ";
   $result = $conn->query($sql);
-  $i=1;
-  while(true){
-    if(isset($_POST['pub_title'.$i])){
-    $sql="UPDATE scientificpublications
-    SET Title=\"".$_POST['pub_title'.$i]."\",
-    YearOfPublish=\"".$_POST['pub_year'.$i]."\"
-    WHERE PublicationID=\"".$_POST['pub_id']."\"
-    ";
-    $result = $conn->query($sql);
-  }
-  else{
-    break;
-  }
-  $i=$i+1;
-  }
-  $i=1;
-  while(true){
-    if(isset($_POST['pub_title_new'.$i])){
-      $id="pub_".strftime("%m/%d/%y",time()).time().$i;
-      $sql="INSERT INTO scientificpublications VALUES(\"".$id."\",\"".$_POST['pub_title_new'.$i]."\",\"".$_POST['pub_year_new'.$i]."\") ";
-      $result = $conn->query($sql);
-      $sql="INSERT INTO professors_publications VALUES(\"".$_POST['p_id']."\",\"".$id."\") ";
-      $result = $conn->query($sql);
-    }
-    else{
-      break;
-    }
-    $i=$i+1;
-  }
   $sql='SET FOREIGN_KEY_CHECKS=1';
   $result = $conn->query($sql);
   $conn->close();

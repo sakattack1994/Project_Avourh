@@ -92,33 +92,11 @@ if(isset($_POST['professor_edit'])){
       <tr>
         <td>Google Scholar:</td><td style=\"padding:0;\"><input type=\"text\" name=\"p_google\" value=\"".$choice['GoogleScholar']."\" style=\"height:100%; width:100%;\"></td>
       </tr>";
-      $sql = "SELECT * FROM professors_publications WHERE ProfessorID=\"".$_POST['professor_edit']."\"";
-      $result3 = $conn->query($sql);
-      $j=1;
-      while($choice3 = $result3->fetch_assoc()){
-        $sql = "SELECT * FROM scientificpublications WHERE PublicationID=\"".$choice3['PublicationID']."\"";
-        $result4 = $conn->query($sql);
-        while($choice4 = $result4->fetch_assoc()){
-          $prof.="
-          <tr>
-            <td style=\"visibility:hidden;display:none;\"><input type=\"text\" name=\"pub_id\" value=\"".$choice4['PublicationID']."\"></td>
-          </tr>
-          <tr>
-            <td>Publication Title ".$j.":</td><td style=\"padding:0;\"><input type=\"text\" name=\"pub_title".$j."\" value=\"".$choice4['Title']."\" style=\"height:100%; width:100%;\"></td>
-          </tr>
-          <tr>
-            <td>Publication Year of Publish ".$j.":</td><td style=\"padding:0;\"><input type=\"text\" name=\"pub_year".$j."\" value=\"".$choice4['YearOfPublish']."\" style=\"height:100%; width:100%;\"></td>
-          </tr>
-          ";
-            $j=$j+1;
-        }
-      }
       $prof.="</table></div></div>";
       }
     }
     $prof.="<br><br>
     <div class=\"row\"><div class=\"col-md-8\">
-    <button type=\"button\" class=\"add_new_button\" onclick=\"new_scientific_publication();\">&#9546;ADD NEW SCIENTIFIC PUBLICATION</button><br>
     <h3>If you finished editing press here:</h3>
     <input type=\"submit\" value=\"FINISH\" class=\"add_new_button\">
     </div></div>

@@ -51,8 +51,9 @@ if(isset($_POST['userID'])){
       $name1="prof_choose";
       $menu.="
       <a href=\"welcome_login.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-home\" style=\"align:left;color:white;\"></span></span> Home</font></li></a>
-      <a href=\"prof_my_lessons.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-plus-sign\" style=\"align:left;color:white;\"></span></span> My lessons</font></li></a>
-      <a href=\"my_statistics.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-plus-sign\" style=\"align:left;color:white;\"></span></span> My statistics</font></li></a>
+      <a href=\"prof_my_lessons.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-list-alt\" style=\"align:left;color:white;\"></span></span> My lessons</font></li></a>
+      <a href=\"my_statistics.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-signal\" style=\"align:left;color:white;\"></span></span> My statistics</font></li></a>
+      <a href=\"my_publications.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-education\" style=\"align:left;color:white;\"></span></span> My publications</font></li></a>
       ";
     }
   }
@@ -78,6 +79,12 @@ if(isset($_POST['userID'])){
     if($_SESSION['student']==1){
       $file="student_profile.php";
       $name1="stu_choose";
+      $menu.="
+      <a href=\"welcome_login.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-home\" style=\"align:left;color:white;\"></span></span> Home</font></li></a>
+      <a href=\"student_my_lessons.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-list-alt\" style=\"align:left;color:white;\"></span></span> My lessons</font></li></a>
+      <a href=\"courses.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-signal\" style=\"align:left;color:white;\"></span></span> All lessons</font></li></a>
+      <a href=\"calendar.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-calendar\" style=\"align:left;color:white;\"></span></span> Calendar</font></li></a>
+      ";
     }
   }
 

@@ -14,7 +14,7 @@ CREATE TABLE `Students` (
 CREATE TABLE `Lessons` (
 	`LessonID` varchar(10) NOT NULL  ,
 	`Title` varchar(100) NOT NULL,
-	`Description` varchar(1000) NOT NULL,
+	`Description` varchar(10000) NOT NULL,
 	`Type` varchar(100) NOT NULL,
 	`Semester` int NOT NULL,
 	`LevelOfStudies` varchar(100) NOT NULL,
@@ -97,6 +97,7 @@ CREATE TABLE `ScientificPublications` (
 	`PublicationID` varchar(100) NOT NULL  ,
 	`Title` varchar(100) NOT NULL,
 	`YearOfPublish` DATE NOT NULL,
+	`Description` varchar(10000) NOT NULL,
 	PRIMARY KEY (`PublicationID`)
 );
 
