@@ -87,7 +87,7 @@ if(isset($_POST['p_id'])){
   LastName=\"".$_POST['p_lname']."\",
   Telephone=\"".$_POST['p_telephone']."\",
   Fax=\"".$_POST['p_fax']."\",
-  Email=\"".$_POST['p_email']."\",
+  Email=\"".$_POST['p_email']."\"
   WHERE SecretariatID=\"".$_POST['old_code']."\"
   ";
   $result = $conn->query($sql);
@@ -108,6 +108,7 @@ if(isset($_POST['p_id'])){
   Password=\"".$_POST['p_pwd']."\"
   WHERE ID=\"".$_POST['old_code']."\"
   ";
+  $result = $conn->query($sql);
   $sql='SET FOREIGN_KEY_CHECKS=1';
   $result = $conn->query($sql);
   $conn->close();

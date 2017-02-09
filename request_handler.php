@@ -63,13 +63,13 @@ if(isset($_POST['userID'])){
       $name1="sec_choose";
       $menu.="
       <a href=\"welcome_login.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-home\" style=\"align:left;color:white;\"></span></span> Home</font></li></a>
-      <a href=\"add_announcement.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-plus-sign\" style=\"align:left;color:white;\"></span></span> Add Announcement</font></li></a>
-      <a href=\"new_member.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-plus-sign\" style=\"align:left;color:white;\"></span></span> Add Personnel Member</font></li></a>
-      <a href=\"secretary_members.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-plus-sign\" style=\"align:left;color:white;\"></span></span> Secretariat management</font></li></a>
-      <a href=\"all_students.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-plus-sign\" style=\"align:left;color:white;\"></span></span> Students management</font></li></a>
+      <a href=\"add_announcement.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-blackboard\" style=\"align:left;color:white;\"></span></span> Add Announcement</font></li></a>
+      <a href=\"new_member.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-user\" style=\"align:left;color:white;\"></span></span> Add Personnel Member</font></li></a>
+      <a href=\"secretary_members.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-phone-alt\" style=\"align:left;color:white;\"></span></span> Secretariat management</font></li></a>
+      <a href=\"all_students.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-education\" style=\"align:left;color:white;\"></span></span> Students management</font></li></a>
       <a href=\"add_study_schedule.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-plus-sign\" style=\"align:left;color:white;\"></span></span> Add New study guide</font></li></a>
-      <a href=\"add_new_lesson.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-plus-sign\" style=\"align:left;color:white;\"></span></span> Add New Lesson</font></li></a>
-      <a href=\"new_book.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-plus-sign\" style=\"align:left;color:white;\"></span></span> Add New Book</font></li></a>
+      <a href=\"add_new_lesson.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-text-background\" style=\"align:left;color:white;\"></span></span> Add New Lesson</font></li></a>
+      <a href=\"new_book.php\"><li tabindex=\"0\" ><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-book\" style=\"align:left;color:white;\"></span></span> Add New Book</font></li></a>
       ";
     }
   }
@@ -90,7 +90,7 @@ if(isset($_POST['userID'])){
   <h2>".$name."</h2>
 	<ul>
     ".$menu."
-    <a href=\"logout.php\"><li tabindex=\"0\" class=\"icon-settings\"><font style=\"color:rgba(0, 0, 0, 0.6)\"><span>Logout</span></font></li></a>
+    <a href=\"logout.php\"><li tabindex=\"0\"><font style=\"color:rgba(0, 0, 0, 0.6)\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-log-out\" style=\"align:left;color:white;\"></span></span>Logout</font></li></a>
   </ul>
   </form>
 </nav>";

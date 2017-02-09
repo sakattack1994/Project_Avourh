@@ -15,37 +15,36 @@ if(isset($_POST['sec_choose'])){
     $result = $conn->query($sql);
     $sql = "SELECT * FROM secretariat WHERE SecretariatID=\"".$_POST['sec_choose']."\"";
     $result = $conn->query($sql);
-    if(isset($_SESSION['secretariat'])){
-        $edit="<div class=\"row\">
-            <div class=\"col-md-8\">
-              <h3>If you want to edit the profile press here:</h3>
-              </div>
-            </div>
-            <div class=\"row\">
-            <div class=\"col-md-8\">
-              <form action=\"edit_secr.php\" method=\"POST\">
-                <button type=\"submit\" name=\"secr_edit\" value=".$_POST['sec_choose']." class=\"add_new_button\">EDIT PROFILE</button>
-                </form>
+    $edit="";
+    if($_SESSION['user']==$_POST['sec_choose']){
+      $edit="<div class=\"row\">
+          <div class=\"col-md-8\">
+            <h3>If you want to edit the profile press here:</h3>
             </div>
           </div>
-          ";
-          if($_SESSION['user']!=$_POST['sec_choose']){
-            $edit.="<div class=\"row\">
-              <div class=\"col-md-8\">
-                <h3>If you want to delete this secretary member press here:</h3>
-              </div>
-            </div>
-            <div class=\"row\">
-              <div class=\"col-md-8\">
-                <form action=\"secretary_members.php\" method=\"POST\">
-                  <button type=\"submit\" name=\"sec_delete\" value=".$_POST['sec_choose']." class=\"add_new_button\">DELETE MEMBER</button>
-                </form>
-              </div>
-            </div>";
-          }
-        else{
-          $edit.="";
-        }
+          <div class=\"row\">
+          <div class=\"col-md-8\">
+            <form action=\"edit_secr.php\" method=\"POST\">
+              <button type=\"submit\" name=\"secr_edit\" value=".$_POST['sec_choose']." class=\"add_new_button\">EDIT PROFILE</button>
+            </form>
+          </div>
+        </div>
+      ";
+    }
+    else{
+      $edit.="
+        <div class=\"row\">
+          <div class=\"col-md-8\">
+            <h3>If you want to delete this secretary member press here:</h3>
+          </div>
+        </div>
+        <div class=\"row\">
+          <div class=\"col-md-8\">
+            <form action=\"secretary_members.php\" method=\"POST\">
+              <button type=\"submit\" name=\"sec_delete\" value=".$_POST['sec_choose']." class=\"add_new_button\">DELETE MEMBER</button>
+            </form>
+          </div>
+        </div>";
     }
     while($choice = $result->fetch_assoc()){
       $secr.=
