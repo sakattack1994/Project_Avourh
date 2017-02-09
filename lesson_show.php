@@ -3,6 +3,30 @@ if(!isset($_SESSION))
     {
       session_start();
     }
+if(isset($_POST['lesson_enroll'])){
+  $conn = new mysqli('localhost', 'root', '', 'mydepartment');
+    // Check connection
+  if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+  $sql='SET NAMES utf8';
+  $result = $conn->query($sql);
+  $sql="INSERT INTO students_lessons_enroll VALUES(\"".$_SESSION['user']."\",\"".$_POST['lesson_enroll']."\")";
+  $result = $conn->query($sql);
+  $conn->close();
+}
+if(isset($_POST['lesson_unenroll'])){
+  $conn = new mysqli('localhost', 'root', '', 'mydepartment');
+    // Check connection
+  if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+  $sql='SET NAMES utf8';
+  $result = $conn->query($sql);
+  $sql="DELETE FROM students_lessons_enroll WHERE StudentID=\"".$_SESSION['user']."\" AND LessonID=\"".$_POST['lesson_unenroll']."\" ";
+  $result = $conn->query($sql);
+  $conn->close();
+}
 if(isset($_POST['lesson_choose'])){
     $lesson="";
     $conn = new mysqli('localhost', 'root', '', 'mydepartment');
@@ -58,6 +82,50 @@ if(isset($_POST['lesson_choose'])){
           <h1>".$choice['Title']."</h1>
         </div>
       </div>";
+      if(isset($_SESSION['student'])){
+        if($_SESSION['student']==1){
+          $sql = "SELECT * FROM students_lessons_enroll WHERE StudentID=\"".$_SESSION['user']."\"";
+          $result5 = $conn->query($sql);
+          $f=0;
+          while($choice5 = $result5->fetch_assoc()){
+            if($choice5['LessonID']==$_POST['lesson_choose']){
+              $f=1;
+            }
+          }
+          if($f==0){
+            $lesson.="<br><br>
+            <div class=\"row\">
+              <div class=\"col-md-8\">
+                <h3>If you want to enroll to this lesson press here:</h3>
+              </div>
+            </div>
+            <div class=\"row\">
+              <div class=\"col-md-8\">
+                <form action=\"lesson_show.php\" method=\"POST\">
+                  <input type=\"text\" name=\"lesson_enroll\" value=\"".$_POST['lesson_choose']."\" style=\"visibility:hidden;display:none;\">
+                  <button type=\"submit\" name=\"lesson_choose\" value=".$_POST['lesson_choose']." class=\"add_new_button\">ENROLL</button>
+                </form>
+             </div>
+            </div>";
+          }
+          else if($f==1){
+            $lesson.="<br><br>
+            <div class=\"row\">
+              <div class=\"col-md-8\">
+                <h3>If you want to unenroll from this lesson press here:</h3>
+              </div>
+            </div>
+            <div class=\"row\">
+              <div class=\"col-md-8\">
+                <form action=\"lesson_show.php\" method=\"POST\">
+                  <input type=\"text\" name=\"lesson_unenroll\" value=\"".$_POST['lesson_choose']."\" style=\"visibility:hidden;display:none;\">
+                  <button type=\"submit\" name=\"lesson_choose\" value=".$_POST['lesson_choose']." class=\"add_new_button\">UNENROLL</button>
+                </form>
+             </div>
+            </div>";
+          }
+        }
+      }
       if(isset($_SESSION['user'])){
         $sql = "SELECT ProfessorID FROM professor_lessons_thisyear WHERE LessonID=\"".$_POST['lesson_choose']."\"";
         $result2 = $conn->query($sql);
