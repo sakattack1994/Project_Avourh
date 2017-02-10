@@ -84,66 +84,70 @@ if(isset($_POST['s_pwd'])){
   $sql='SET FOREIGN_KEY_CHECKS=0';
   $result = $conn->query($sql);
   if(isset($_SESSION['secretariat'])){
-    $sql="UPDATE students
-    SET StudentID=\"".$_POST['s_id']."\",
-    FirstName=\"".$_POST['s_fname']."\",
-    LastName=\"".$_POST['s_lname']."\",
-    Telephone=\"".$_POST['s_telephone']."\",
-    Address=\"".$_POST['s_addr']."\",
-    Email=\"".$_POST['s_email']."\",
-    LevelOfStudies=\"".$_POST['s_level']."\",
-    Semester=\"".$_POST['s_semester']."\"
-    WHERE StudentID=\"".$_POST['old_code']."\"
-    ";
-    $result = $conn->query($sql);
-    $pic="";
-    if($_FILES["file"]["name"]){
-      move_uploaded_file($_FILES["file"]["tmp_name"],$_SERVER['DOCUMENT_ROOT'] .'/myDepartment/myresources/stud_pics/'.$_FILES['file']['name']);
-      $pic="/myDepartment/myresources/stud_pics/".$_FILES['file']['name'];
+    if($_SESSION['secretariat']==1){
       $sql="UPDATE students
-      SET Photo=\"".$pic."\"
-      WHERE StudentID=\"".$_POST['s_id']."\"
-      ";
-      $result = $conn->query($sql);
-    }
-    $sql="UPDATE members
-    SET ID=\"".$_POST['s_id']."\",
-    FirstName=\"".$_POST['s_fname']."\",
-    LastName=\"".$_POST['s_lname']."\",
-    Password=\"".$_POST['s_pwd']."\"
-    WHERE ID=\"".$_POST['old_code']."\"
-    ";
-    $alert="<div class=\"alert alert-success\"><strong>The student ".$_POST['s_lname']." ".$_POST['s_fname']." was successfully updated.</strong></div>";
-
-  }
-  else if(isset($_SESSION['student'])){
-    $sql="UPDATE students
-    SET FirstName=\"".$_POST['s_fname']."\",
-    LastName=\"".$_POST['s_lname']."\",
-    Telephone=\"".$_POST['s_telephone']."\",
-    Address=\"".$_POST['s_addr']."\",
-    Email=\"".$_POST['s_email']."\",
-    WHERE StudentID=\"".$_POST['old_code']."\"
-    ";
-    $result = $conn->query($sql);
-    $pic="";
-    if($_FILES["file"]["name"]){
-      move_uploaded_file($_FILES["file"]["tmp_name"],$_SERVER['DOCUMENT_ROOT'] .'/myDepartment/myresources/stud_pics/'.$_FILES['file']['name']);
-      $pic="/myDepartment/myresources/stud_pics/".$_FILES['file']['name'];
-      $sql="UPDATE students
-      SET Photo=\"".$pic."\"
+      SET StudentID=\"".$_POST['s_id']."\",
+      FirstName=\"".$_POST['s_fname']."\",
+      LastName=\"".$_POST['s_lname']."\",
+      Telephone=\"".$_POST['s_telephone']."\",
+      Address=\"".$_POST['s_addr']."\",
+      Email=\"".$_POST['s_email']."\",
+      LevelOfStudies=\"".$_POST['s_level']."\",
+      Semester=\"".$_POST['s_semester']."\"
       WHERE StudentID=\"".$_POST['old_code']."\"
       ";
       $result = $conn->query($sql);
+      $pic="";
+      if($_FILES["file"]["name"]){
+        move_uploaded_file($_FILES["file"]["tmp_name"],$_SERVER['DOCUMENT_ROOT'] .'/myDepartment/myresources/stud_pics/'.$_FILES['file']['name']);
+        $pic="/myDepartment/myresources/stud_pics/".$_FILES['file']['name'];
+        $sql="UPDATE students
+        SET Photo=\"".$pic."\"
+        WHERE StudentID=\"".$_POST['s_id']."\"
+        ";
+        $result = $conn->query($sql);
+      }
+      $sql="UPDATE members
+      SET ID=\"".$_POST['s_id']."\",
+      FirstName=\"".$_POST['s_fname']."\",
+      LastName=\"".$_POST['s_lname']."\",
+      Password=\"".$_POST['s_pwd']."\"
+      WHERE ID=\"".$_POST['old_code']."\"
+      ";
+      $result = $conn->query($sql);
+      $alert="<div class=\"alert alert-success\"><strong>The student ".$_POST['s_lname']." ".$_POST['s_fname']." was successfully updated.</strong></div>";
     }
-    $sql="UPDATE members
-    SET FirstName=\"".$_POST['s_fname']."\",
-    LastName=\"".$_POST['s_lname']."\",
-    Password=\"".$_POST['s_pwd']."\"
-    WHERE ID=\"".$_POST['old_code']."\"
-    ";
-    $alert="<div class=\"alert alert-success\"><strong>The student ".$_POST['s_lname']." ".$_POST['s_fname']." was successfully updated.</strong></div>";
-
+  }
+  if(isset($_SESSION['student'])){
+    if($_SESSION['student']==1){
+      $sql="UPDATE students
+      SET FirstName=\"".$_POST['s_fname']."\",
+      LastName=\"".$_POST['s_lname']."\",
+      Telephone=\"".$_POST['s_telephone']."\",
+      Address=\"".$_POST['s_addr']."\",
+      Email=\"".$_POST['s_email']."\"
+      WHERE StudentID=\"".$_POST['old_code']."\"
+      ";
+      $result = $conn->query($sql);
+      $pic="";
+      if($_FILES["file"]["name"]){
+        move_uploaded_file($_FILES["file"]["tmp_name"],$_SERVER['DOCUMENT_ROOT'] .'/myDepartment/myresources/stud_pics/'.$_FILES['file']['name']);
+        $pic="/myDepartment/myresources/stud_pics/".$_FILES['file']['name'];
+        $sql="UPDATE students
+        SET Photo=\"".$pic."\"
+        WHERE StudentID=\"".$_POST['old_code']."\"
+        ";
+        $result = $conn->query($sql);
+      }
+      $sql="UPDATE members
+      SET FirstName=\"".$_POST['s_fname']."\",
+      LastName=\"".$_POST['s_lname']."\",
+      Password=\"".$_POST['s_pwd']."\"
+      WHERE ID=\"".$_POST['old_code']."\"
+      ";
+      $result = $conn->query($sql);
+      $alert="<div class=\"alert alert-success\"><strong>The student ".$_POST['s_lname']." ".$_POST['s_fname']." was successfully updated.</strong></div>";
+    }
   }
   $sql='SET FOREIGN_KEY_CHECKS=1';
   $result = $conn->query($sql);

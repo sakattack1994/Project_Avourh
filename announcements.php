@@ -20,7 +20,6 @@ if(isset($_POST['ann_title'])){
   while(true){
     if(isset($_FILES['ann_attachment'.$i]['tmp_name'])){
       $dir_of_attachments = $_SERVER['DOCUMENT_ROOT'] .'/myDepartment/myresources/attachments/announcements/';
-      echo '0000';
       $sql = "INSERT INTO attachments VALUES(\"".$id."\",\"/myDepartment/myresources/attachments/announcements/".$_FILES["ann_attachment".$i]["name"]."\")";
       $result = $conn->query($sql);
       move_uploaded_file($_FILES['ann_attachment'.$i]['tmp_name'],$dir_of_attachments.urlencode($_FILES['ann_attachment'.$i]['name']));

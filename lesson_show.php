@@ -3,6 +3,40 @@ if(!isset($_SESSION))
     {
       session_start();
     }
+    $alert="";
+    if(isset($_POST['delete_comment'])){
+      $conn = new mysqli('localhost', 'root', '', 'mydepartment');
+        // Check connection
+      if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+      $sql='SET NAMES utf8';
+      $result = $conn->query($sql);
+      $sql="DELETE FROM lesson_comments WHERE CommentID=\"".$_POST['delete_comment']."\"";
+      $result = $conn->query($sql);
+      $sql="DELETE FROM comments WHERE CommentID=\"".$_POST['delete_comment']."\"";
+      $result = $conn->query($sql);
+      $conn->close();
+      $alert="<div class=\"alert alert-success\"><strong>Your comment was successfully deleted.</strong></div>";
+    }
+
+if(isset($_POST['content'])){
+      $conn = new mysqli('localhost', 'root', '', 'mydepartment');
+        // Check connection
+      if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+      $sql='SET NAMES utf8';
+      $result = $conn->query($sql);
+      $id="com_".strftime("%m/%d/%y",time()).time();
+      $sql="INSERT INTO comments VALUES(\"".$id."\",\"".$_POST['content']."\",\"".$_POST['anon']."\",CURRENT_TIMESTAMP)";
+      $result = $conn->query($sql);
+      $sql="INSERT INTO lesson_comments VALUES(\"".$_POST['lesson_choose']."\",\"".$id."\",\"".$_SESSION['user']."\",CURRENT_TIMESTAMP)";
+      $result = $conn->query($sql);
+      $conn->close();
+      $alert="<div class=\"alert alert-success\"><strong>You have successfully made a comment on this lesson.</strong></div>";
+}
+
 if(isset($_POST['lesson_enroll'])){
   $conn = new mysqli('localhost', 'root', '', 'mydepartment');
     // Check connection
@@ -14,6 +48,7 @@ if(isset($_POST['lesson_enroll'])){
   $sql="INSERT INTO students_lessons_enroll VALUES(\"".$_SESSION['user']."\",\"".$_POST['lesson_enroll']."\")";
   $result = $conn->query($sql);
   $conn->close();
+  $alert="<div class=\"alert alert-success\"><strong>You have successfully enrolled.</strong></div>";
 }
 if(isset($_POST['lesson_unenroll'])){
   $conn = new mysqli('localhost', 'root', '', 'mydepartment');
@@ -26,6 +61,7 @@ if(isset($_POST['lesson_unenroll'])){
   $sql="DELETE FROM students_lessons_enroll WHERE StudentID=\"".$_SESSION['user']."\" AND LessonID=\"".$_POST['lesson_unenroll']."\" ";
   $result = $conn->query($sql);
   $conn->close();
+  $alert="<div class=\"alert alert-success\"><strong>You have successfully unenrolled.</strong></div>";
 }
 if(isset($_POST['lesson_choose'])){
     $lesson="";
@@ -93,7 +129,12 @@ if(isset($_POST['lesson_choose'])){
             }
           }
           if($f==0){
-            $lesson.="<br><br>
+            $lesson.="
+            <div class=\"row\">
+              <div class=\"col-md-8\">".$alert
+            ."</div>
+          </div>
+            <br><br>
             <div class=\"row\">
               <div class=\"col-md-8\">
                 <h3>If you want to enroll to this lesson press here:</h3>
@@ -237,8 +278,122 @@ if(isset($_POST['lesson_choose'])){
         <td>Relative Lessons:</td><td>".$relativelessons."</td>
       </tr>
       </tbody>
-      </table></div></div></div>";
+      </table></div></div>";
     }
+    $sql = "SELECT FirstName,LastName,ID FROM members WHERE ID=\"".$_SESSION['user']."\"";
+    $result8 = $conn->query($sql);
+    $my_name="";
+    while($choice8 = $result8->fetch_assoc()){
+      $my_name.=$choice8['LastName']." ".$choice8['FirstName'];
+    }
+    $lesson.="
+    <div class=\"row\">
+      <div class=\"col-md-8\">
+          <h3>Comment this lesson:</h3>
+      </div>
+    </div>
+    <div class=\"row\">
+      <div class=\"col-md-8\">
+        <form action=\"lesson_show.php\" method=\"post\">
+          <label>Select to post the comment as:</label>
+          <select name=\"anon\" required=\"\">
+            <option value=\"0\">".$my_name."</option>
+            <option value=\"1\">Anonymous</option>
+          </select>
+      </div>
+    </div>
+    <div class=\"row\">
+      <div class=\"col-md-8\">
+          <textarea rows=\"3\" cols=\"100\" placeholder=\"Leave your comment here.....\" name=\"content\"></textarea>
+          <input style=\"visibility:hidden;display:none;\" type=\"text\" name=\"lesson_choose\" value=\"".$_POST['lesson_choose']."\"></td>
+      </div>
+    </div>
+    <div class=\"row\">
+      <div class=\"col-md-8\">
+        <input type=\"submit\" value=\"POST COMMENT\" class=\"add_new_button\">
+        </form>
+      </div>
+    </div>
+    ";
+    $lesson.="
+    <div class=\"row\">
+      <div class=\"col-md-8\">
+        <h2>Comments</h2>
+      </div>
+    </div>
+    ";
+    $sql = "SELECT * FROM lesson_comments WHERE LessonID=\"".$_POST['lesson_choose']."\" ORDER BY date DESC";
+    $result = $conn->query($sql);
+    while($choice = $result->fetch_assoc()){
+      $total_comment="";
+      $sql = "SELECT FirstName,LastName,Photo FROM students WHERE StudentID=\"".$choice['StudentID']."\"";
+      $result2 = $conn->query($sql);
+      while($choice2 = $result2->fetch_assoc()){
+        $sql = "SELECT Anonymity FROM comments WHERE CommentID=\"".$choice['CommentID']."\"";
+        $result5 = $conn->query($sql);
+        $delete_comment="";
+        if($_SESSION['user']==$choice['StudentID']){
+          $delete_comment.="
+          <form action=\"lesson_show.php\" method=\"POST\">
+            <input style=\"visibility:hidden;display:none;\" type=\"text\" name=\"lesson_choose\" value=\"".$_POST['lesson_choose']."\">
+            <input type=\"text\" name=\"delete_comment\" value=".$choice['CommentID']." style=\"visibility:hidden;display:none;\">
+            <input type=\"submit\" value=\"Delete this comment\" class=\"add_new_button\">
+          </form>";
+        }
+        if(isset($_SESSION['secretariat']))
+        {
+          if($_SESSION['secretariat']==1){
+            $delete_comment.="
+            <form action=\"lesson_show.php\" method=\"POST\">
+              <input style=\"visibility:hidden;display:none;\" type=\"text\" name=\"lesson_choose\" value=\"".$_POST['lesson_choose']."\">
+              <input type=\"text\" name=\"delete_comment\" value=".$choice['CommentID']." style=\"visibility:hidden;display:none;\">
+              <input type=\"submit\" value=\"Delete this comment\" class=\"add_new_button\">
+            </form>";
+          }
+        }
+        while($choice5 = $result5->fetch_assoc()){
+          if($choice5['Anonymity']==0){
+            $total_comment.="
+            <div class=\"row\">
+              <div class=\"col-md-1\">
+                <img src=\"".$choice2['Photo']."\" width=40px>
+              </div>
+              <div class=\"col-md-3\">
+                <h3 style=\"background-color:powderblue;border-radius:30px;font-size:20px;text-align:left;\">".$choice2['LastName']." ".$choice2['FirstName']."</h3>
+              </div>
+              <div class=\"col-md-3\">
+                ".$delete_comment."
+              </div>
+            </div>
+            ";
+          }
+          else{
+            $total_comment.="
+            <div class=\"row\">
+              <div class=\"col-md-4\">
+                <h3 style=\"background-color:powderblue;border-radius:30px;font-size:20px;text-align:left;\">Anonymous User</h3>
+              </div>
+              <div class=\"col-md-3\">
+                ".$delete_comment."
+              </div>
+            </div>
+                ";
+          }
+        }
+      }
+      $sql = "SELECT * FROM comments WHERE CommentID=\"".$choice['CommentID']."\"";
+      $result3 = $conn->query($sql);
+      while($choice3 = $result3->fetch_assoc()){
+        $total_comment.="
+        <div class=\"row\">
+          <div class=\"col-md-6\">
+            <p style=\"background-color:LightGray;border-radius:30px;font-size:1em;text-align:left;\" >".$choice3['CommentText']."</p>
+          </div>
+        </div>";
+      }
+      $lesson.=$total_comment;
+    }
+    $lesson.="</div>";
     $conn->close();
     $content="<div class=\"col-md-9\"><div id=\"content\">".$lesson."
     </div></div>

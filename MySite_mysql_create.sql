@@ -124,6 +124,8 @@ CREATE TABLE `Professor_Lessons_LastYears` (
 CREATE TABLE `Comments` (
 	`CommentID` varchar(100) NOT NULL  ,
 	`CommentText` varchar(100000) NOT NULL,
+	`Anonymity` INT NOT NULL,
+	`date` DATETIME NOT NULL,
 	PRIMARY KEY (`CommentID`)
 );
 
@@ -131,6 +133,7 @@ CREATE TABLE `Lesson_Comments` (
 	`LessonID` varchar(10) NOT NULL  ,
 	`CommentID` varchar(100) NOT NULL  ,
 	`StudentID` varchar(20) NOT NULL  ,
+	`date` DATETIME NOT NULL,
 	PRIMARY KEY (`LessonID`,`CommentID`,`StudentID`)
 );
 
