@@ -192,6 +192,19 @@ if(isset($_POST['lesson_choose'])){
         $lesson.="<br><br>
         <div class=\"row\">
           <div class=\"col-md-8\">
+            <h3>If you want to edit this lesson press here:</h3>
+          </div>
+        </div>
+        <div class=\"row\">
+          <div class=\"col-md-8\">
+            <form action=\"edit_lesson.php\" method=\"POST\">
+              <button type=\"submit\" name=\"lesson_id\" value=".$_POST['lesson_choose']." class=\"add_new_button\">EDIT LESSON</button>
+            </form>
+          </div>
+        </div>
+        <br><br>
+        <div class=\"row\">
+          <div class=\"col-md-8\">
             <h3>If you want to delete this lesson press here:</h3>
           </div>
         </div>
@@ -280,41 +293,45 @@ if(isset($_POST['lesson_choose'])){
       </tbody>
       </table></div></div>";
     }
+  if(isset($_SESSION['user'])){
     $sql = "SELECT FirstName,LastName,ID FROM members WHERE ID=\"".$_SESSION['user']."\"";
     $result8 = $conn->query($sql);
     $my_name="";
     while($choice8 = $result8->fetch_assoc()){
       $my_name.=$choice8['LastName']." ".$choice8['FirstName'];
     }
-    $lesson.="
-    <div class=\"row\">
-      <div class=\"col-md-8\">
-          <h3>Comment this lesson:</h3>
+    if(isset($_SESSION['student'])){
+      $lesson.="
+      <div class=\"row\">
+        <div class=\"col-md-8\">
+            <h3>Comment this lesson:</h3>
+        </div>
       </div>
-    </div>
-    <div class=\"row\">
-      <div class=\"col-md-8\">
-        <form action=\"lesson_show.php\" method=\"post\">
-          <label>Select to post the comment as:</label>
-          <select name=\"anon\" required=\"\">
-            <option value=\"0\">".$my_name."</option>
-            <option value=\"1\">Anonymous</option>
-          </select>
+      <div class=\"row\">
+        <div class=\"col-md-8\">
+          <form action=\"lesson_show.php\" method=\"post\">
+            <label>Select to post the comment as:</label>
+            <select name=\"anon\" required=\"\">
+              <option value=\"0\">".$my_name."</option>
+              <option value=\"1\">Anonymous</option>
+            </select>
+        </div>
       </div>
-    </div>
-    <div class=\"row\">
-      <div class=\"col-md-8\">
-          <textarea rows=\"3\" cols=\"100\" placeholder=\"Leave your comment here.....\" name=\"content\"></textarea>
-          <input style=\"visibility:hidden;display:none;\" type=\"text\" name=\"lesson_choose\" value=\"".$_POST['lesson_choose']."\"></td>
+      <div class=\"row\">
+        <div class=\"col-md-8\">
+            <textarea rows=\"3\" cols=\"100\" placeholder=\"Leave your comment here.....\" name=\"content\"></textarea>
+            <input style=\"visibility:hidden;display:none;\" type=\"text\" name=\"lesson_choose\" value=\"".$_POST['lesson_choose']."\"></td>
+        </div>
       </div>
-    </div>
-    <div class=\"row\">
-      <div class=\"col-md-8\">
-        <input type=\"submit\" value=\"POST COMMENT\" class=\"add_new_button\">
-        </form>
+      <div class=\"row\">
+        <div class=\"col-md-8\">
+          <input type=\"submit\" value=\"POST COMMENT\" class=\"add_new_button\">
+          </form>
+        </div>
       </div>
-    </div>
-    ";
+      ";
+    }
+  }
     $lesson.="
     <div class=\"row\">
       <div class=\"col-md-8\">
@@ -332,13 +349,16 @@ if(isset($_POST['lesson_choose'])){
         $sql = "SELECT Anonymity FROM comments WHERE CommentID=\"".$choice['CommentID']."\"";
         $result5 = $conn->query($sql);
         $delete_comment="";
-        if($_SESSION['user']==$choice['StudentID']){
-          $delete_comment.="
-          <form action=\"lesson_show.php\" method=\"POST\">
-            <input style=\"visibility:hidden;display:none;\" type=\"text\" name=\"lesson_choose\" value=\"".$_POST['lesson_choose']."\">
-            <input type=\"text\" name=\"delete_comment\" value=".$choice['CommentID']." style=\"visibility:hidden;display:none;\">
-            <input type=\"submit\" value=\"Delete this comment\" class=\"add_new_button\">
-          </form>";
+        if(isset($_SESSION['user']))
+        {
+          if($_SESSION['user']==$choice['StudentID']){
+            $delete_comment.="
+            <form action=\"lesson_show.php\" method=\"POST\">
+              <input style=\"visibility:hidden;display:none;\" type=\"text\" name=\"lesson_choose\" value=\"".$_POST['lesson_choose']."\">
+              <input type=\"text\" name=\"delete_comment\" value=".$choice['CommentID']." style=\"visibility:hidden;display:none;\">
+              <input type=\"submit\" value=\"Delete this comment\" class=\"add_new_button\">
+            </form>";
+          }
         }
         if(isset($_SESSION['secretariat']))
         {
@@ -359,7 +379,7 @@ if(isset($_POST['lesson_choose'])){
                 <img src=\"".$choice2['Photo']."\" width=40px>
               </div>
               <div class=\"col-md-3\">
-                <h3 style=\"background-color:powderblue;border-radius:30px;font-size:20px;text-align:left;\">".$choice2['LastName']." ".$choice2['FirstName']."</h3>
+                <h3 style=\"background-color:powderblue;border-radius:30px;font-size:20px;text-align:center;\">".$choice2['LastName']." ".$choice2['FirstName']."</h3>
               </div>
               <div class=\"col-md-3\">
                 ".$delete_comment."
@@ -371,7 +391,7 @@ if(isset($_POST['lesson_choose'])){
             $total_comment.="
             <div class=\"row\">
               <div class=\"col-md-4\">
-                <h3 style=\"background-color:powderblue;border-radius:30px;font-size:20px;text-align:left;\">Anonymous User</h3>
+                <h3 style=\"background-color:powderblue;border-radius:30px;font-size:20px;text-align:center;\">Anonymous User</h3>
               </div>
               <div class=\"col-md-3\">
                 ".$delete_comment."
@@ -386,7 +406,7 @@ if(isset($_POST['lesson_choose'])){
       while($choice3 = $result3->fetch_assoc()){
         $total_comment.="
         <div class=\"row\">
-          <div class=\"col-md-6\">
+          <div class=\"col-md-7\">
             <p style=\"background-color:LightGray;border-radius:30px;font-size:1em;text-align:left;\" >".$choice3['CommentText']."</p>
           </div>
         </div>";
