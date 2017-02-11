@@ -187,6 +187,7 @@ if(isset($_SESSION['secretariat'])){
 else{
   $edit="";
 }
+
 $content="
 <div class=\"col-md-9\">
   <div id=\"content\">

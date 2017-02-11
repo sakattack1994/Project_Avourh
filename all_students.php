@@ -194,7 +194,8 @@ else{
   $edit="";
 }
 
-
+if(isset($_SESSION['secretariat'])){
+  if($_SESSION['secretariat']==1){
   $content="
   <div class=\"col-md-9\">
     <div id=\"content\">
@@ -209,5 +210,11 @@ else{
     </div>
   </div>";
   include 'WebPageTemplate.php';
-
+  }
+}
+if(isset($_SESSION['student'])){
+  if($_SESSION['student']==1){
+    include 'welcome_login.php';
+  }
+}
 ?>
