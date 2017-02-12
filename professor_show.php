@@ -55,7 +55,20 @@ if(isset($_POST['prof_choose'])){
           </div>";
         }
         else if (isset($_SESSION['secretariat'])) {
-          $edit="<div class=\"row\">
+          $edit="
+          <div class=\"row\">
+              <div class=\"col-md-8\">
+                <h3>If you want to edit the profile press here:</h3>
+                </div>
+              </div>
+              <div class=\"row\">
+              <div class=\"col-md-8\">
+                <form action=\"edit_member.php\" method=\"POST\">
+                  <button type=\"submit\" name=\"professor_edit\" value=".$_POST['prof_choose']." class=\"add_new_button\">EDIT PROFILE</button>
+                  </form>
+              </div>
+          </div>
+          <div class=\"row\">
             <div class=\"col-md-8\">
               <h3>If you want to delete this professor press here:</h3>
             </div>
