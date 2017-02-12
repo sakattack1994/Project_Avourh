@@ -15,6 +15,7 @@ if(!isset($_SESSION))
     <link rel="stylesheet" type="text/css" href="CSS/menu.css">
     <link rel="stylesheet" type="text/css" href="CSS/login.css">
     <link rel="stylesheet" type="text/css" href="CSS/user_menu.css">
+    <link rel="stylesheet" type="text/css" href="CSS/calendar_style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <script type="text/javascript" src="javascript/add_header.js"></script>

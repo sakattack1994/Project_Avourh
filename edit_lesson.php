@@ -105,12 +105,6 @@ if(isset($_POST['lesson_id'])){
         </td>
       </tr>
       <tr>
-        <td>Teaching hours and place:</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_hours\" value=\"".$choice['TeachingHoursAndPlace']."\" style=\"height:100%; width:100%;\"></td>
-      </tr>
-      <tr>
-        <td>Recent statistics:</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_statistics\" value=\"".$choice['StatisticsOfEvaluations']."\" style=\"height:100%; width:100%;\"></td>
-      </tr>
-      <tr>
         <td>LabID:</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_lab\" value=\"".$lab."\" style=\"height:100%; width:100%;\"></td>
       </tr>
       <tr>
@@ -148,6 +142,27 @@ if(isset($_POST['lesson_id'])){
         </tr>";
         $j=$j+1;
       }
+      $sql = "SELECT * FROM lessons_hours WHERE LessonID=\"".$_POST['lesson_id']."\"";
+      $result2 = $conn->query($sql);
+      $j=1;
+      while($choice2 = $result2->fetch_assoc()){
+        $lesson.="
+        <tr>
+          <td>Day ".$j.":</td><td style=\"padding:0;\">
+          <select name=\"l_day".$j."\" style=\"height:100%; width:100%;\" required=\"\">
+            <option value=\"ΔΕΥΤΕΡΑ\">ΔΕΥΤΕΡΑ</option>
+            <option value=\"ΤΡΙΤΗ\">ΤΡΙΤΗ</option>
+            <option value=\"ΤΕΤΑΡΤΗ\">ΤΕΤΑΡΤΗ</option>
+            <option value=\"ΠΕΜΠΤΗ\">ΠΕΜΠΤΗ</option>
+            <option value=\"ΠΑΡΑΣΚΕΥΗ\">ΠΑΡΑΣΚΕΥΗ</option>
+          </select></td>
+        </tr>
+        <tr>
+          <td>Hours ".$j.":</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_hours".$j."\" value=\"".$choice2['Hours']."\" style=\"height:100%; width:100%;\"></td>
+        </tr>
+        ";
+        $j=$j+1;
+      }
       $sql = "SELECT ISBN FROM lesson_book WHERE LessonID=\"".$_POST['lesson_id']."\"";
       $result2 = $conn->query($sql);
       $k=1;
@@ -163,6 +178,7 @@ if(isset($_POST['lesson_id'])){
     $lesson.="<br><br>
     <div class=\"row\"><div class=\"col-md-8\">
     <button type=\"button\" class=\"add_new_button\" onclick=\"new_prof();\">&#9546;ADD NEW PROFESSOR</button><br>
+    <button type=\"button\" class=\"add_new_button\" onclick=\"new_hours();\">&#9546;ADD NEW DAY AND HOURS OF TEACHING</button><br>
     <button type=\"button\" class=\"add_new_button\" onclick=\"new_rel();\">&#9546;ADD NEW RELATIVE LESSON</button><br>
     <button type=\"button\" class=\"add_new_button\" onclick=\"new_book();\">&#9546;ADD NEW BOOK(ISBN)</button>
     <h3>If you finished editing press here:</h3>

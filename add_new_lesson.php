@@ -75,13 +75,7 @@
       </td>
     </tr>
     <tr>
-      <td>Teaching hours and place:</td><td style=\"padding:0;\"><input type=\"text\" name=\"new_hours\" style=\"height:100%; width:100%;\" required=\"\"></td>
-    </tr>
-    <tr>
-      <td>Recent statistics:</td><td style=\"padding:0;\"><input type=\"text\" name=\"new_statistics\" style=\"height:100%; width:100%;\" required=\"\"></td>
-    </tr>
-    <tr>
-      <td>LabID:</td><td style=\"padding:0;\"><input type=\"text\" name=\"new_lab\" style=\"height:100%; width:100%;\" required=\"\"></td>
+      <td>LabID:</td><td style=\"padding:0;\"><input type=\"text\" name=\"new_lab\" style=\"height:100%; width:100%;\"></td>
     </tr>
     <tr>
       <td>Curriculum:</td><td style=\"padding:0;\"><input type=\"text\" name=\"new_curriculum\" style=\"height:100%; width:100%;\" required=\"\"></td>
@@ -107,6 +101,7 @@
     $lesson.="<br><br>
     <div class=\"row\"><div class=\"col-md-8\">
     <button type=\"button\" class=\"add_new_button\" onclick=\"new_prof();\">&#9546;ADD NEW PROFESSOR</button><br>
+    <button type=\"button\" class=\"add_new_button\" onclick=\"new_hours();\">&#9546;ADD NEW DAY AND HOURS OF TEACHING</button><br>
     <button type=\"button\" class=\"add_new_button\" onclick=\"new_rel();\">&#9546;ADD NEW RELATIVE LESSON</button><br>
     <button type=\"button\" class=\"add_new_button\" onclick=\"new_book();\">&#9546;ADD NEW BOOK(ISBN)</button>
     <h3>If you finished creating press here:</h3>

@@ -112,11 +112,17 @@ if(isset($_POST['s_id'])){
     }
     $sql='SET NAMES utf8';
     $result = $conn->query($sql);
+    $textaki="";
     if(isset($_SESSION['prof']))
     {
       if($_SESSION['prof']==1){
         $table='professors';
         $table1='Professor';
+        $textaki="Welcome to the myDepartment online application of Electrical and Computer enginneering of university of Patras.
+        This is your profile. Here you can:<br>-see and modify the lessons you are teaching this current academic year<br>-see the
+        evaluation about each of them from the students and have a perspective of their opinion about them<br>-see your verified
+        publications and modify them as you wish.
+        ";
       }
     }
     if(isset($_SESSION['secretariat']))
@@ -124,6 +130,12 @@ if(isset($_POST['s_id'])){
       if($_SESSION['secretariat']==1){
         $table='secretariat';
         $table1='Secretariat';
+        $textaki="Welcome to the myDepartment online application of Electrical and Computer enginneering of university of Patras.
+        This is your profile. Here you can:<br>-Add new announcements to inform the community<br>-Add new personnel members
+        such as professors etc<br>-Manage the secretary members of our department<br>-Manage the students of our department
+        <br>-Create a new study schedule for the new academic year<br>-Add new lessons to the department<br>-Add new books and
+        attach them to lessons
+        ";
       }
     }
     if(isset($_SESSION['student']))
@@ -131,6 +143,11 @@ if(isset($_POST['s_id'])){
       if($_SESSION['student']==1){
         $table='students';
         $table1='Student';
+        $textaki="Welcome to the myDepartment online application of Electrical and Computer enginneering of university of Patras.
+        This is your profile. Here you can:<br>-Edit your profile<br>-See all the lessons of our department and enroll to those you
+        wish to watch<br>-Evaluate the lessons you watch<br>-See the calendar to find the days that you have lectures of the lessons you have
+        enrolled to
+        ";
       }
     }
     $yourname="";
@@ -139,10 +156,11 @@ if(isset($_POST['s_id'])){
     while($choice = $result->fetch_assoc()){
       $yourname=$choice['LastName']." ".$choice['FirstName'];
     }
+    $conn->close();
     $content="<div class=\"col-md-9\"><div id=\"content\">
       ".$alert."
       <h1>Welcome ".$yourname."</h1>
-      <p>PERIEXOMENO XRHSTH EISAGWGH</p>
+      <p>".$textaki."</p>
       <br>  <br>  <br>
     </div></div>
     <div class=\"col-md-3\"><div id=\"side_bar\"></div></div>";

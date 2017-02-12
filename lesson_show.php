@@ -99,6 +99,12 @@ if(isset($_POST['lesson_choose'])){
           $relativelessons.=$choice3['LessonID']." ".$choice3['Title']."<br>";
         }
       }
+      $teachinghours="";
+      $sql = "SELECT * FROM lessons_hours WHERE LessonID=\"".$_POST['lesson_choose']."\"";
+      $result2 = $conn->query($sql);
+      while($choice3 = $result2->fetch_assoc()){
+        $teachinghours.=$choice3['Day']." ".$choice3['Hours']."<br>";
+      }
       $lab="";
       $sql = "SELECT * FROM lessons_labs WHERE LessonID=\"".$_POST['lesson_choose']."\"";
       $result2 = $conn->query($sql);
@@ -274,12 +280,6 @@ if(isset($_POST['lesson_choose'])){
         <td>System of examination:</td><td>".$choice['SystemOfExamination']."</td>
       </tr>
       <tr>
-        <td>Teaching hours and place:</td><td>".$choice['TeachingHoursAndPlace']."</td>
-      </tr>
-      <tr>
-        <td>Recent statistics:</td><td>".$choice['StatisticsOfEvaluations']."</td>
-      </tr>
-      <tr>
         <td>Curriculum:</td><td>".$choice['Curriculum']."</td>
       </tr>
       <tr>
@@ -293,6 +293,9 @@ if(isset($_POST['lesson_choose'])){
       </tr>
       <tr>
         <td>Relative Lessons:</td><td>".$relativelessons."</td>
+      </tr>
+      <tr>
+        <td>Teaching Days and Hours:</td><td>".$teachinghours."</td>
       </tr>
       </tbody>
       </table></div></div>";

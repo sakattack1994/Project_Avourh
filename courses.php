@@ -29,8 +29,6 @@ if(isset($_POST['new_id'])){
   \"".$_POST['new_Ε']."\",
   \"".$_POST['new_sector']."\",
   \"".$_POST['new_exams']."\",
-  \"".$_POST['new_hours']."\",
-  \"".$_POST['new_statistics']."\",
   \"".$_POST['new_curriculum']."\"
   )";
   $result = $conn->query($sql);
@@ -51,6 +49,17 @@ if(isset($_POST['new_id'])){
   while(true){
     if(isset($_POST['l_relative_new'.$i])){
       $sql="INSERT INTO relative_courses VALUES(\"".$_POST['new_id']."\",\"".$_POST['l_relative_new'.$i]."\") ";
+      $result = $conn->query($sql);
+    }
+    else{
+      break;
+    }
+    $i=$i+1;
+  }
+  $i=1;
+  while(true){
+    if(isset($_POST['l_day_new'.$i])){
+      $sql="INSERT INTO lessons_hours VALUES(\"".$_POST['new_id']."\",\"".$_POST['l_day_new'.$i]."\",\"".$_POST['l_hours_new'.$i]."\") ";
       $result = $conn->query($sql);
     }
     else{
@@ -85,6 +94,8 @@ if(isset($_POST['lesson_delete'])){
   $sql='SET FOREIGN_KEY_CHECKS=0';
   $result = $conn->query($sql);
   $sql="DELETE FROM lessons_labs WHERE LessonID=\"".$_POST['lesson_delete']."\"";
+  $result = $conn->query($sql);
+  $sql="DELETE FROM lessons_hours WHERE LessonID=\"".$_POST['lesson_delete']."\"";
   $result = $conn->query($sql);
   $sql="DELETE FROM lessons_book WHERE LessonID=\"".$_POST['lesson_delete']."\"";
   $result = $conn->query($sql);
@@ -123,6 +134,8 @@ if(isset($_POST['l_id'])){
   $result = $conn->query($sql);
   $sql="DELETE FROM lesson_book WHERE LessonID=\"".$_POST['old_code']."\"";
   $result = $conn->query($sql);
+  $sql="DELETE FROM lessons_hours WHERE LessonID=\"".$_POST['old_code']."\"";
+  $result = $conn->query($sql);
   $sql='SET FOREIGN_KEY_CHECKS=0';
   $result = $conn->query($sql);
   $sql="DELETE FROM lessons_labs WHERE LessonID=\"".$_POST['old_code']."\"";
@@ -141,8 +154,8 @@ if(isset($_POST['l_id'])){
   $result = $conn->query($sql);
   $sql="UPDATE passed_lessons SET LessonID=\"".$_POST['l_id']."\" WHERE LessonID=\"".$_POST['old_code']."\"";
   $result = $conn->query($sql);
-  ///////$sql="UPDATE lesson_comments SET LessonID=\"".$_POST['l_id']."\" WHERE LessonID=\"".$_POST['old_code']."\"";
-  ///////$result = $conn->query($sql);
+  $sql="UPDATE lesson_comments SET LessonID=\"".$_POST['l_id']."\" WHERE LessonID=\"".$_POST['old_code']."\"";
+  $result = $conn->query($sql);
   $sql="UPDATE lessons
   SET LessonID=\"".$_POST['l_id']."\",
   Title=\"".$_POST['l_title']."\",
@@ -158,8 +171,6 @@ if(isset($_POST['l_id'])){
   EctsΕ=\"".$_POST['l_Ε']."\",
   Sector=\"".$_POST['l_sector']."\",
   SystemOfExamination=\"".$_POST['l_exams']."\",
-  TeachingHoursAndPlace=\"".$_POST['l_hours']."\",
-  StatisticsOfEvaluations=\"".$_POST['l_statistics']."\",
   Curriculum=\"".$_POST['l_curriculum']."\"
   WHERE LessonID=\"".$_POST['old_code']."\"
   ";
@@ -179,6 +190,28 @@ if(isset($_POST['l_id'])){
   while(true){
     if(isset($_POST['l_prof_new'.$i])){
       $sql="INSERT INTO professor_lessons_thisyear VALUES(\"".$_POST['l_prof_new'.$i]."\",\"".$_POST['l_id']."\",\"".$_POST['schedule']."\") ";
+      $result = $conn->query($sql);
+    }
+    else{
+      break;
+    }
+    $i=$i+1;
+  }
+  $i=1;
+  while(true){
+    if(isset($_POST['l_day'.$i])){
+      $sql="INSERT INTO lessons_hours VALUES(\"".$_POST['l_id']."\",\"".$_POST['l_day'.$i]."\",\"".$_POST['l_hours'.$i]."\") ";
+      $result = $conn->query($sql);
+    }
+    else{
+      break;
+    }
+    $i=$i+1;
+  }
+  $i=1;
+  while(true){
+    if(isset($_POST['l_day_new'.$i])){
+      $sql="INSERT INTO lessons_hours VALUES(\"".$_POST['l_id']."\",\"".$_POST['l_day_new'.$i]."\",\"".$_POST['l_hours_new'.$i]."\") ";
       $result = $conn->query($sql);
     }
     else{
