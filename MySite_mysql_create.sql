@@ -137,6 +137,13 @@ CREATE TABLE `Lesson_Comments` (
 	PRIMARY KEY (`LessonID`,`CommentID`,`StudentID`)
 );
 
+CREATE TABLE `Lesson_Evaluations` (
+	`LessonID` varchar(10) NOT NULL  ,
+	`Evaluation` bigint(3) NOT NULL  ,
+	`StudentID` varchar(20) NOT NULL  ,
+	PRIMARY KEY (`LessonID`,`StudentID`)
+);
+
 CREATE TABLE `Week_Schedule` (
 	`LessonID` varchar(10) NOT NULL,
 	`Days` varchar(100) NOT NULL,

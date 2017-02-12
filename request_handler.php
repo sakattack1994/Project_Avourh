@@ -97,7 +97,7 @@ if(isset($_POST['userID'])){
   <h2>".$name."</h2>
 	<ul>
     ".$menu."
-    <a href=\"logout.php\"><li tabindex=\"0\"><font style=\"color:rgba(0, 0, 0, 0.6)\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-log-out\" style=\"align:left;color:white;\"></span></span>Logout</font></li></a>
+    <a href=\"logout.php\"><li tabindex=\"0\"><font style=\"color:rgba(0, 0, 0, 0.6);font-size:15px\"><span class=\"pull-left\"><span class=\"glyphicon glyphicon-log-out\" style=\"align:left;color:white;\"></span></span>Logout</font></li></a>
   </ul>
   </form>
 </nav>";

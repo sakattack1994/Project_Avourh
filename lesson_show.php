@@ -45,6 +45,8 @@ if(isset($_POST['lesson_enroll'])){
     }
   $sql='SET NAMES utf8';
   $result = $conn->query($sql);
+  $sql="INSERT INTO lesson_evaluations VALUES(\"".$_POST['lesson_enroll']."\",1,\"".$_SESSION['user']."\")";
+  $result = $conn->query($sql);
   $sql="INSERT INTO students_lessons_enroll VALUES(\"".$_SESSION['user']."\",\"".$_POST['lesson_enroll']."\")";
   $result = $conn->query($sql);
   $conn->close();
@@ -57,6 +59,8 @@ if(isset($_POST['lesson_unenroll'])){
         die("Connection failed: " . $conn->connect_error);
     }
   $sql='SET NAMES utf8';
+  $result = $conn->query($sql);
+  $sql="DELETE FROM lesson_evaluations WHERE LessonID=\"".$_POST['lesson_unenroll']."\" AND StudentID=\"".$_SESSION['user']."\"";
   $result = $conn->query($sql);
   $sql="DELETE FROM students_lessons_enroll WHERE StudentID=\"".$_SESSION['user']."\" AND LessonID=\"".$_POST['lesson_unenroll']."\" ";
   $result = $conn->query($sql);
