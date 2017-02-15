@@ -11,6 +11,10 @@ if(isset($_POST['professor_edit'])){
     $sql = "SELECT * FROM professors WHERE ProfessorID=\"".$_POST['professor_edit']."\"";
     $result = $conn->query($sql);
     while($choice = $result->fetch_assoc()){
+      $selected = array("Καθηγητής"=>" ", "Αναπληρωτής καθηγητής"=>" ", "Επίκουρος καθηγητής"=>" ", "Ομότιμος Καθηγητής"=>" ", "Επίτιμος Καθηγητής"=>" ", "Επιστημονικός Συνεργάτης"=>" ", "ΕΔΙΠ"=>" ", "ΕΤΕΠ"=>" ", "Διοικητικό Προσωπικό"=>" ");
+      $selected["".$choice['Role'].""]="selected";
+      $selected1 = array("Τομέας Τηλεπικοινωνιών και Τεχνολογίας Πληροφορίας"=>" ", "Τομέας Συστημάτων Ηλεκτρικής Ενέργειας"=>" ", "Τομέας Ηλεκτρονικής και Υπολογιστών"=>" ", "Τομέας Συστημάτων και Αυτόματου Ελέγχου"=>" ", "ΓΕΝΙΚΟ ΤΜΗΜΑ"=>" ", "Άλλο τμήμα"=>" ");
+      $selected1["".$choice['Sector'].""]="selected";
       $sql = "SELECT * FROM members WHERE ID=\"".$_POST['professor_edit']."\"";
       $result2 = $conn->query($sql);
       while($choice2 = $result2->fetch_assoc()){
@@ -56,15 +60,15 @@ if(isset($_POST['professor_edit'])){
       <tr>
         <td>Role:</td><td style=\"padding:0;\">
         <select name=\"p_role\" style=\"height:100%; width:100%;\" required=\"\">
-          <option value=\"Καθηγητής\">Καθηγητής</option>
-          <option value=\"Αναπληρωτής καθηγητής\">Αναπληρωτής καθηγητής</option>
-          <option value=\"Επίκουρος καθηγητής\">Επίκουρος καθηγητής</option>
-          <option value=\"Ομότιμος Καθηγητής\">Ομότιμος Καθηγητής</option>
-          <option value=\"Επίτιμος Καθηγητής\">Επίτιμος Καθηγητής / Διδάκτορας</option>
-          <option value=\"Επιστημονικός Συνεργάτης\">Επιστημονικός Συνεργάτης</option>
-          <option value=\"Ε.ΔΙ.Π\">ΕΔΙΠ</option>
-          <option value=\"Ε.Τ.Ε.Π.\">ΕΤΕΠ</option>
-          <option value=\"Διοικητικό Προσωπικό\">Διοικητικό Προσωπικό</option>
+          <option value=\"Καθηγητής\" ".$selected['Καθηγητής'].">Καθηγητής</option>
+          <option value=\"Αναπληρωτής καθηγητής\" ".$selected['Αναπληρωτής καθηγητής'].">Αναπληρωτής καθηγητής</option>
+          <option value=\"Επίκουρος καθηγητής\" ".$selected['Επίκουρος καθηγητής'].">Επίκουρος καθηγητής</option>
+          <option value=\"Ομότιμος Καθηγητής\" ".$selected['Ομότιμος Καθηγητής'].">Ομότιμος Καθηγητής</option>
+          <option value=\"Επίτιμος Καθηγητής\" ".$selected['Επίτιμος Καθηγητής'].">Επίτιμος Καθηγητής / Διδάκτορας</option>
+          <option value=\"Επιστημονικός Συνεργάτης\" ".$selected['Επιστημονικός Συνεργάτης'].">Επιστημονικός Συνεργάτης</option>
+          <option value=\"ΕΔΙΠ\" ".$selected['ΕΔΙΠ'].">ΕΔΙΠ</option>
+          <option value=\"ΕΤΕΠ\" ".$selected['ΕΤΕΠ'].">ΕΤΕΠ</option>
+          <option value=\"Διοικητικό Προσωπικό\" ".$selected['Διοικητικό Προσωπικό'].">Διοικητικό Προσωπικό</option>
         </select>
         </td>
       </tr>
@@ -72,7 +76,16 @@ if(isset($_POST['professor_edit'])){
         <td>Resume:</td><td style=\"padding:0;\"><input type=\"text\" name=\"p_resume\" value=\"".$choice['Resume']."\" style=\"height:100%; width:100%;\"></td>
       </tr>
       <tr>
-        <td>Sector:</td><td style=\"padding:0;\"><input type=\"text\" name=\"p_sector\" value=\"".$choice['Sector']."\" style=\"height:100%; width:100%;\"></td>
+        <td>Sector:</td><td style=\"padding:0;\">
+          <select name=\"p_sector\" style=\"height:100%; width:100%;\" required=\"\">
+            <option value=\"Τομέας Τηλεπικοινωνιών και Τεχνολογίας Πληροφορίας\" ".$selected1["Τομέας Τηλεπικοινωνιών και Τεχνολογίας Πληροφορίας"].">Τομέας Τηλεπικοινωνιών και Τεχνολογίας Πληροφορίας</option>
+            <option value=\"Τομέας Συστημάτων Ηλεκτρικής Ενέργειας\" ".$selected1["Τομέας Συστημάτων Ηλεκτρικής Ενέργειας"].">Τομέας Συστημάτων Ηλεκτρικής Ενέργειας</option>
+            <option value=\"Τομέας Ηλεκτρονικής και Υπολογιστών\" ".$selected1["Τομέας Ηλεκτρονικής και Υπολογιστών"].">Τομέας Ηλεκτρονικής και Υπολογιστών</option>
+            <option value=\"Τομέας Συστημάτων και Αυτόματου Ελέγχου\" ".$selected1["Τομέας Συστημάτων και Αυτόματου Ελέγχου"].">Τομέας Συστημάτων και Αυτόματου Ελέγχου</option>
+            <option value=\"ΓΕΝΙΚΟ ΤΜΗΜΑ\" ".$selected1["ΓΕΝΙΚΟ ΤΜΗΜΑ"].">ΓΕΝΙΚΟ ΤΜΗΜΑ</option>
+            <option value=\"Άλλο τμήμα\" ".$selected1["Άλλο τμήμα"].">Άλλο τμήμα</option>
+          </select>
+        </td>
       </tr>
       <tr>
         <td>Telephone:</td><td style=\"padding:0;\"><input type=\"text\" name=\"p_telephone\" value=\"".$choice['Telephone']."\" style=\"height:100%; width:100%;\"></td>

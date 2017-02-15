@@ -47,7 +47,16 @@
       <td>Resume:</td><td style=\"padding:0;\"><input type=\"text\" name=\"new_resume\" style=\"height:100%; width:100%;\" required=\"\"></td>
     </tr>
     <tr>
-      <td>Sector:</td><td style=\"padding:0;\"><input type=\"text\" name=\"new_sector\" style=\"height:100%; width:100%;\" required=\"\"></td>
+      <td>Sector:</td><td style=\"padding:0;\">
+      <select name=\"new_sector\" style=\"height:100%; width:100%;\" required=\"\">
+        <option value=\"Τομέας Τηλεπικοινωνιών και Τεχνολογίας Πληροφορίας\">Τομέας Τηλεπικοινωνιών και Τεχνολογίας Πληροφορίας</option>
+        <option value=\"Τομέας Συστημάτων Ηλεκτρικής Ενέργειας\">Τομέας Συστημάτων Ηλεκτρικής Ενέργειας</option>
+        <option value=\"Τομέας Ηλεκτρονικής και Υπολογιστών\">Τομέας Ηλεκτρονικής και Υπολογιστών</option>
+        <option value=\"Τομέας Συστημάτων και Αυτόματου Ελέγχου\">Τομέας Συστημάτων και Αυτόματου Ελέγχου</option>
+        <option value=\"ΓΕΝΙΚΟ ΤΜΗΜΑ\">ΓΕΝΙΚΟ ΤΜΗΜΑ</option>
+        <option value=\"Άλλο τμήμα\">Άλλο τμήμα</option>
+      </select>
+      </td>
     </tr>
     <tr>
       <td>Telephone:</td><td style=\"padding:0;\"><input type=\"text\" name=\"new_telephone\" style=\"height:100%; width:100%;\" required=\"\"></td>

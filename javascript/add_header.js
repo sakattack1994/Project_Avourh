@@ -6,7 +6,7 @@ function add_header(){
   </div>\
 <div id=\"wrap\" style=\"padding-top:10px;\">\
 	<header>\
-		<div class=\"inner relative\">\
+		<div class=\"inner relative \">\
 			<a id=\"menu-toggle\" class=\"button dark\" href=\"#\"><i class=\"icon-reorder\"></i></a>\
 			<nav id=\"navigation\">\
 				<ul id=\"main-menu\">\

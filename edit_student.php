@@ -22,6 +22,8 @@ if(isset($_POST['student_edit'])){
         if(isset($_SESSION['secretariat']))
         {
           if($_SESSION['secretariat']==1){
+            $selected = array(" ", " ", " "," ", " ", " "," ", " ", " "," ");
+            $selected[$choice['Semester']-1]="selected";
             $edit.="
             <tr>
               <td>Level Of Studies:</td><td style=\"padding:0;\">
@@ -33,7 +35,21 @@ if(isset($_POST['student_edit'])){
               </td>
             </tr>
             <tr>
-              <td>Semester:</td><td style=\"padding:0;\"><input type=\"text\" name=\"s_semester\" value=\"".$choice['Semester']."\" style=\"height:100%; width:100%;\"></td>
+              <td>Semester:</td>
+              <td style=\"padding:0;\">
+                <select name=\"s_semester\" style=\"height:100%; width:100%;\" required=\"\">
+                  <option value=\"1\" ".$selected[0].">1</option>
+                  <option value=\"2\" ".$selected[1].">2</option>
+                  <option value=\"3\" ".$selected[2].">3</option>
+                  <option value=\"4\" ".$selected[3].">4</option>
+                  <option value=\"5\" ".$selected[4].">5</option>
+                  <option value=\"6\" ".$selected[5].">6</option>
+                  <option value=\"7\" ".$selected[6].">7</option>
+                  <option value=\"8\" ".$selected[7].">8</option>
+                  <option value=\"9\" ".$selected[8].">9</option>
+                  <option value=\"10\" ".$selected[9].">10</option>
+                </select>
+              </td>
             </tr>
             <tr>
               <td>Student ID:</td><td style=\"padding:0;\"><input type=\"text\" name=\"s_id\" value=\"".$choice['StudentID']."\" style=\"height:100%; width:100%;\"></td>
