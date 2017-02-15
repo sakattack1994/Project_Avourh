@@ -20,7 +20,7 @@ function draw_calendar($month,$year){
     $sql = "SELECT * FROM lessons_hours WHERE LessonID=\"".$id['LessonID']."\"";
     $result2 = $conn->query($sql);
     while($dayhours = $result2->fetch_assoc()){
-      $hours["".$dayhours['Day'].""] .= $titlos.":<br>".$dayhours['Hours']."<br><br>";
+      $hours["".$dayhours['Day'].""] .= $titlos.":<br>".$dayhours['Hours']." ".$dayhours['Place']."<br><br>";
     }
   }
 	/* draw table */

@@ -103,7 +103,7 @@ if(isset($_POST['lesson_choose'])){
       $sql = "SELECT * FROM lessons_hours WHERE LessonID=\"".$_POST['lesson_choose']."\"";
       $result2 = $conn->query($sql);
       while($choice3 = $result2->fetch_assoc()){
-        $teachinghours.=$choice3['Day']." ".$choice3['Hours']."<br>";
+        $teachinghours.=$choice3['Day']." ".$choice3['Hours']." ".$choice3['Place']."<br>";
       }
       $lab="";
       $sql = "SELECT * FROM lessons_labs WHERE LessonID=\"".$_POST['lesson_choose']."\"";

@@ -160,6 +160,9 @@ if(isset($_POST['lesson_id'])){
         <tr>
           <td>Hours ".$j.":</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_hours".$j."\" value=\"".$choice2['Hours']."\" style=\"height:100%; width:100%;\"></td>
         </tr>
+        <tr>
+          <td>Place ".$j.":</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_place".$j."\" value=\"".$choice2['Place']."\" style=\"height:100%; width:100%;\"></td>
+        </tr>
         ";
         $j=$j+1;
       }

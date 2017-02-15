@@ -24,7 +24,7 @@ if(isset($_POST['prof_choose'])){
       $sql = "SELECT * FROM scientificpublications WHERE PublicationID=\"".$choice['PublicationID']."\"";
       $result2 = $conn->query($sql);
       while($choice2 = $result2->fetch_assoc()){
-        $publications.=$choice2['Title']." published at ".$choice2['YearOfPublish']."<br>";
+        $publications.="<button type=\"submit\" name=\"publication_id\" value=\"".$choice2['PublicationID']."\"><font size=\"3px\">".$choice2['Title']." published at ".$choice2['YearOfPublish']."</font></button><br><br>";
       }
     }
     $lessons="";
@@ -121,7 +121,7 @@ if(isset($_POST['prof_choose'])){
       <div class=\"row\">
           <div class=\"col-md-8\">
           <h1>Scientific Publications:</h1>
-          <p>".$publications."</p>
+          <p><form action=\"publication_show.php\" method=\"POST\">".$publications."</form></p>
           </div>
       </div><br>
       <div class=\"row\">

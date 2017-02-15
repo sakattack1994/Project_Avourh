@@ -59,7 +59,7 @@ if(isset($_POST['new_id'])){
   $i=1;
   while(true){
     if(isset($_POST['l_day_new'.$i])){
-      $sql="INSERT INTO lessons_hours VALUES(\"".$_POST['new_id']."\",\"".$_POST['l_day_new'.$i]."\",\"".$_POST['l_hours_new'.$i]."\") ";
+      $sql="INSERT INTO lessons_hours VALUES(\"".$_POST['new_id']."\",\"".$_POST['l_day_new'.$i]."\",\"".$_POST['l_hours_new'.$i]."\",\"".$_POST['l_place_new'.$i]."\") ";
       $result = $conn->query($sql);
     }
     else{
@@ -200,7 +200,7 @@ if(isset($_POST['l_id'])){
   $i=1;
   while(true){
     if(isset($_POST['l_day'.$i])){
-      $sql="INSERT INTO lessons_hours VALUES(\"".$_POST['l_id']."\",\"".$_POST['l_day'.$i]."\",\"".$_POST['l_hours'.$i]."\") ";
+      $sql="INSERT INTO lessons_hours VALUES(\"".$_POST['l_id']."\",\"".$_POST['l_day'.$i]."\",\"".$_POST['l_hours'.$i]."\",\"".$_POST['l_place'.$i]."\") ";
       $result = $conn->query($sql);
     }
     else{
@@ -211,7 +211,7 @@ if(isset($_POST['l_id'])){
   $i=1;
   while(true){
     if(isset($_POST['l_day_new'.$i])){
-      $sql="INSERT INTO lessons_hours VALUES(\"".$_POST['l_id']."\",\"".$_POST['l_day_new'.$i]."\",\"".$_POST['l_hours_new'.$i]."\") ";
+      $sql="INSERT INTO lessons_hours VALUES(\"".$_POST['l_id']."\",\"".$_POST['l_day_new'.$i]."\",\"".$_POST['l_hours_new'.$i]."\",\"".$_POST['l_place_new'.$i]."\") ";
       $result = $conn->query($sql);
     }
     else{

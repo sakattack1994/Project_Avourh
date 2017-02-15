@@ -16,32 +16,40 @@ if(isset($_POST['publication_id'])){
     $sql = "SELECT * FROM scientificpublications WHERE PublicationID=\"".$_POST['publication_id']."\"";
     $result = $conn->query($sql);
     $edit="";
-    $edit="<div class=\"row\">
-      <div class=\"col-md-8\">
-        <h3>If you want to edit the publication press here:</h3>
-        </div>
-      </div>
-      <div class=\"row\">
-        <div class=\"col-md-8\">
-          <form action=\"edit_publication.php\" method=\"POST\">
-            <button type=\"submit\" name=\"publication_edit\" value=".$_POST['publication_id']." class=\"add_new_button\">EDIT PUBLICATION</button>
-          </form>
-        </div>
-      </div>
-    ";
-    $edit.="
-      <div class=\"row\">
-        <div class=\"col-md-8\">
-          <h3>If you want to delete this publication press here:</h3>
-        </div>
-      </div>
-      <div class=\"row\">
-        <div class=\"col-md-8\">
-          <form action=\"my_publications.php\" method=\"POST\">
-            <button type=\"submit\" name=\"pub_delete\" value=".$_POST['publication_id']." class=\"add_new_button\">DELETE PUBLICATION</button>
-          </form>
-        </div>
-      </div>";
+    $sql = "SELECT * FROM professors_publications WHERE PublicationID=\"".$_POST['publication_id']."\"";
+    $result2 = $conn->query($sql);
+    while($choice2 = $result2->fetch_assoc()){
+      if(isset($_SESSION['user'])){
+        if($_SESSION['user']==$choice2['ProfessorID']){
+          $edit="<div class=\"row\">
+            <div class=\"col-md-8\">
+              <h3>If you want to edit the publication press here:</h3>
+              </div>
+            </div>
+            <div class=\"row\">
+              <div class=\"col-md-8\">
+                <form action=\"edit_publication.php\" method=\"POST\">
+                  <button type=\"submit\" name=\"publication_edit\" value=".$_POST['publication_id']." class=\"add_new_button\">EDIT PUBLICATION</button>
+                </form>
+              </div>
+            </div>
+          ";
+          $edit.="
+            <div class=\"row\">
+              <div class=\"col-md-8\">
+                <h3>If you want to delete this publication press here:</h3>
+              </div>
+            </div>
+            <div class=\"row\">
+              <div class=\"col-md-8\">
+                <form action=\"my_publications.php\" method=\"POST\">
+                  <button type=\"submit\" name=\"pub_delete\" value=".$_POST['publication_id']." class=\"add_new_button\">DELETE PUBLICATION</button>
+                </form>
+              </div>
+            </div>";
+        }
+      }
+    }
     while($choice = $result->fetch_assoc()){
       $publ.="
         <div class=\"row\">

@@ -55,5 +55,6 @@ function new_hours() {
     <option value=\"ΠΑΡΑΣΚΕΥΗ\">ΠΑΡΑΣΚΕΥΗ</option>\
   </select></td></tr>");
   $('#update_table').append("<tr><td>New Hours "+z+":</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_hours_new"+z+"\" style=\"height:100%; width:100%;\"></td></tr>");
+  $('#update_table').append("<tr><td>New Place "+z+":</td><td style=\"padding:0;\"><input type=\"text\" name=\"l_place_new"+z+"\" style=\"height:100%; width:100%;\"></td></tr>");
   z=z+1;
 };
